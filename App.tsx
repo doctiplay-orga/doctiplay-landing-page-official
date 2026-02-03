@@ -18,6 +18,12 @@ const AppContent: React.FC = () => {
   const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
 
   useEffect(() => {
+    // Check for query param to open Contact Drawer
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('open_contact') === 'true') {
+      setIsContactOpen(true);
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {

@@ -208,7 +208,7 @@ function initMonitor() {
 
     if (!ecgCanvas || !plethCanvas) return;
 
-    // Robust resize function
+    // Robust resize function with DPI support
     function resize() {
       const parentE = ecgCanvas.parentElement;
       const parentP = plethCanvas.parentElement;
@@ -216,18 +216,26 @@ function initMonitor() {
       const rectE = parentE.getBoundingClientRect();
       const rectP = parentP.getBoundingClientRect();
 
+      const dpr = window.devicePixelRatio || 1;
+
       const wE = rectE.width || parentE.clientWidth;
       const hE = rectE.height || parentE.clientHeight;
       const wP = rectP.width || parentP.clientWidth;
       const hP = rectP.height || parentP.clientHeight;
 
       if (wE > 0 && hE > 0) {
-        ecgCanvas.width = wE;
-        ecgCanvas.height = hE;
+        ecgCanvas.width = wE * dpr;
+        ecgCanvas.height = hE * dpr;
+        ecgCanvas.style.width = `${wE}px`;
+        ecgCanvas.style.height = `${hE}px`;
+        ecgCanvas.getContext('2d').scale(dpr, dpr);
       }
       if (wP > 0 && hP > 0) {
-        plethCanvas.width = wP;
-        plethCanvas.height = hP;
+        plethCanvas.width = wP * dpr;
+        plethCanvas.height = hP * dpr;
+        plethCanvas.style.width = `${wP}px`;
+        plethCanvas.style.height = `${hP}px`;
+        plethCanvas.getContext('2d').scale(dpr, dpr);
       }
     }
 
@@ -240,16 +248,20 @@ function initMonitor() {
     const ctxP = plethCanvas.getContext('2d');
 
     let scanX = 0;
-    let speed = 1.4;
+    let speed = 2; // Slightly faster for smoothness
 
     function loop() {
-      const hE = ecgCanvas.height;
-      const midE = hE / 2 + 25;
-      const hP = plethCanvas.height;
-      const midP = hP / 2 + 15;
+      // Use CSS dimensions for logical calculations
+      const wE = parseFloat(ecgCanvas.style.width || ecgCanvas.width);
+      const hE = parseFloat(ecgCanvas.style.height || ecgCanvas.height);
+      const wP = parseFloat(plethCanvas.style.width || plethCanvas.width);
+      const hP = parseFloat(plethCanvas.style.height || plethCanvas.height);
 
-      const scanWidth = 14;
-      if (scanX + scanWidth < ecgCanvas.width) {
+      const midE = hE / 2; // Dynamic center
+      const midP = hP / 2;
+
+      const scanWidth = 20;
+      if (scanX + scanWidth < wE) {
         ctxE.clearRect(scanX, 0, scanWidth, hE);
         ctxP.clearRect(scanX, 0, scanWidth, hP);
       }
@@ -259,7 +271,7 @@ function initMonitor() {
       // Draw ECG
       ctxE.beginPath();
       ctxE.strokeStyle = '#00ff00';
-      ctxE.lineWidth = 1.5;
+      ctxE.lineWidth = 2;
       const yE_prev = midE + getECG((scanX - speed) * scaleT);
       const yE_curr = midE + getECG(scanX * scaleT);
       ctxE.moveTo(scanX - speed, yE_prev);
@@ -269,7 +281,7 @@ function initMonitor() {
       // Draw PLETH
       ctxP.beginPath();
       ctxP.strokeStyle = '#00ffff';
-      ctxP.lineWidth = 1.5;
+      ctxP.lineWidth = 2;
       const yP_prev = midP + getPLETH((scanX - speed) * scaleT);
       const yP_curr = midP + getPLETH(scanX * scaleT);
       ctxP.moveTo(scanX - speed, yP_prev);
@@ -277,7 +289,7 @@ function initMonitor() {
       ctxP.stroke();
 
       scanX += speed;
-      if (scanX >= ecgCanvas.width) {
+      if (scanX >= wE) {
         scanX = 0;
         ctxE.clearRect(0, 0, speed + 10, hE);
         ctxP.clearRect(0, 0, speed + 10, hP);
@@ -297,14 +309,15 @@ function initMonitor() {
     requestAnimationFrame(loop);
   });
 
-  // Common generators
+  // Common generators (Scaled amplitude)
   function getECG(t) {
     const period = 800;
     const localT = t % period;
     let y = 0;
-    if (localT > 180 && localT < 210) y -= 90 * Math.sin((localT - 180) / 30 * Math.PI);
-    if (localT > 300 && localT < 450) y -= 12 * Math.sin((localT - 300) / 150 * Math.PI);
-    if (localT > 50 && localT < 150) y -= 4 * Math.sin((localT - 50) / 100 * Math.PI);
+    const amp = 0.6; // Scale down amplitude to fit
+    if (localT > 180 && localT < 210) y -= 90 * Math.sin((localT - 180) / 30 * Math.PI) * amp;
+    if (localT > 300 && localT < 450) y -= 12 * Math.sin((localT - 300) / 150 * Math.PI) * amp;
+    if (localT > 50 && localT < 150) y -= 4 * Math.sin((localT - 50) / 100 * Math.PI) * amp;
     return y;
   }
 
@@ -312,8 +325,9 @@ function initMonitor() {
     const period = 800;
     const localT = t % period;
     let y = 0;
-    if (localT < 300) y -= Math.sin(localT / 300 * Math.PI) * 45;
-    else y -= Math.cos((localT - 300) / 500 * Math.PI / 2) * 45;
+    const amp = 0.6;
+    if (localT < 300) y -= Math.sin(localT / 300 * Math.PI) * 45 * amp;
+    else y -= Math.cos((localT - 300) / 500 * Math.PI / 2) * 45 * amp;
     return y;
   }
 }
