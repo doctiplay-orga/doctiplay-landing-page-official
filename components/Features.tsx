@@ -2,12 +2,17 @@ import React, { useState, useRef } from 'react';
 import { Activity, FileSearch, Mic, BarChart3, CheckCircle2, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const features = [
+const featureMeta = [
   {
     icon: Activity,
     color: '#007a9a',
     colorRgb: '0,122,154',
     code: 'PHYSIO_ENGINE_V1',
+    desc: {
+      fr: "Notre moteur simule en temps réel les cascades physiologiques : choc hémorragique, détresse respiratoire, défaillance multi-organes. Le patient évolue selon vos décisions.",
+      en: "Our engine simulates physiological cascades in real time: hemorrhagic shock, respiratory distress, multi-organ failure. The patient evolves based on your decisions.",
+      ar: "يحاكي محركنا التسلسلات الفيزيولوجية في الوقت الفعلي: الصدمة النزفية والضائقة التنفسية وفشل الأعضاء المتعددة."
+    },
     keyIndex: 0,
   },
   {
@@ -15,6 +20,11 @@ const features = [
     color: '#b45309',
     colorRgb: '180,83,9',
     code: 'DIAGNOSTIC_CORE',
+    desc: {
+      fr: "Le diagnostic reste caché jusqu'à ce que vous l'identifiiez. Analysez le dossier, demandez des examens, interprétez les résultats — chaque décision a un impact réel.",
+      en: "The diagnosis stays hidden until you identify it. Analyze the file, request exams, interpret results — every decision has a real impact.",
+      ar: "يظل التشخيص مخفياً حتى تحدده أنت. حلل الملف، اطلب الفحوصات، وفسر النتائج."
+    },
     keyIndex: 1,
   },
   {
@@ -22,6 +32,11 @@ const features = [
     color: '#047857',
     colorRgb: '4,120,87',
     code: 'VOICE_RECOGNITION',
+    desc: {
+      fr: "Interrogez le patient à voix haute comme en consultation réelle. Le NLP Doctiplay comprend l'anamnèse en français, arabe et darija avec une fidélité clinique haute.",
+      en: "Question the patient out loud as in a real consultation. Doctiplay NLP understands anamnesis in French, Arabic and Darija with high clinical fidelity.",
+      ar: "استجوب المريض بصوت عالٍ كما في الاستشارة الحقيقية. يفهم محرك NLP في Doctiplay التاريخ الطبي بالفرنسية والعربية والدارجة."
+    },
     keyIndex: 2,
   },
   {
@@ -29,19 +44,26 @@ const features = [
     color: '#4338ca',
     colorRgb: '67,56,202',
     code: 'ANALYSIS_CORE_V2',
+    desc: {
+      fr: "À la fin de chaque simulation, un rapport détaillé analyse vos décisions : ce qui était juste, ce qui était critique, et comment progresser pour la prochaine session.",
+      en: "At the end of each simulation, a detailed report analyses your decisions: what was right, what was critical, and how to progress for the next session.",
+      ar: "في نهاية كل محاكاة، يحلل تقرير مفصل قراراتك: ما كان صحيحاً، وما كان حرجاً، وكيف تتقدم."
+    },
     keyIndex: 3,
   },
 ];
 
 const FeatureCard: React.FC<{
-  feature: typeof features[0];
+  feature: typeof featureMeta[0];
   title: string;
   items: string[];
-}> = ({ feature, title, items }) => {
-  const { color, colorRgb, code, icon: Icon } = feature;
+  language: string;
+}> = ({ feature, title, items, language }) => {
+  const { color, colorRgb, code, icon: Icon, desc } = feature;
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const description = desc[language as keyof typeof desc] ?? desc.fr;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
@@ -68,32 +90,31 @@ const FeatureCard: React.FC<{
         transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translateZ(0)`,
         transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.6s cubic-bezier(0.16,1,0.3,1)',
         background: isHovered
-          ? `linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(${colorRgb},0.06) 100%)`
-          : 'rgba(255,255,255,0.5)',
+          ? `linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(${colorRgb},0.06) 100%)`
+          : 'rgba(255,255,255,0.58)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         border: `1px solid rgba(${colorRgb}, ${isHovered ? 0.3 : 0.12})`,
         boxShadow: isHovered
-          ? `0 20px 60px rgba(${colorRgb},0.15), 0 0 0 1px rgba(${colorRgb},0.12), inset 0 1px 0 rgba(255,255,255,0.9)`
-          : '0 4px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8)',
+          ? `0 20px 60px rgba(${colorRgb},0.14), 0 0 0 1px rgba(${colorRgb},0.1), inset 0 1px 0 rgba(255,255,255,0.9)`
+          : '0 4px 24px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.85)',
       }}
     >
-      {/* Top shimmer edge */}
+      {/* Top shimmer */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{ background: `linear-gradient(90deg, transparent, rgba(${colorRgb},0.5), transparent)` }}
       />
-
-      {/* Hover radial glow */}
+      {/* Hover glow */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(ellipse at 20% 10%, rgba(${colorRgb},0.08), transparent 65%)`,
+          background: `radial-gradient(ellipse at 20% 10%, rgba(${colorRgb},0.07), transparent 65%)`,
         }}
       />
 
-      <div className="relative z-10 p-8 flex flex-col h-full gap-6">
+      <div className="relative z-10 p-8 flex flex-col gap-5 h-full">
         {/* Icon + Title row */}
         <div className="flex items-center gap-4">
           <div
@@ -111,11 +132,16 @@ const FeatureCard: React.FC<{
           </h3>
         </div>
 
-        {/* Divider */}
-        <div className="h-px w-full" style={{ background: `linear-gradient(90deg, rgba(${colorRgb},0.3), transparent)` }} />
+        {/* Description paragraph */}
+        <p className="text-slate-500 text-sm leading-relaxed">
+          {description}
+        </p>
 
-        {/* Checklist — always visible, fills space */}
-        <ul className="space-y-3 flex-grow">
+        {/* Colored accent divider */}
+        <div className="h-px w-full" style={{ background: `linear-gradient(90deg, rgba(${colorRgb},0.35), transparent)` }} />
+
+        {/* Checklist */}
+        <ul className="space-y-3.5 flex-grow">
           {items && items.map((item, i) => (
             <li key={i} className="flex items-center gap-3">
               <div
@@ -134,7 +160,7 @@ const FeatureCard: React.FC<{
 
         {/* Footer */}
         <div
-          className="pt-4 border-t flex items-center justify-between"
+          className="pt-4 mt-2 border-t flex items-center justify-between"
           style={{ borderColor: `rgba(${colorRgb},0.12)` }}
         >
           <span
@@ -151,7 +177,7 @@ const FeatureCard: React.FC<{
 };
 
 const Features: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const featureData = [
     { title: t.features.f1_title, items: t.features.f1_items },
@@ -162,12 +188,11 @@ const Features: React.FC = () => {
 
   return (
     <section id="expertise" className="py-20 sm:py-32 relative overflow-hidden">
-      {/* Subtle section bg tint */}
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,122,154,0.04) 0%, transparent 70%)' }} />
 
       <div className="px-6 mx-auto max-w-7xl relative z-10">
-        {/* Section Header */}
+        {/* Header */}
         <div className="text-center mb-16 sm:mb-20 reveal">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6 sm:mb-8">
             <Zap className="w-4 h-4 text-primary" />
@@ -183,14 +208,15 @@ const Features: React.FC = () => {
           </p>
         </div>
 
-        {/* Feature Grid — 2×2 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 items-stretch">
-          {features.map((feature, idx) => (
+        {/* 2×2 Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          {featureMeta.map((feature, idx) => (
             <FeatureCard
               key={feature.keyIndex}
               feature={feature}
               title={featureData[idx].title}
               items={featureData[idx].items}
+              language={language}
             />
           ))}
         </div>
