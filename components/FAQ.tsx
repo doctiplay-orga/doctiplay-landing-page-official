@@ -6,27 +6,28 @@ const FAQ: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="faq" className="py-24 sm:py-32 relative overflow-hidden" style={{backgroundColor: '#0a0d1c'}}>
+    <section id="faq" className="py-24 sm:py-32 relative overflow-hidden">
 
       <div className="px-6 mx-auto max-w-5xl relative z-10">
 
         {/* Main Discovery Panel */}
         <div className="group relative overflow-hidden rounded-[3rem] border border-primary/15 p-8 sm:p-16 text-center shadow-[0_8px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(0,122,154,0.15)] hover:border-primary/30"
-          style={{background: 'rgba(255,255,255,0.55)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)'}}>
+          style={{background: 'rgba(255,255,255,0.6)', backdropFilter:'blur(24px)', WebkitBackdropFilter:'blur(24px)'}}>
 
           {/* Background Glows */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-primary/15 transition-all duration-700"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/8 rounded-full blur-[100px] pointer-events-none group-hover:bg-primary/12 transition-all duration-700"></div>
 
           <div className="relative z-10 flex flex-col items-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 mb-8" style={{backgroundColor:'rgba(0,122,154,0.07)'}}>
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-xs font-display font-bold text-primary uppercase tracking-[0.2em]">{t.faq.badge}</span>
             </div>
 
             {/* Icon */}
-            <div className="mb-8 w-20 h-20 rounded-3xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:from-primary/20 group-hover:to-primary/5 group-hover:border-primary/30 transition-all duration-500">
-              <BookOpen className="w-8 h-8 text-slate-200 group-hover:text-primary transition-colors" strokeWidth={1.5} />
+            <div className="mb-8 w-20 h-20 rounded-3xl flex items-center justify-center transition-all duration-500 group-hover:scale-110"
+              style={{background:'rgba(0,122,154,0.08)', border:'1px solid rgba(0,122,154,0.18)', boxShadow:'0 8px 24px rgba(0,122,154,0.1)'}}>
+              <BookOpen className="w-8 h-8 text-primary transition-colors" strokeWidth={1.5} />
             </div>
 
             {/* Title */}
