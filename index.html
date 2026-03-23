@@ -16,16 +16,16 @@
                 extend: {
                     colors: {
                         primary: {
-                            DEFAULT: "#00accd",
-                            glow: "#b5fffe",
-                            dark: "#007a9a"
+                            DEFAULT: "#007a9a",
+                            glow: "#00accd",
+                            dark: "#005f78"
                         },
                         secondary: "#020e4f",
-                        darkest: "#0a0d1c",
-                        accent: "#6366f0",
-                        danger: "#ff4d4d",
-                        pale: "#b5fffe",
-                        surface: "rgba(255, 255, 255, 0.07)",
+                        darkest: "#0f172a",
+                        accent: "#4f46e5",
+                        danger: "#dc2626",
+                        pale: "#00accd",
+                        surface: "rgba(0, 0, 0, 0.06)",
                     },
                     fontFamily: {
                         display: ["Share Tech Mono", "monospace"],
@@ -74,47 +74,50 @@
     <style>
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
-            background-color: #080b18;
-            color: #f8fafc;
+            background: linear-gradient(135deg, #e8eef8 0%, #dde8f5 20%, #d4e0ef 40%, #c8d8ea 60%, #d0ddf0 80%, #e4ecf8 100%);
+            background-attachment: fixed;
+            color: #0f172a;
             overflow-x: hidden;
         }
 
         .tech-grid {
             position: relative;
-            background-color: #080b18;
-            background-image:
-                radial-gradient(ellipse 80% 60% at 10% 0%, rgba(99,102,240,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 70% 50% at 90% 10%, rgba(0,172,205,0.07) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(79,70,229,0.04) 0%, transparent 60%),
-                linear-gradient(to right, rgba(0, 172, 205, 0.025) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 172, 205, 0.025) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 80px 80px, 80px 80px;
+            background: linear-gradient(135deg,
+                rgba(240,246,255,1) 0%,
+                rgba(220,235,255,0.95) 25%,
+                rgba(200,220,245,0.9) 50%,
+                rgba(215,228,248,0.95) 75%,
+                rgba(235,243,255,1) 100%);
+            background-attachment: fixed;
         }
 
         .tech-grid::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, transparent 40%, rgba(8,11,24,0.7) 100%);
+            background:
+                radial-gradient(ellipse 60% 50% at 15% 10%, rgba(0,172,205,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 85% 20%, rgba(79,70,229,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 30% at 50% 90%, rgba(0,122,154,0.05) 0%, transparent 60%);
             pointer-events: none;
         }
 
         .neon-text-subtle {
-            text-shadow: 0 0 10px rgba(0, 172, 205, 0.25);
+            text-shadow: 0 0 10px rgba(0, 122, 154, 0.2);
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .glass-dark {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.08);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 23, 42, 0.1);
         }
 
         .reveal {

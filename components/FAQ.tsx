@@ -11,7 +11,8 @@ const FAQ: React.FC = () => {
       <div className="px-6 mx-auto max-w-5xl relative z-10">
 
         {/* Main Discovery Panel */}
-        <div className="group relative overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-secondary/50 via-slate-950/90 to-secondary/50 p-8 sm:p-16 text-center shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:shadow-[0_0_100px_rgba(0,172,205,0.2)] hover:border-primary/40">
+        <div className="group relative overflow-hidden rounded-[3rem] border border-primary/15 p-8 sm:p-16 text-center shadow-[0_8px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_20px_80px_rgba(0,122,154,0.15)] hover:border-primary/30"
+          style={{background: 'rgba(255,255,255,0.55)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)'}}>
 
           {/* Background Glows */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-primary/15 transition-all duration-700"></div>
@@ -29,12 +30,12 @@ const FAQ: React.FC = () => {
             </div>
 
             {/* Title */}
-            <h2 className="text-4xl sm:text-6xl font-display font-black text-white mb-6 tracking-tight leading-tight max-w-3xl">
+            <h2 className="text-4xl sm:text-6xl font-display font-black mb-6 tracking-tight leading-tight max-w-3xl" style={{color:'#0f172a'}}>
               {t.faq.title}
             </h2>
 
             {/* Description */}
-            <p className="text-slate-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl mb-12">
+            <p className="text-slate-600 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl mb-12">
               {t.faq.description}
             </p>
 

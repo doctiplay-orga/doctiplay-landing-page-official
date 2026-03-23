@@ -53,7 +53,7 @@ const Modes: React.FC = () => {
   const isRtl = language === 'ar';
 
   return (
-    <section id="modes" className="py-20 sm:py-32 relative overflow-hidden" style={{ backgroundColor: '#080b18' }}>
+    <section id="modes" className="py-20 sm:py-32 relative overflow-hidden">
       {/* Background mesh blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%)' }} />
@@ -69,13 +69,13 @@ const Modes: React.FC = () => {
               3 PARCOURS SPÉCIALISÉS
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black mb-6 leading-tight" style={{color:'#0f172a'}}>
             Votre formation,<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-emerald-500 to-amber-500">
               votre parcours.
             </span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
             Trois environnements de simulation calibrés pour chaque profil clinique. Immersifs, précis, exigeants.
           </p>
         </div>
@@ -91,13 +91,13 @@ const Modes: React.FC = () => {
                 key={mode.id}
                 onMouseEnter={() => setHoveredMode(mode.id)}
                 onMouseLeave={() => setHoveredMode(null)}
-                className={`group relative rounded-[2.5rem] border ${mode.border} bg-gradient-to-br ${mode.gradient} p-8 sm:p-10 flex flex-col cursor-pointer transition-all duration-500 ${mode.glow} hover:-translate-y-2`}
+                className={`group relative rounded-[2.5rem] border ${mode.border} p-8 sm:p-10 flex flex-col cursor-pointer transition-all duration-500 ${mode.glow} hover:-translate-y-2`}
                 style={{
-                  background: `linear-gradient(135deg, rgba(${mode.colorRgb},0.07) 0%, rgba(10,13,28,0.8) 60%, rgba(10,13,28,0.95) 100%)`,
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
+                  background: `linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(${mode.colorRgb},0.05) 100%)`,
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
                   border: `1px solid rgba(${mode.colorRgb}, ${isHovered ? 0.4 : 0.15})`,
-                  boxShadow: isHovered ? `0 0 60px rgba(${mode.colorRgb}, 0.18), inset 0 1px 0 rgba(255,255,255,0.05)` : 'inset 0 1px 0 rgba(255,255,255,0.04)',
+                  boxShadow: isHovered ? `0 0 60px rgba(${mode.colorRgb}, 0.15), inset 0 1px 0 rgba(255,255,255,0.9)` : '0 4px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8)',
                   transition: 'all 0.5s cubic-bezier(0.16,1,0.3,1)',
                 }}
               >
@@ -140,12 +140,12 @@ const Modes: React.FC = () => {
                 </p>
 
                 {/* Title */}
-                <h3 className="text-2xl sm:text-3xl font-display font-black text-white mb-4 leading-tight whitespace-pre-line">
+                <h3 className="text-2xl sm:text-3xl font-display font-black whitespace-pre-line leading-tight" style={{color:'#0f172a'}}>
                   {mode.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 flex-grow">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 flex-grow">
                   {mode.description}
                 </p>
 

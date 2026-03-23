@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
   const { t } = useLanguage();
 
   return (
-    <footer className="relative pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden" style={{backgroundColor: '#080b1a'}}>
+    <footer className="relative pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden" style={{background: 'rgba(220,232,248,0.6)', borderTop: '1px solid rgba(0,122,154,0.1)'}}>
       {/* Decorative background element */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
 
@@ -26,11 +26,11 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
               <div className="relative w-12 h-12 flex items-center justify-center">
                 <Logo className="w-full h-full" showPulse={false} />
               </div>
-              <span className="text-3xl font-display font-black text-white tracking-tighter">
+              <span className="text-3xl font-display font-black tracking-tighter" style={{color:'#0f172a'}}>
                 DOCTI<span className="text-primary">PLAY</span>
               </span>
             </a>
-            <p className="text-slate-400 text-lg font-medium leading-relaxed">
+            <p className="text-slate-600 text-lg font-medium leading-relaxed">
               {t.footer.tagline}
             </p>
           </div>
@@ -69,8 +69,8 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
         </div>
 
         {/* Minimal Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-center">
-          <div className="text-[10px] font-mono font-bold text-slate-600 uppercase tracking-[0.3em] text-center">
+        <div className="pt-12 border-t border-slate-200 flex flex-col md:flex-row items-center justify-center">
+          <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] text-center">
             {t.footer.copyright}
           </div>
         </div>
