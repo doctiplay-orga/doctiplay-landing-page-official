@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Modes from './components/Modes';
 import Features from './components/Features';
 
 import Testimonials from './components/Testimonials';
@@ -66,6 +67,7 @@ const AppContent: React.FC = () => {
         <Hero
           onOpenPartnership={() => setIsPartnershipOpen(true)}
         />
+        <Modes />
         <Features />
 
         <Testimonials />
