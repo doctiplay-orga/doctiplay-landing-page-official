@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
   const { t } = useLanguage();
 
   return (
-    <footer className="relative bg-darkest pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
+    <footer className="relative pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden" style={{backgroundColor: '#080b1a'}}>
       {/* Decorative background element */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
 
@@ -55,7 +55,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
 
             <button
               onClick={onOpenPartnership}
-              className="flex items-center justify-center gap-4 px-10 py-5 rounded-2xl glass border-white/5 text-white hover:bg-primary hover:text-slate-950 transition-all group min-w-[240px]"
+              className="flex items-center justify-center gap-4 px-10 py-5 rounded-2xl glass border-accent/20 text-white hover:bg-accent hover:text-white hover:border-accent transition-all group min-w-[240px]"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white/20 transition-colors">
                 <Handshake className="w-5 h-5" />

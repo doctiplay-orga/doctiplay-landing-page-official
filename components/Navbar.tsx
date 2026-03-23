@@ -43,10 +43,11 @@ const Navbar: React.FC = () => {
       {/* Container: Floating capsule style */}
       <div className={`mx-auto pointer-events-auto transition-all duration-500 ease-out ${scrolled ? 'max-w-4xl' : 'max-w-6xl'}`}>
         <div className={`relative flex items-center justify-between rounded-full border transition-all duration-500 shadow-2xl overflow-hidden ${scrolled
-          ? 'bg-slate-950/90 backdrop-blur-3xl border-white/10 py-2 px-4 sm:px-6 shadow-cyan-500/10'
-          : 'bg-slate-950/70 backdrop-blur-2xl border-white/5 py-3 px-5 sm:px-8'
-          }`}>
-
+          ? 'backdrop-blur-3xl border-white/10 py-2 px-4 sm:px-6 shadow-primary/10'
+          : 'backdrop-blur-2xl border-white/5 py-3 px-5 sm:px-8'
+          }`}
+          style={{backgroundColor: scrolled ? 'rgba(10,13,28,0.95)' : 'rgba(10,13,28,0.7)'}}
+        >
           {/* Logo Area */}
           <a href="#simulation" onClick={(e) => handleNavClick(e, '#simulation')} className="flex items-center gap-3 shrink-0 mr-2 sm:mr-4 group">
             <div className="w-8 h-8 sm:w-10 sm:h-10 transform group-hover:scale-110 transition-transform">

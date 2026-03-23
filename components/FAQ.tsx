@@ -6,12 +6,12 @@ const FAQ: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="faq" className="py-24 sm:py-32 relative overflow-hidden bg-slate-950">
+    <section id="faq" className="py-24 sm:py-32 relative overflow-hidden" style={{backgroundColor: '#0a0d1c'}}>
 
       <div className="px-6 mx-auto max-w-5xl relative z-10">
 
         {/* Main Discovery Panel */}
-        <div className="group relative overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-950/90 to-slate-900/80 p-8 sm:p-16 text-center shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:shadow-[0_0_100px_rgba(0,216,255,0.15)] hover:border-primary/30">
+        <div className="group relative overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-secondary/50 via-slate-950/90 to-secondary/50 p-8 sm:p-16 text-center shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:shadow-[0_0_100px_rgba(0,172,205,0.2)] hover:border-primary/40">
 
           {/* Background Glows */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-primary/15 transition-all duration-700"></div>
@@ -43,7 +43,7 @@ const FAQ: React.FC = () => {
               href="https://ppt-doctiplay.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-white text-slate-950 rounded-full font-display font-black text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(0,216,255,0.3)] hover:-translate-y-1 group-hover:scale-105"
+              className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-primary text-white rounded-full font-display font-black text-sm tracking-widest uppercase hover:bg-accent hover:text-white transition-all shadow-[0_10px_30px_rgba(0,172,205,0.2)] hover:shadow-[0_20px_50px_rgba(99,102,240,0.3)] hover:-translate-y-1 group-hover:scale-105"
             >
               {t.faq.action}
               <ArrowRight className="w-5 h-5" />

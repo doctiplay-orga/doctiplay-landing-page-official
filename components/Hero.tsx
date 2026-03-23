@@ -38,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenPartnership }) => {
           <span className="block font-display font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-2 sm:mb-4 leading-tight antialiased tracking-tight">
             {t.hero.headline}
           </span>
-          <span className="block font-body font-black text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.8rem] text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary leading-[1.1] sm:leading-[1] pb-2 sm:pb-4 antialiased tracking-tighter max-w-full px-2 break-words">
+          <span className="block font-display font-black text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.8rem] text-transparent bg-clip-text bg-gradient-to-r from-primary via-pale to-accent leading-[1.1] sm:leading-[1] pb-2 sm:pb-4 antialiased tracking-tighter max-w-full px-2 break-words">
             {t.hero.headline_highlight}
           </span>
         </h1>

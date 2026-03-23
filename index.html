@@ -7,7 +7,7 @@
     <title>Doctiplay | Simulateur Médical IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@300;400;600;800;900&amp;family=Cairo:wght@400;500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;800;900&family=Cairo:wght@400;500;700&display=swap"
         rel="stylesheet" />
     <script>
         tailwind.config = {
@@ -16,18 +16,19 @@
                 extend: {
                     colors: {
                         primary: {
-                            DEFAULT: "#00d8ff",
-                            glow: "#00f2ff",
-                            dark: "#0891b2"
+                            DEFAULT: "#00accd",
+                            glow: "#b5fffe",
+                            dark: "#007a9a"
                         },
-                        secondary: "#0f172a",
-                        darkest: "#020617",
-                        accent: "#ffffff",
+                        secondary: "#020e4f",
+                        darkest: "#0a0d1c",
+                        accent: "#6366f0",
                         danger: "#ff4d4d",
-                        surface: "rgba(255, 255, 255, 0.7)",
+                        pale: "#b5fffe",
+                        surface: "rgba(255, 255, 255, 0.07)",
                     },
                     fontFamily: {
-                        display: ["JetBrains Mono", "monospace"],
+                        display: ["Share Tech Mono", "monospace"],
                         body: ["Inter", "Cairo", "sans-serif"],
                     },
                     animation: {
@@ -73,18 +74,17 @@
     <style>
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
-            background-color: #020617;
+            background-color: #0a0d1c;
             color: #f8fafc;
             overflow-x: hidden;
-            /* Perspective removed to ensure position:fixed works correctly for Navbar */
         }
 
         .tech-grid {
             position: relative;
-            background-color: #020617;
+            background-color: #0a0d1c;
             background-image:
-                linear-gradient(to right, rgba(0, 216, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 216, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 172, 205, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 172, 205, 0.04) 1px, transparent 1px);
             background-size: 80px 80px;
         }
 
@@ -92,12 +92,12 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(2, 6, 23, 0.98) 100%);
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(10, 13, 28, 0.97) 100%);
             pointer-events: none;
         }
 
         .neon-text-subtle {
-            text-shadow: 0 0 10px rgba(0, 216, 255, 0.2);
+            text-shadow: 0 0 10px rgba(0, 172, 205, 0.25);
         }
 
         .glass {
@@ -153,7 +153,7 @@
             position: absolute;
             width: 150%;
             height: 400px;
-            background: linear-gradient(90deg, transparent, rgba(0, 216, 255, 0.05), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 172, 205, 0.07), transparent);
             transform: rotate(-15deg);
             filter: blur(80px);
             pointer-events: none;
@@ -175,10 +175,10 @@
             height: 100%;
             background: linear-gradient(90deg,
                     transparent 0%,
-                    rgba(0, 216, 255, 0.2) 40%,
-                    #00d8ff 48%,
-                    #00d8ff 52%,
-                    rgba(0, 216, 255, 0.2) 60%,
+                    rgba(0, 172, 205, 0.2) 40%,
+                    #00accd 48%,
+                    #00accd 52%,
+                    rgba(0, 172, 205, 0.2) 60%,
                     transparent 100%);
             mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
             -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");

@@ -46,9 +46,9 @@ const Features: React.FC = () => {
     },
     {
       icon: BarChart3,
-      color: 'text-purple-950',
-      bg: 'bg-purple-400',
-      glow: 'shadow-[0_0_30px_rgba(192,132,252,0.4)]',
+      color: 'text-indigo-950',
+      bg: 'bg-indigo-400',
+      glow: 'shadow-[0_0_30px_rgba(99,102,240,0.4)]',
       title: t.features.f4_title,
       items: t.features.f4_items,
       footer_code: "ANALYSIS_CORE_V2",
@@ -57,7 +57,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section id="expertise" className="py-20 sm:py-32 relative overflow-hidden bg-slate-950">
+    <section id="expertise" className="py-20 sm:py-32 relative overflow-hidden" style={{backgroundColor: '#0a0d1c'}}>
       <div className="px-6 mx-auto max-w-7xl relative z-10">
 
         {/* Section Header */}
