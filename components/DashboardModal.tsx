@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Activity, Target, HeartPulse, Truck, Stethoscope, CheckCircle2, Zap, BarChart3, Loader2 } from 'lucide-react';
+import { X, Activity, Target, HeartPulse, Truck, Stethoscope, CheckCircle2, Zap, BarChart3, Loader2, PackagePlus } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Monitor from './Monitor';
+import PartnershipDrawer from './PartnershipDrawer';
 
 interface DashboardModalProps {
     isOpen: boolean;
@@ -14,6 +15,7 @@ const DashboardModal: React.FC<DashboardModalProps> = ({ isOpen, onClose }) => {
     const [selectedMode, setSelectedMode] = useState<'geste' | 'ambulance' | 'dechocage'>('ambulance');
     const [selectedCat, setSelectedCat] = useState<'medical' | 'surgical' | 'pediatric'>('medical');
     const [isLoading, setIsLoading] = useState(false);
+    const [isBetaDrawerOpen, setIsBetaDrawerOpen] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -165,14 +167,13 @@ const DashboardModal: React.FC<DashboardModalProps> = ({ isOpen, onClose }) => {
                         </div>
                     </div>
 
-                    {/* Launch Button */}
+                    {/* Beta Order Button */}
                     <button
-                        onClick={startSimulation}
-                        disabled={isLoading}
-                        className="w-full py-4 sm:py-5 bg-white text-slate-950 rounded-[1.5rem] sm:rounded-[2rem] font-display font-black text-xs sm:text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all shadow-xl disabled:opacity-70 flex items-center justify-center gap-3 group"
+                        onClick={() => setIsBetaDrawerOpen(true)}
+                        className="w-full py-4 sm:py-5 bg-white text-slate-950 rounded-[1.5rem] sm:rounded-[2rem] font-display font-black text-xs sm:text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all shadow-xl flex items-center justify-center gap-3 group"
                     >
-                        {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Zap className="w-5 h-5 group-hover:scale-110 transition-transform" />}
-                        {isLoading ? "INITIALIZING..." : t.hero_extended.btn_start_now}
+                        <PackagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        {t.modes_section.cmd_beta}
                     </button>
 
                     {/* Sensor Card */}
@@ -189,6 +190,13 @@ const DashboardModal: React.FC<DashboardModalProps> = ({ isOpen, onClose }) => {
                 </div>
 
             </div>
+
+            {/* Beta Order Drawer */}
+            <PartnershipDrawer
+                isOpen={isBetaDrawerOpen}
+                onClose={() => setIsBetaDrawerOpen(false)}
+                title="Commander la Version Beta"
+            />
         </div>
     );
 };

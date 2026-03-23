@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
   const { t } = useLanguage();
 
   return (
-    <footer className="relative bg-darkest pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
+    <footer className="relative pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden" style={{background: 'rgba(220,232,248,0.6)', borderTop: '1px solid rgba(0,122,154,0.1)'}}>
       {/* Decorative background element */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
 
@@ -26,11 +26,11 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
               <div className="relative w-12 h-12 flex items-center justify-center">
                 <Logo className="w-full h-full" showPulse={false} />
               </div>
-              <span className="text-3xl font-display font-black text-white tracking-tighter">
+              <span className="text-3xl font-display font-black tracking-tighter" style={{color:'#0f172a'}}>
                 DOCTI<span className="text-primary">PLAY</span>
               </span>
             </a>
-            <p className="text-slate-400 text-lg font-medium leading-relaxed">
+            <p className="text-slate-600 text-lg font-medium leading-relaxed">
               {t.footer.tagline}
             </p>
           </div>
@@ -39,7 +39,8 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
           <div className="flex flex-col sm:flex-row gap-6 w-full lg:w-auto">
             <button
               onClick={onOpenContact}
-              className="flex items-center justify-center gap-4 px-10 py-5 rounded-2xl glass border-white/5 text-white hover:bg-white hover:text-slate-950 transition-all group min-w-[240px]"
+              className="flex items-center justify-center gap-4 px-8 py-4 rounded-2xl transition-all group min-w-[220px] w-full sm:w-auto"
+              style={{background:'rgba(255,255,255,0.7)', border:'1px solid rgba(0,122,154,0.18)', backdropFilter:'blur(12px)'}}
             >
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
                 <div className="relative">
@@ -48,29 +49,30 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
                 </div>
               </div>
               <div className="text-center sm:text-left">
-                <div className="text-[10px] font-display font-black uppercase tracking-widest opacity-50">{t.footer.contact_label}</div>
-                <div className="font-display font-bold text-sm tracking-tight">{t.footer.contact_action}</div>
+                <div className="text-[10px] font-display font-black uppercase tracking-widest text-slate-400">{t.footer.contact_label}</div>
+                <div className="font-display font-bold text-sm tracking-tight text-slate-800">{t.footer.contact_action}</div>
               </div>
             </button>
 
             <button
               onClick={onOpenPartnership}
-              className="flex items-center justify-center gap-4 px-10 py-5 rounded-2xl glass border-white/5 text-white hover:bg-primary hover:text-slate-950 transition-all group min-w-[240px]"
+              className="flex items-center justify-center gap-4 px-8 py-4 rounded-2xl transition-all group min-w-[220px] w-full sm:w-auto"
+              style={{background:'rgba(0,122,154,0.08)', border:'1px solid rgba(0,122,154,0.22)', backdropFilter:'blur(12px)'}}
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white/20 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
                 <Handshake className="w-5 h-5" />
               </div>
               <div className="text-center">
-                <div className="text-[10px] font-display font-black uppercase tracking-widest opacity-50">{t.footer.partnership_label}</div>
-                <div className="font-display font-bold text-sm tracking-tight">{t.footer.partnership_action}</div>
+                <div className="text-[10px] font-display font-black uppercase tracking-widest text-slate-400">{t.footer.partnership_label}</div>
+                <div className="font-display font-bold text-sm tracking-tight text-slate-800">{t.footer.partnership_action}</div>
               </div>
             </button>
           </div>
         </div>
 
         {/* Minimal Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-center">
-          <div className="text-[10px] font-mono font-bold text-slate-600 uppercase tracking-[0.3em] text-center">
+        <div className="pt-12 border-t border-slate-200 flex flex-col md:flex-row items-center justify-center">
+          <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] text-center">
             {t.footer.copyright}
           </div>
         </div>

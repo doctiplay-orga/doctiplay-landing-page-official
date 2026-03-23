@@ -7,9 +7,10 @@ import { sendPartnershipEmail } from '../utils/email';
 interface PartnershipDrawerProps {
     isOpen: boolean;
     onClose: () => void;
+    title?: string;
 }
 
-const PartnershipDrawer: React.FC<PartnershipDrawerProps> = ({ isOpen, onClose }) => {
+const PartnershipDrawer: React.FC<PartnershipDrawerProps> = ({ isOpen, onClose, title }) => {
     const { language, t } = useLanguage();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -82,10 +83,10 @@ const PartnershipDrawer: React.FC<PartnershipDrawerProps> = ({ isOpen, onClose }
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
                 {/* Header */}
-                <div className="relative z-10 px-8 pt-10 pb-6 flex items-center justify-between border-b border-white/5 bg-slate-900/50 backdrop-blur-md">
+                <div className="relative z-10 px-8 pt-24 pb-6 flex items-center justify-between border-b border-white/5 bg-slate-900/50 backdrop-blur-md">
                     <div>
                         <h3 className="text-2xl font-display font-black text-white uppercase tracking-tight">
-                            {t.partnership_drawer.title}
+                            {title ?? t.partnership_drawer.title}
                         </h3>
                         <p className="text-primary text-[10px] font-mono font-bold uppercase tracking-[0.3em] mt-1">
                             {t.partnership_drawer.header_badge}

@@ -45,7 +45,7 @@ export const translations = {
       solution_text: "Doctiplay introduit le stress, la pression du temps et l'incertitude dans votre formation—sans risque pour les patients réels.",
       f1_title: "Physiologie Temps Réel",
       f1_desc: "Les constantes réagissent dynamiquement à vos médicaments et interventions. Pas de chemins scriptés—que de la physiologie pure.",
-      f2_title: "Diagnostic Caché",
+      f2_title: "Scénarios Diversifiés",
       f2_desc: "Le patient n'arrive pas avec une étiquette. Utilisez le dossier, l'examen et les labos pour découvrir la vérité.",
       f3_title: "Interaction Vocale",
       f3_desc: "Parlez à votre patient avec notre interface vocale avancée. Faites l'anamnèse. Appelez un spécialiste. Contrôle vocal totalement immersif.",
@@ -75,6 +75,37 @@ export const translations = {
         "Prise en charge",
         "Communication équipe"
       ]
+    },
+    modes_section: {
+      badge: '3 PARCOURS SPÉCIALISÉS',
+      section_title_line1: 'Votre formation,',
+      section_title_line2: 'votre parcours.',
+      section_desc: 'Trois environnements de simulation calibrés pour chaque profil clinique. Immersifs, précis, exigeants.',
+      cta: 'Accéder au mode',
+      expand: '▾ En savoir plus',
+      collapse: '▴ Réduire',
+      cmd_beta: 'COMMANDER LA VERSION BETA',
+      medical: {
+        badge: 'SIMULATION MÉDICALE',
+        subtitle: 'Urgences, Réanimation & Déchocage',
+        title: 'Médecine\nIntensive',
+        desc: 'Prenez en charge un patient en situation critique. Diagnostic caché, monitoring en temps réel, décisions sous pression. Chaque seconde compte.',
+        tags: ['Urgences', 'Réanimation', 'Déchocage', 'Monitoring'],
+      },
+      paramedical: {
+        badge: 'SIMULATION PARAMÉDICALE',
+        subtitle: 'Soins Infirmiers & Niveau de Priorité',
+        title: 'Soins de\nPremière Ligne',
+        desc: "Évaluation infirmière, triage et soins de première ligne. Maîtrisez l'évaluation clinique et les protocoles de soin avec une précision sans compromis.",
+        tags: ['Triage', 'Soins Infirmiers', 'Évaluation', 'Priorités'],
+      },
+      ecos: {
+        badge: 'EXAMEN ECOS',
+        subtitle: 'Évaluation Clinique Structurée',
+        title: 'Certification\nECOS / CFEU',
+        desc: "Préparez vos examens ECOS avec des scénarios standardisés et une grille CFEU intégrée. Simulez les conditions réelles de l'examen.",
+        tags: ['ECOS', 'CFEU', 'Standardisé', 'Certification'],
+      },
     },
     gamification: {
       title: "Progression & Rangs",
@@ -146,7 +177,7 @@ export const translations = {
       system: "Vous êtes le système d'exploitation d'un moniteur médical de haute technologie. Générez une séquence de journaux réalistes et à haute tension pour un patient dans un état critique (par exemple, arrêt cardiaque, traumatisme ou choc septique). Sortez UNIQUEMENT les journaux. Pas de formatage markdown. Un journal par ligne. Format : '>> [HH:MM:SS] [CATÉGORIE] Message'. Utilisez le jargon médical technique en FRANÇAIS. Faites dégrader rapidement les constantes vitales."
     },
     hero_extended: {
-      subtext_full: "Doctiplay transforme la formation critique en expériences immersives de haute-fidélité. Maîtrisez l'imprévisible, sans aucun risque patient.",
+      subtext_full: "Doctiplay transforme la formation clinique en expériences immersives. Maîtrisez l'imprévisible, sans aucun risque patient.",
       btn_command: "DÉCOUVRIR DOCTIPLAY",
       btn_start_now: "LANCER MAINTENANT",
       debrief: {
@@ -289,7 +320,7 @@ export const translations = {
       solution_text: "Doctiplay introduces stress, time pressure, and uncertainty into your training—without the risk to real patients.",
       f1_title: "Real-Time Physiology",
       f1_desc: "Vitals react dynamically to your drugs and interventions. No scripted paths—pure physiology.",
-      f2_title: "Hidden Diagnosis",
+      f2_title: "Diverse Scenarios",
       f2_desc: "The patient doesn't come with a label. Use the chart, exam, and labs to uncover the truth.",
       f3_title: "Voice Interaction",
       f3_desc: "Talk to your patient with our advanced voice AI. Take a history. Call a specialist. Fully immersive voice control.",
@@ -317,8 +348,38 @@ export const translations = {
         "Safety and prioritization",
         "Diagnostic reasoning",
         "Management",
-        "Team communication"
       ]
+    },
+    modes_section: {
+      badge: '3 SPECIALISED PATHWAYS',
+      section_title_line1: 'Your training,',
+      section_title_line2: 'your pathway.',
+      section_desc: 'Three simulation environments calibrated for every clinical profile. Immersive, precise, demanding.',
+      cta: 'Access mode',
+      expand: '▾ Learn more',
+      collapse: '▴ Collapse',
+      cmd_beta: 'ORDER THE BETA VERSION',
+      medical: {
+        badge: 'MEDICAL SIMULATION',
+        subtitle: 'Emergency, ICU & Trauma Bay',
+        title: 'Intensive\nMedicine',
+        desc: 'Take charge of a patient in critical condition. Hidden diagnosis, real-time monitoring, decisions under pressure. Every second counts.',
+        tags: ['Emergency', 'ICU', 'Trauma', 'Monitoring'],
+      },
+      paramedical: {
+        badge: 'PARAMEDICAL SIMULATION',
+        subtitle: 'Nursing Care & Triage Priority',
+        title: 'Frontline\nCare',
+        desc: "Nursing assessment, triage and frontline care. Master clinical evaluation and care protocols with uncompromising precision.",
+        tags: ['Triage', 'Nursing', 'Assessment', 'Priorities'],
+      },
+      ecos: {
+        badge: 'ECOS EXAM',
+        subtitle: 'Structured Clinical Assessment',
+        title: 'ECOS / CFEU\nCertification',
+        desc: "Prepare for your ECOS exams with standardised scenarios and an integrated CFEU grid. Simulate real exam conditions.",
+        tags: ['ECOS', 'CFEU', 'Standardised', 'Certification'],
+      },
     },
     gamification: {
       title: "Progression & Ranks",
@@ -533,7 +594,7 @@ export const translations = {
       solution_text: "Doctiplay يقدم التوتر وضغط الوقت وعدم اليقين في تدريبك—دون المخاطرة بالمرضى الحقيقيين.",
       f1_title: "فسيولوجيا في الوقت الحقيقي",
       f1_desc: "تتفاعل العلامات الحيوية ديناميكيًا avec أدويتك وتدخلاتك. لا مسارات مكتوبة مسبقًا—فسيولوجيا بحتة.",
-      f2_title: "تشخيص مخفي",
+      f2_title: "سيناريوهات متنوعة",
       f2_desc: "المريض لا يأتي بملصق. استخدم المخطط والفحص والمختبرات لكشف الحقيقة.",
       f3_title: "التفاعل الصوتي",
       f3_desc: "تحدث إلى مريضك باستخدام الذكاء الاصطناعي الصوتي المتقدم لدينا. خذ التاريخ المرضي. اتصل بأخصائي. تحكم صوتي غامر بالكامل.",
@@ -569,6 +630,37 @@ export const translations = {
       title: "أعرف أكثر",
       description: "اكتشف كيف يعيد Doctiplay تعريف المحاكاة الطبية من خلال الذكاء الاصطناعي التوليدي ونهج تربوي غامر.",
       action: "شاهد العرض"
+    },
+    modes_section: {
+      badge: '3 مسارات متخصصة',
+      section_title_line1: 'تدريبك،',
+      section_title_line2: 'مسارك.',
+      section_desc: 'ثلاثة بيئات محاكاة معايرة لكل ملف سريري. غامرة ودقيقة ومطالبة.',
+      cta: 'الوصول إلى الوضع',
+      expand: '▾ معرفة المزيد',
+      collapse: '▴ طي',
+      cmd_beta: 'طلب النسخة التجريبية',
+      medical: {
+        badge: 'محاكاة طبية',
+        subtitle: 'طوارئ وعناية مركزة وغرفة صدمات',
+        title: 'الطب\nالمكثف',
+        desc: 'تولّ مريضاً في حالة حرجة. تشخيص مخفي، مراقبة في الوقت الفعلي، قرارات تحت ضغط.',
+        tags: ['طوارئ', 'عناية مركزة', 'صدمات', 'مراقبة'],
+      },
+      paramedical: {
+        badge: 'محاكاة شبه طبية',
+        subtitle: 'تمريض وأولوية الفرز',
+        title: 'رعاية\nالخط الأول',
+        desc: 'تقييم تمريضي وفرز ورعاية خط أول. أتقن التقييم السريري وبروتوكولات الرعاية.',
+        tags: ['فرز', 'تمريض', 'تقييم', 'أولويات'],
+      },
+      ecos: {
+        badge: 'امتحان ECOS',
+        subtitle: 'التقييم السريري المنظم',
+        title: 'شهادة\nECOS / CFEU',
+        desc: 'استعد لامتحانات ECOS بسيناريوهات موحدة وشبكة CFEU متكاملة.',
+        tags: ['ECOS', 'CFEU', 'موحد', 'شهادة'],
+      },
     },
     partnership: {
       badge: "التعاون الأكاديمي",

@@ -1,137 +1,226 @@
-import React, { useState } from 'react';
-import { Activity, FileSearch, Mic, BarChart3, CheckCircle2, Zap, ChevronDown } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Activity, FileSearch, Mic, BarChart3, CheckCircle2, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const Features: React.FC = () => {
-  const { t } = useLanguage();
-  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+const featureMeta = [
+  {
+    icon: Activity,
+    color: '#007a9a',
+    colorRgb: '0,122,154',
+    code: 'PHYSIO_ENGINE_V1',
+    desc: {
+      fr: "Notre moteur simule en temps réel les cascades physiologiques : choc hémorragique, détresse respiratoire, défaillance multi-organes. Le patient évolue selon vos décisions.",
+      en: "Our engine simulates physiological cascades in real time: hemorrhagic shock, respiratory distress, multi-organ failure. The patient evolves based on your decisions.",
+      ar: "يحاكي محركنا التسلسلات الفيزيولوجية في الوقت الفعلي: الصدمة النزفية والضائقة التنفسية وفشل الأعضاء المتعددة."
+    },
+    keyIndex: 0,
+  },
+  {
+    icon: FileSearch,
+    color: '#b45309',
+    colorRgb: '180,83,9',
+    code: 'DIAGNOSTIC_CORE',
+    desc: {
+      fr: "Des centaines de scénarios couvrant l'urgence, la médecine interne, la pédiatrie et la chirurgie. Chaque session est différente, chaque patient est unique.",
+      en: "Hundreds of scenarios covering emergency, internal medicine, pediatrics and surgery. Each session is different, every patient is unique.",
+      ar: "مئات السيناريوهات تغطي الطوارئ والطب الداخلي وطب الأطفال والجراحة. كل جلسة مختلفة وكل مريض فريد."
+    },
+    keyIndex: 1,
+  },
+  {
+    icon: Mic,
+    color: '#047857',
+    colorRgb: '4,120,87',
+    code: 'VOICE_RECOGNITION',
+    desc: {
+      fr: "Interrogez le patient à voix haute comme en consultation réelle. Le NLP Doctiplay comprend l'anamnèse en français, arabe et darija avec une fidélité clinique haute.",
+      en: "Question the patient out loud as in a real consultation. Doctiplay NLP understands anamnesis in French, Arabic and Darija with high clinical fidelity.",
+      ar: "استجوب المريض بصوت عالٍ كما في الاستشارة الحقيقية. يفهم محرك NLP في Doctiplay التاريخ الطبي بالفرنسية والعربية والدارجة."
+    },
+    keyIndex: 2,
+  },
+  {
+    icon: BarChart3,
+    color: '#4338ca',
+    colorRgb: '67,56,202',
+    code: 'ANALYSIS_CORE_V2',
+    desc: {
+      fr: "À la fin de chaque simulation, un rapport détaillé analyse vos décisions : ce qui était juste, ce qui était critique, et comment progresser pour la prochaine session.",
+      en: "At the end of each simulation, a detailed report analyses your decisions: what was right, what was critical, and how to progress for the next session.",
+      ar: "في نهاية كل محاكاة، يحلل تقرير مفصل قراراتك: ما كان صحيحاً، وما كان حرجاً، وكيف تتقدم."
+    },
+    keyIndex: 3,
+  },
+];
 
-  const toggleCard = (index: number) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
+const FeatureCard: React.FC<{
+  feature: typeof featureMeta[0];
+  title: string;
+  items: string[];
+  language: string;
+}> = ({ feature, title, items, language }) => {
+  const { color, colorRgb, code, icon: Icon, desc } = feature;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const description = desc[language as keyof typeof desc] ?? desc.fr;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
+    setTilt({ x, y });
   };
 
-  const features = [
-    {
-      icon: Activity,
-      color: 'text-cyan-950',
-      bg: 'bg-cyan-400',
-      glow: 'shadow-[0_0_30px_rgba(34,211,238,0.4)]',
-      title: t.features.f1_title,
-      items: t.features.f1_items,
-      footer_code: "PHYSIO_ENGINE_V1",
-      delay: '0s'
-    },
-    {
-      icon: FileSearch,
-      color: 'text-amber-950',
-      bg: 'bg-amber-400',
-      glow: 'shadow-[0_0_30px_rgba(251,191,36,0.4)]',
-      title: t.features.f2_title,
-      items: t.features.f2_items,
-      footer_code: "DIAGNOSTIC_CORE",
-      delay: '0.1s'
-    },
-    {
-      icon: Mic,
-      color: 'text-sky-950',
-      bg: 'bg-sky-400',
-      glow: 'shadow-[0_0_30px_rgba(56,189,248,0.4)]',
-      title: t.features.f3_title,
-      items: t.features.f3_items,
-      footer_code: "VOICE_RECOGNITION",
-      delay: '0.2s'
-    },
-    {
-      icon: BarChart3,
-      color: 'text-purple-950',
-      bg: 'bg-purple-400',
-      glow: 'shadow-[0_0_30px_rgba(192,132,252,0.4)]',
-      title: t.features.f4_title,
-      items: t.features.f4_items,
-      footer_code: "ANALYSIS_CORE_V2",
-      delay: '0.3s'
-    }
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+    setIsHovered(false);
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      className="group relative rounded-[2rem] flex flex-col overflow-hidden cursor-default"
+      style={{
+        transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translateZ(0)`,
+        transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.6s cubic-bezier(0.16,1,0.3,1)',
+        background: isHovered
+          ? `linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(${colorRgb},0.06) 100%)`
+          : 'rgba(255,255,255,0.58)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: `1px solid rgba(${colorRgb}, ${isHovered ? 0.3 : 0.12})`,
+        boxShadow: isHovered
+          ? `0 20px 60px rgba(${colorRgb},0.14), 0 0 0 1px rgba(${colorRgb},0.1), inset 0 1px 0 rgba(255,255,255,0.9)`
+          : '0 4px 24px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.85)',
+      }}
+    >
+      {/* Top shimmer */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: `linear-gradient(90deg, transparent, rgba(${colorRgb},0.5), transparent)` }}
+      />
+      {/* Hover glow */}
+      <div
+        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+        style={{
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(ellipse at 20% 10%, rgba(${colorRgb},0.07), transparent 65%)`,
+        }}
+      />
+
+      <div className="relative z-10 p-8 flex flex-col gap-5 h-full">
+        {/* Icon + Title row */}
+        <div className="flex items-center gap-4">
+          <div
+            className="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110"
+            style={{
+              background: `rgba(${colorRgb},0.1)`,
+              border: `1px solid rgba(${colorRgb},0.2)`,
+              boxShadow: isHovered ? `0 0 20px rgba(${colorRgb},0.25)` : 'none',
+            }}
+          >
+            <Icon className="w-6 h-6" style={{ color }} strokeWidth={1.5} />
+          </div>
+          <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-wide leading-tight" style={{ color: '#0f172a' }}>
+            {title}
+          </h3>
+        </div>
+
+        {/* Description paragraph */}
+        <p className="text-slate-500 text-sm leading-relaxed">
+          {description}
+        </p>
+
+        {/* Colored accent divider */}
+        <div className="h-px w-full" style={{ background: `linear-gradient(90deg, rgba(${colorRgb},0.35), transparent)` }} />
+
+        {/* Checklist */}
+        <ul className="space-y-3.5 flex-grow">
+          {items && items.map((item, i) => (
+            <li key={i} className="flex items-center gap-3">
+              <div
+                className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                style={{
+                  background: `rgba(${colorRgb},0.1)`,
+                  border: `1px solid rgba(${colorRgb},0.25)`,
+                }}
+              >
+                <CheckCircle2 className="w-3 h-3" style={{ color }} />
+              </div>
+              <span className="text-slate-700 text-sm leading-snug">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Footer */}
+        <div
+          className="pt-4 mt-2 border-t flex items-center justify-between"
+          style={{ borderColor: `rgba(${colorRgb},0.12)` }}
+        >
+          <span
+            className="font-display text-[9px] uppercase tracking-[0.2em] transition-colors duration-300"
+            style={{ color: isHovered ? color : '#94a3b8' }}
+          >
+            {code}
+          </span>
+          <Activity className="w-4 h-4 transition-colors duration-300" style={{ color: isHovered ? color : '#cbd5e1' }} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Features: React.FC = () => {
+  const { t, language } = useLanguage();
+
+  const featureData = [
+    { title: t.features.f1_title, items: t.features.f1_items },
+    { title: t.features.f2_title, items: t.features.f2_items },
+    { title: t.features.f3_title, items: t.features.f3_items },
+    { title: t.features.f4_title, items: t.features.f4_items },
   ];
 
   return (
-    <section id="expertise" className="py-20 sm:py-32 relative overflow-hidden bg-slate-950">
-      <div className="px-6 mx-auto max-w-7xl relative z-10">
+    <section id="expertise" className="py-20 sm:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,122,154,0.04) 0%, transparent 70%)' }} />
 
-        {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-24 reveal">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/5 bg-white/5 mb-6 sm:mb-8">
+      <div className="px-6 mx-auto max-w-7xl relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 sm:mb-20 reveal">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6 sm:mb-8">
             <Zap className="w-4 h-4 text-primary" />
-            <span className="text-[10px] sm:text-xs font-display font-bold tracking-[0.2em] sm:tracking-[0.3em] text-slate-300 uppercase">{t.features_extended.badge}</span>
+            <span className="text-[10px] sm:text-xs font-display uppercase tracking-[0.3em] text-primary">
+              {t.features_extended.badge}
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-black text-white mb-6 sm:mb-8 leading-tight">{t.features_extended.main_title}</h2>
-          <p className="text-slate-300 max-w-3xl mx-auto font-medium text-lg sm:text-xl leading-relaxed">{t.features_extended.main_desc}</p>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black mb-6 sm:mb-8 leading-tight" style={{ color: '#0f172a' }}>
+            {t.features_extended.main_title}
+          </h2>
+          <p className="text-slate-600 max-w-3xl mx-auto font-medium text-lg sm:text-xl leading-relaxed">
+            {t.features_extended.main_desc}
+          </p>
         </div>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {features.map((feature, idx) => {
-            const isExpanded = !!expandedCards[idx];
-
-            return (
-              <div
-                key={idx}
-                onClick={() => toggleCard(idx)}
-                /* Removed 'reveal' class to prevent React re-render from resetting animation state */
-                /* Removed inline 'height', added 'min-h-[320px]' */
-                className={`group relative p-8 rounded-[2.5rem] border border-slate-800 bg-slate-900/50 hover:bg-slate-900/80 hover:border-slate-700 transition-all duration-500 flex flex-col overflow-hidden cursor-pointer min-h-[320px] ${isExpanded ? 'bg-slate-900/90 border-slate-600' : ''}`}
-                style={{
-                  transitionDelay: feature.delay
-                }}
-              >
-                {/* Top Accent Gradient - subtle inside border effect */}
-                <div className="absolute inset-0 rounded-[2.5rem] border border-white/5 pointer-events-none"></div>
-
-                {/* Icon */}
-                <div className={`w-16 h-16 mb-8 rounded-2xl ${feature.bg} ${feature.color} flex items-center justify-center ${feature.glow} group-hover:scale-110 transition-transform duration-500`}>
-                  <feature.icon className="w-8 h-8" strokeWidth={2.5} />
-                </div>
-
-                {/* Title */}
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-display font-black text-white uppercase tracking-wide">
-                    {feature.title}
-                  </h3>
-                  <ChevronDown className={`w-5 h-5 text-slate-500 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-primary' : ''}`} />
-                </div>
-
-                {/* Checklist - Hidden by default, shown on expansion */}
-                <div className={`space-y-4 mb-4 flex-grow transition-all duration-500 ease-in-out overflow-hidden ${isExpanded ? 'opacity-100 max-h-[500px] mt-4' : 'opacity-0 max-h-0'}`}>
-                  {feature.items && feature.items.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="mt-1 min-w-[20px]">
-                        <div className="w-5 h-5 rounded-full border border-slate-700 bg-slate-800/50 flex items-center justify-center group-hover:border-primary/50 transition-colors">
-                          <CheckCircle2 className="w-3 h-3 text-primary" />
-                        </div>
-                      </div>
-                      <span className="text-slate-300 font-bold text-sm leading-tight">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Footer Code */}
-                <div className="mt-auto pt-6 border-t border-slate-800 flex items-center justify-between">
-                  <span className="font-mono text-[10px] font-bold text-slate-600 uppercase tracking-wider group-hover:text-primary/70 transition-colors">
-                    {feature.footer_code}
-                  </span>
-                  <Activity className="w-4 h-4 text-slate-700 group-hover:text-primary/50 transition-colors" />
-                </div>
-
-              </div>
-            );
-          })}
+        {/* 2×2 Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          {featureMeta.map((feature, idx) => (
+            <FeatureCard
+              key={feature.keyIndex}
+              feature={feature}
+              title={featureData[idx].title}
+              items={featureData[idx].items}
+              language={language}
+            />
+          ))}
         </div>
       </div>
-
-      {/* Background Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[400px] bg-primary/5 rounded-full blur-[120px] sm:blur-[160px] pointer-events-none"></div>
     </section>
   );
 };
