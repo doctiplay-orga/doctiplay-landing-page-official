@@ -76,6 +76,37 @@ export const translations = {
         "Communication équipe"
       ]
     },
+    modes_section: {
+      badge: '3 PARCOURS SPÉCIALISÉS',
+      section_title_line1: 'Votre formation,',
+      section_title_line2: 'votre parcours.',
+      section_desc: 'Trois environnements de simulation calibrés pour chaque profil clinique. Immersifs, précis, exigeants.',
+      cta: 'Accéder au mode',
+      expand: '▾ En savoir plus',
+      collapse: '▴ Réduire',
+      cmd_beta: 'COMMANDER LA VERSION BETA',
+      medical: {
+        badge: 'SIMULATION MÉDICALE',
+        subtitle: 'Urgences, Réanimation & Déchocage',
+        title: 'Médecine\nIntensive',
+        desc: 'Prenez en charge un patient en situation critique. Diagnostic caché, monitoring en temps réel, décisions sous pression. Chaque seconde compte.',
+        tags: ['Urgences', 'Réanimation', 'Déchocage', 'Monitoring'],
+      },
+      paramedical: {
+        badge: 'SIMULATION PARAMÉDICALE',
+        subtitle: 'Soins Infirmiers & Niveau de Priorité',
+        title: 'Soins de\nPremière Ligne',
+        desc: "Évaluation infirmière, triage et soins de première ligne. Maîtrisez l'évaluation clinique et les protocoles de soin avec une précision sans compromis.",
+        tags: ['Triage', 'Soins Infirmiers', 'Évaluation', 'Priorités'],
+      },
+      ecos: {
+        badge: 'EXAMEN ECOS',
+        subtitle: 'Évaluation Clinique Structurée',
+        title: 'Certification\nECOS / CFEU',
+        desc: "Préparez vos examens ECOS avec des scénarios standardisés et une grille CFEU intégrée. Simulez les conditions réelles de l'examen.",
+        tags: ['ECOS', 'CFEU', 'Standardisé', 'Certification'],
+      },
+    },
     gamification: {
       title: "Progression & Rangs",
       subtitle: "De l'étudiant au chef de clinique",
@@ -317,8 +348,38 @@ export const translations = {
         "Safety and prioritization",
         "Diagnostic reasoning",
         "Management",
-        "Team communication"
       ]
+    },
+    modes_section: {
+      badge: '3 SPECIALISED PATHWAYS',
+      section_title_line1: 'Your training,',
+      section_title_line2: 'your pathway.',
+      section_desc: 'Three simulation environments calibrated for every clinical profile. Immersive, precise, demanding.',
+      cta: 'Access mode',
+      expand: '▾ Learn more',
+      collapse: '▴ Collapse',
+      cmd_beta: 'ORDER THE BETA VERSION',
+      medical: {
+        badge: 'MEDICAL SIMULATION',
+        subtitle: 'Emergency, ICU & Trauma Bay',
+        title: 'Intensive\nMedicine',
+        desc: 'Take charge of a patient in critical condition. Hidden diagnosis, real-time monitoring, decisions under pressure. Every second counts.',
+        tags: ['Emergency', 'ICU', 'Trauma', 'Monitoring'],
+      },
+      paramedical: {
+        badge: 'PARAMEDICAL SIMULATION',
+        subtitle: 'Nursing Care & Triage Priority',
+        title: 'Frontline\nCare',
+        desc: "Nursing assessment, triage and frontline care. Master clinical evaluation and care protocols with uncompromising precision.",
+        tags: ['Triage', 'Nursing', 'Assessment', 'Priorities'],
+      },
+      ecos: {
+        badge: 'ECOS EXAM',
+        subtitle: 'Structured Clinical Assessment',
+        title: 'ECOS / CFEU\nCertification',
+        desc: "Prepare for your ECOS exams with standardised scenarios and an integrated CFEU grid. Simulate real exam conditions.",
+        tags: ['ECOS', 'CFEU', 'Standardised', 'Certification'],
+      },
     },
     gamification: {
       title: "Progression & Ranks",
@@ -569,6 +630,37 @@ export const translations = {
       title: "أعرف أكثر",
       description: "اكتشف كيف يعيد Doctiplay تعريف المحاكاة الطبية من خلال الذكاء الاصطناعي التوليدي ونهج تربوي غامر.",
       action: "شاهد العرض"
+    },
+    modes_section: {
+      badge: '3 مسارات متخصصة',
+      section_title_line1: 'تدريبك،',
+      section_title_line2: 'مسارك.',
+      section_desc: 'ثلاثة بيئات محاكاة معايرة لكل ملف سريري. غامرة ودقيقة ومطالبة.',
+      cta: 'الوصول إلى الوضع',
+      expand: '▾ معرفة المزيد',
+      collapse: '▴ طي',
+      cmd_beta: 'طلب النسخة التجريبية',
+      medical: {
+        badge: 'محاكاة طبية',
+        subtitle: 'طوارئ وعناية مركزة وغرفة صدمات',
+        title: 'الطب\nالمكثف',
+        desc: 'تولّ مريضاً في حالة حرجة. تشخيص مخفي، مراقبة في الوقت الفعلي، قرارات تحت ضغط.',
+        tags: ['طوارئ', 'عناية مركزة', 'صدمات', 'مراقبة'],
+      },
+      paramedical: {
+        badge: 'محاكاة شبه طبية',
+        subtitle: 'تمريض وأولوية الفرز',
+        title: 'رعاية\nالخط الأول',
+        desc: 'تقييم تمريضي وفرز ورعاية خط أول. أتقن التقييم السريري وبروتوكولات الرعاية.',
+        tags: ['فرز', 'تمريض', 'تقييم', 'أولويات'],
+      },
+      ecos: {
+        badge: 'امتحان ECOS',
+        subtitle: 'التقييم السريري المنظم',
+        title: 'شهادة\nECOS / CFEU',
+        desc: 'استعد لامتحانات ECOS بسيناريوهات موحدة وشبكة CFEU متكاملة.',
+        tags: ['ECOS', 'CFEU', 'موحد', 'شهادة'],
+      },
     },
     partnership: {
       badge: "التعاون الأكاديمي",

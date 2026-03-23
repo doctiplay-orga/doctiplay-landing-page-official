@@ -173,7 +173,7 @@ const DashboardModal: React.FC<DashboardModalProps> = ({ isOpen, onClose }) => {
                         className="w-full py-4 sm:py-5 bg-white text-slate-950 rounded-[1.5rem] sm:rounded-[2rem] font-display font-black text-xs sm:text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all shadow-xl flex items-center justify-center gap-3 group"
                     >
                         <PackagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                        COMMANDER LA VERSION BETA
+                        {t.modes_section.cmd_beta}
                     </button>
 
                     {/* Sensor Card */}
