@@ -21,9 +21,9 @@ const featureMeta = [
     colorRgb: '180,83,9',
     code: 'DIAGNOSTIC_CORE',
     desc: {
-      fr: "Le diagnostic reste caché jusqu'à ce que vous l'identifiiez. Analysez le dossier, demandez des examens, interprétez les résultats — chaque décision a un impact réel.",
-      en: "The diagnosis stays hidden until you identify it. Analyze the file, request exams, interpret results — every decision has a real impact.",
-      ar: "يظل التشخيص مخفياً حتى تحدده أنت. حلل الملف، اطلب الفحوصات، وفسر النتائج."
+      fr: "Des centaines de scénarios couvrant l'urgence, la médecine interne, la pédiatrie et la chirurgie. Chaque session est différente, chaque patient est unique.",
+      en: "Hundreds of scenarios covering emergency, internal medicine, pediatrics and surgery. Each session is different, every patient is unique.",
+      ar: "مئات السيناريوهات تغطي الطوارئ والطب الداخلي وطب الأطفال والجراحة. كل جلسة مختلفة وكل مريض فريد."
     },
     keyIndex: 1,
   },

@@ -13,7 +13,7 @@ const modes = [
     glow: 'hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]',
     badge: 'SIMULATION MÉDICALE',
     subtitle: 'Urgences, Réanimation & Déchocage',
-    title: 'Médecine de\nHaute-Intensité',
+    title: 'Médecine\nIntensive',
     description: 'Prenez en charge un patient en situation critique. Diagnostic caché, monitoring en temps réel, décisions sous pression. Chaque seconde compte.',
     tags: ['Urgences', 'Réanimation', 'Déchocage', 'Monitoring'],
   },

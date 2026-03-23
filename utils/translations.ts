@@ -45,7 +45,7 @@ export const translations = {
       solution_text: "Doctiplay introduit le stress, la pression du temps et l'incertitude dans votre formation—sans risque pour les patients réels.",
       f1_title: "Physiologie Temps Réel",
       f1_desc: "Les constantes réagissent dynamiquement à vos médicaments et interventions. Pas de chemins scriptés—que de la physiologie pure.",
-      f2_title: "Diagnostic Caché",
+      f2_title: "Scénarios Diversifiés",
       f2_desc: "Le patient n'arrive pas avec une étiquette. Utilisez le dossier, l'examen et les labos pour découvrir la vérité.",
       f3_title: "Interaction Vocale",
       f3_desc: "Parlez à votre patient avec notre interface vocale avancée. Faites l'anamnèse. Appelez un spécialiste. Contrôle vocal totalement immersif.",
@@ -146,7 +146,7 @@ export const translations = {
       system: "Vous êtes le système d'exploitation d'un moniteur médical de haute technologie. Générez une séquence de journaux réalistes et à haute tension pour un patient dans un état critique (par exemple, arrêt cardiaque, traumatisme ou choc septique). Sortez UNIQUEMENT les journaux. Pas de formatage markdown. Un journal par ligne. Format : '>> [HH:MM:SS] [CATÉGORIE] Message'. Utilisez le jargon médical technique en FRANÇAIS. Faites dégrader rapidement les constantes vitales."
     },
     hero_extended: {
-      subtext_full: "Doctiplay transforme la formation critique en expériences immersives de haute-fidélité. Maîtrisez l'imprévisible, sans aucun risque patient.",
+      subtext_full: "Doctiplay transforme la formation clinique en expériences immersives. Maîtrisez l'imprévisible, sans aucun risque patient.",
       btn_command: "DÉCOUVRIR DOCTIPLAY",
       btn_start_now: "LANCER MAINTENANT",
       debrief: {
@@ -289,7 +289,7 @@ export const translations = {
       solution_text: "Doctiplay introduces stress, time pressure, and uncertainty into your training—without the risk to real patients.",
       f1_title: "Real-Time Physiology",
       f1_desc: "Vitals react dynamically to your drugs and interventions. No scripted paths—pure physiology.",
-      f2_title: "Hidden Diagnosis",
+      f2_title: "Diverse Scenarios",
       f2_desc: "The patient doesn't come with a label. Use the chart, exam, and labs to uncover the truth.",
       f3_title: "Voice Interaction",
       f3_desc: "Talk to your patient with our advanced voice AI. Take a history. Call a specialist. Fully immersive voice control.",
@@ -533,7 +533,7 @@ export const translations = {
       solution_text: "Doctiplay يقدم التوتر وضغط الوقت وعدم اليقين في تدريبك—دون المخاطرة بالمرضى الحقيقيين.",
       f1_title: "فسيولوجيا في الوقت الحقيقي",
       f1_desc: "تتفاعل العلامات الحيوية ديناميكيًا avec أدويتك وتدخلاتك. لا مسارات مكتوبة مسبقًا—فسيولوجيا بحتة.",
-      f2_title: "تشخيص مخفي",
+      f2_title: "سيناريوهات متنوعة",
       f2_desc: "المريض لا يأتي بملصق. استخدم المخطط والفحص والمختبرات لكشف الحقيقة.",
       f3_title: "التفاعل الصوتي",
       f3_desc: "تحدث إلى مريضك باستخدام الذكاء الاصطناعي الصوتي المتقدم لدينا. خذ التاريخ المرضي. اتصل بأخصائي. تحكم صوتي غامر بالكامل.",
