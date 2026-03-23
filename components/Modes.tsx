@@ -49,8 +49,13 @@ const modes = [
 
 const Modes: React.FC = () => {
   const [hoveredMode, setHoveredMode] = useState<string | null>(null);
+  const [selectedMode, setSelectedMode] = useState<string | null>(null);
   const { language } = useLanguage();
   const isRtl = language === 'ar';
+
+  const toggleMode = (id: string) => {
+    setSelectedMode(prev => prev === id ? null : id);
+  };
 
   return (
     <section id="modes" className="py-20 sm:py-32 relative overflow-hidden">
@@ -91,6 +96,7 @@ const Modes: React.FC = () => {
                 key={mode.id}
                 onMouseEnter={() => setHoveredMode(mode.id)}
                 onMouseLeave={() => setHoveredMode(null)}
+                onClick={() => toggleMode(mode.id)}
                 className={`group relative rounded-[2.5rem] border ${mode.border} p-8 sm:p-10 flex flex-col cursor-pointer transition-all duration-500 ${mode.glow} hover:-translate-y-2`}
                 style={{
                   background: `linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(${mode.colorRgb},0.05) 100%)`,
@@ -144,9 +150,23 @@ const Modes: React.FC = () => {
                   {mode.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 flex-grow">
-                  {mode.description}
+                {/* Description — visible only when card is selected */}
+                <div
+                  className="overflow-hidden transition-all duration-500"
+                  style={{
+                    maxHeight: selectedMode === mode.id ? '200px' : '0px',
+                    opacity: selectedMode === mode.id ? 1 : 0,
+                    marginBottom: selectedMode === mode.id ? '2rem' : '0',
+                  }}
+                >
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    {mode.description}
+                  </p>
+                </div>
+
+                {/* Click hint */}
+                <p className="text-[10px] font-display uppercase tracking-widest mb-6 transition-colors duration-300" style={{ color: `rgba(${mode.colorRgb}, 0.5)` }}>
+                  {selectedMode === mode.id ? '▴ Réduire' : '▾ En savoir plus'}
                 </p>
 
                 {/* Tags */}
