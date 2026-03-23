@@ -63,9 +63,9 @@ const Modes: React.FC = () => {
       <div className="px-6 mx-auto max-w-7xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 sm:mb-20 reveal" dir={isRtl ? 'rtl' : 'ltr'}>
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/5 bg-white/5 mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/25 mb-6 sm:mb-8" style={{backgroundColor: 'rgba(0,122,154,0.08)'}}>
             <Zap className="w-4 h-4 text-primary" />
-            <span className="text-[10px] sm:text-xs font-display uppercase tracking-[0.3em] text-slate-300">
+            <span className="text-[10px] sm:text-xs font-display uppercase tracking-[0.3em] text-primary">
               3 PARCOURS SPÉCIALISÉS
             </span>
           </div>
