@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Stethoscope, HeartPulse, GraduationCap, ArrowRight, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
+interface ModesProps {
+  onOpenBetaOrder: () => void;
+}
+
 const modesMeta = [
   {
     id: 'medical',
@@ -26,7 +30,7 @@ const modesMeta = [
   },
 ];
 
-const Modes: React.FC = () => {
+const Modes: React.FC<ModesProps> = ({ onOpenBetaOrder }) => {
   const [hoveredMode, setHoveredMode] = useState<string | null>(null);
   const [selectedMode, setSelectedMode] = useState<string | null>(null);
   const { language, t } = useLanguage();
@@ -172,21 +176,18 @@ const Modes: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <a
-                  href="https://app.doctiplay.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto flex items-center justify-between px-5 py-3.5 rounded-2xl font-display font-black text-xs uppercase tracking-widest transition-all duration-300 group/btn"
+                <button
+                  className="mt-auto flex items-center justify-between px-5 py-3.5 rounded-2xl font-display font-black text-xs uppercase tracking-widest transition-all duration-300 group/btn w-full"
                   style={{
                     background: isHovered ? `rgba(${meta.colorRgb},0.2)` : `rgba(${meta.colorRgb},0.08)`,
                     border: `1px solid rgba(${meta.colorRgb},${isHovered ? 0.35 : 0.15})`,
                     color: meta.color,
                   }}
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => { e.stopPropagation(); onOpenBetaOrder(); }}
                 >
                   <span>{ms.cta}</span>
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </a>
+                </button>
               </div>
             );
           })}

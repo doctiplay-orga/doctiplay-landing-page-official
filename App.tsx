@@ -17,6 +17,7 @@ const AppContent: React.FC = () => {
   const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
+  const [isBetaOrderOpen, setIsBetaOrderOpen] = useState(false);
 
   useEffect(() => {
     // Check for query param to open Contact Drawer
@@ -50,6 +51,11 @@ const AppContent: React.FC = () => {
         isOpen={isPartnershipOpen}
         onClose={() => setIsPartnershipOpen(false)}
       />
+      <PartnershipDrawer
+        isOpen={isBetaOrderOpen}
+        onClose={() => setIsBetaOrderOpen(false)}
+        title="Commander la Version Beta"
+      />
       <ContactDrawer
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
@@ -67,7 +73,7 @@ const AppContent: React.FC = () => {
         <Hero
           onOpenPartnership={() => setIsPartnershipOpen(true)}
         />
-        <Modes />
+        <Modes onOpenBetaOrder={() => setIsBetaOrderOpen(true)} />
         <Features />
 
         <Testimonials />
