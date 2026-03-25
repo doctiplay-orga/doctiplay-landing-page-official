@@ -23,8 +23,8 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
           {/* Brand & Tagline */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 max-w-md">
             <a href="#" className="flex items-center space-x-2 rtl:space-x-reverse group">
-              <div className="relative w-12 h-12 flex items-center justify-center">
-                <Logo className="w-full h-full" showPulse={false} />
+              <div className="relative w-32 h-12 flex items-center justify-center">
+                <Logo className="w-full h-full" />
               </div>
               <span className="text-3xl font-display font-black tracking-tighter" style={{color:'#0f172a'}}>
                 DOCTI<span className="text-primary">PLAY</span>

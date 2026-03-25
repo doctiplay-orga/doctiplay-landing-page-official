@@ -5,6 +5,8 @@ import fmpLogo from '../src/assets/logo-fmp.png';
 import chuLogo from '../src/assets/logo-chu.jpg';
 import doctifyLogo from '../src/assets/logo-doctify.png';
 import moroccoSimLogo from '../src/assets/logo-moroccosim.jpg';
+import masccLogo from '../src/assets/logo-mascc.png';
+import moasccLogo from '../src/assets/logo-moascc.png';
 
 interface PartnershipProps {
   onOpenDrawer: () => void;
@@ -38,6 +40,18 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
       isPrimary: true,
       url: "https://www.moroccosim.org/"
     },
+    {
+      name: "MASCC – Multinational Association of Supportive Care in Cancer",
+      logo: masccLogo,
+      isPrimary: true,
+      url: "https://www.mascc.org/"
+    },
+    {
+      name: "MoASCC – Moroccan Association of Supportive Care in Cancer",
+      logo: moasccLogo,
+      isPrimary: true,
+      url: ""
+    },
   ];
 
   return (
@@ -63,7 +77,7 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
         </div>
 
         {/* Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-stretch justify-center reveal" style={{ transitionDelay: '0.2s' }}>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-stretch justify-center reveal" style={{ transitionDelay: '0.2s' }}>
           {partners.map((partner, i) => {
             const CardContent = (
               <>

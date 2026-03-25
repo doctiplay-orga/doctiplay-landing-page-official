@@ -49,9 +49,9 @@ const Navbar: React.FC = () => {
           style={{backgroundColor: scrolled ? 'rgba(240,246,255,0.92)' : 'rgba(255,255,255,0.55)'}}
         >
           {/* Logo Area */}
-          <a href="#simulation" onClick={(e) => handleNavClick(e, '#simulation')} className="flex items-center gap-3 shrink-0 mr-2 sm:mr-4 group">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 transform group-hover:scale-110 transition-transform">
-              <Logo className="w-full h-full" showPulse={true} />
+          <a href="#simulation" onClick={(e) => handleNavClick(e, '#simulation')} className="flex items-center gap-2 shrink-0 mr-2 sm:mr-4 group">
+            <div className="w-20 h-8 sm:w-28 sm:h-10 transform group-hover:scale-105 transition-transform">
+              <Logo className="w-full h-full" />
             </div>
             <span className="block font-display font-black tracking-tighter text-sm sm:text-lg" style={{color:'#0f172a'}}>
               DOCTI<span className="text-primary">PLAY</span>
