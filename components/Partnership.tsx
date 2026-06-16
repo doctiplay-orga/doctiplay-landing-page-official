@@ -60,7 +60,7 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
       name: "Centre Innovation E-Santé, Université Mohamed V de Rabat",
       logo: ciseLogo,
       isPrimary: true,
-      url: ""
+      url: "https://www.cies.ma/missions"
     },
     {
       name: "SoFraSimS – Société Francophone de Simulation en Santé",
@@ -69,10 +69,10 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
       url: "https://www.sofrasims.org/"
     },
     {
-      name: "CO16",
+      name: "Clinique d'Oncologie 16 Novembre - CO16",
       logo: co16Logo,
       isPrimary: true,
-      url: ""
+      url: "https://clinique-oncologie.ma/"
     },
     {
       name: "Centre Hospitalier Orange",
