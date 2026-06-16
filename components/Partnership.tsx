@@ -7,6 +7,10 @@ import doctifyLogo from '../src/assets/logo-doctify.png';
 import moroccoSimLogo from '../src/assets/logo-moroccosim.jpg';
 import masccLogo from '../src/assets/logo-mascc.png';
 import moasccLogo from '../src/assets/logo-moascc.png';
+import ciseLogo from '../src/assets/logo-cise.jpg';
+import sofrasimsLogo from '../src/assets/logo-sofrasims.png';
+import co16Logo from '../src/assets/logo-co16.png';
+import chOrangeLogo from '../src/assets/logo-ch-orange.png';
 
 interface PartnershipProps {
   onOpenDrawer: () => void;
@@ -52,6 +56,30 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
       isPrimary: true,
       url: ""
     },
+    {
+      name: "Centre Innovation E-Santé, Université Mohamed V de Rabat",
+      logo: ciseLogo,
+      isPrimary: true,
+      url: ""
+    },
+    {
+      name: "SoFraSimS – Société Francophone de Simulation en Santé",
+      logo: sofrasimsLogo,
+      isPrimary: true,
+      url: "https://www.sofrasims.org/"
+    },
+    {
+      name: "CO16",
+      logo: co16Logo,
+      isPrimary: true,
+      url: ""
+    },
+    {
+      name: "Centre Hospitalier Orange",
+      logo: chOrangeLogo,
+      isPrimary: true,
+      url: "https://www.ch-orange.fr/"
+    },
   ];
 
   return (
@@ -77,7 +105,7 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
         </div>
 
         {/* Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-stretch justify-center reveal" style={{ transitionDelay: '0.2s' }}>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-stretch justify-center reveal" style={{ transitionDelay: '0.2s' }}>
           {partners.map((partner, i) => {
             const CardContent = (
               <>
