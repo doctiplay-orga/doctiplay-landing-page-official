@@ -179,6 +179,8 @@ export const translations = {
     hero_extended: {
       subtext_full: "Doctiplay transforme la formation clinique en expériences immersives. Maîtrisez l'imprévisible, sans aucun risque patient.",
       btn_command: "DÉCOUVRIR DOCTIPLAY",
+      btn_play_demo: "JOUER LA DÉMO",
+      btn_contact_us: "NOUS CONTACTER",
       btn_start_now: "LANCER MAINTENANT",
       debrief: {
         title: "Debriefing IA",
@@ -453,7 +455,9 @@ export const translations = {
     hero_extended: {
       subtext_full: "Doctiplay transforms critical training into high-fidelity immersive experiences. Master the unpredictable, without any patient risk.",
       btn_command: "DISCOVER DOCTIPLAY",
-      btn_start_now: "LAUNCH NOW",
+      btn_play_demo: "PLAY DEMO",
+      btn_contact_us: "CONTACT US",
+      btn_start_now: "START NOW",
       debrief: {
         title: "AI Debriefing",
         subtitle: "Real-time analysis of clinical performance.",
@@ -704,6 +708,8 @@ export const translations = {
     hero_extended: {
       subtext_full: "Doctiplay تحول التدريب الحرج إلى تجارب غامرة عالية الدقة. أتقن ما لا يمكن التنبؤ به، دون أي مخاطرة بالمريض.",
       btn_command: "اكتشف DOCTIPLAY",
+      btn_play_demo: "تجربة المنصة",
+      btn_contact_us: "اتصل بنا",
       btn_start_now: "ابدأ الآن",
       debrief: {
         title: "تحليل الذكاء الاصطناعي",

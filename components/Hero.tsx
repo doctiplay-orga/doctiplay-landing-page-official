@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { Sparkles, ArrowRight, Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import DashboardModal from './DashboardModal';
 
 interface HeroProps {
   onOpenPartnership: () => void;
+  onOpenContact: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onOpenPartnership }) => {
-  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
+const Hero: React.FC<HeroProps> = ({ onOpenPartnership, onOpenContact }) => {
   const { t } = useLanguage();
 
   return (
@@ -16,11 +15,6 @@ const Hero: React.FC<HeroProps> = ({ onOpenPartnership }) => {
       {/* Background Ambience */}
       <div className="abstract-wave top-[10%] -left-[20%] opacity-50 sm:opacity-100"></div>
       <div className="abstract-wave bottom-[10%] -right-[20%] rotate-[165deg] opacity-50 sm:opacity-100"></div>
-
-      <DashboardModal
-        isOpen={isDashboardOpen}
-        onClose={() => setIsDashboardOpen(false)}
-      />
 
       {/* Centered Content Wrapper */}
       <div className="relative z-10 px-4 max-w-[95vw] mx-auto w-full flex flex-col items-center text-center mb-8 sm:mb-24">
@@ -48,10 +42,12 @@ const Hero: React.FC<HeroProps> = ({ onOpenPartnership }) => {
           {t.hero_extended.subtext_full}
         </p>
 
-        {/* Primary CTA */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12 sm:mb-24 animate-fade-in-up [animation-delay:300ms] w-full max-w-sm sm:max-w-none">
-          <button
-            onClick={() => setIsDashboardOpen(true)}
+        {/* Primary CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-24 animate-fade-in-up [animation-delay:300ms] w-full max-w-sm sm:max-w-none">
+          <a
+            href="https://app.doctiplay.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 rounded-full font-display font-black text-[12px] sm:text-sm tracking-widest uppercase flex items-center justify-center gap-4 hover:-translate-y-1 transition-all cursor-pointer"
             style={{
               background: 'rgba(0,122,154,0.9)',
@@ -59,8 +55,22 @@ const Hero: React.FC<HeroProps> = ({ onOpenPartnership }) => {
               boxShadow: '0 8px 30px rgba(0,122,154,0.25)'
             }}
           >
-            {t.hero_extended.btn_command}
+            {t.hero_extended.btn_play_demo}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+          
+          <button
+            onClick={onOpenContact}
+            className="group w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 rounded-full font-display font-black text-[12px] sm:text-sm tracking-widest uppercase flex items-center justify-center gap-4 hover:-translate-y-1 transition-all cursor-pointer"
+            style={{
+              background: 'rgba(255,255,255,0.9)',
+              color: '#0f172a',
+              border: '2px solid rgba(0,122,154,0.2)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.05)'
+            }}
+          >
+            {t.hero_extended.btn_contact_us}
+            <Mail className="w-5 h-5 group-hover:scale-110 transition-transform text-primary" />
           </button>
         </div>
       </div>
