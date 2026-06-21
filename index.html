@@ -7,7 +7,7 @@
     <title>Doctiplay | Simulateur Médical IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@300;400;600;800;900&amp;family=Cairo:wght@400;500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet" />
     <script>
         tailwind.config = {
@@ -16,19 +16,21 @@
                 extend: {
                     colors: {
                         primary: {
-                            DEFAULT: "#00d8ff",
-                            glow: "#00f2ff",
-                            dark: "#0891b2"
+                            DEFAULT: "#007a9a",
+                            glow: "#00accd",
+                            dark: "#005f78"
                         },
-                        secondary: "#0f172a",
-                        darkest: "#020617",
-                        accent: "#ffffff",
-                        danger: "#ff4d4d",
-                        surface: "rgba(255, 255, 255, 0.7)",
+                        secondary: "#020e4f",
+                        darkest: "#0f172a",
+                        accent: "#4f46e5",
+                        danger: "#dc2626",
+                        pale: "#00accd",
+                        surface: "rgba(0, 0, 0, 0.06)",
                     },
                     fontFamily: {
-                        display: ["JetBrains Mono", "monospace"],
-                        body: ["Inter", "Cairo", "sans-serif"],
+                        display: ["Space Grotesk", "sans-serif"],
+                        body: ["Outfit", "Cairo", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
@@ -72,46 +74,51 @@
     </script>
     <style>
         body {
-            font-family: 'Inter', 'Cairo', sans-serif;
-            background-color: #020617;
-            color: #f8fafc;
+            font-family: 'Outfit', 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #e8eef8 0%, #dde8f5 20%, #d4e0ef 40%, #c8d8ea 60%, #d0ddf0 80%, #e4ecf8 100%);
+            background-attachment: fixed;
+            color: #0f172a;
             overflow-x: hidden;
-            /* Perspective removed to ensure position:fixed works correctly for Navbar */
         }
 
         .tech-grid {
             position: relative;
-            background-color: #020617;
-            background-image:
-                linear-gradient(to right, rgba(0, 216, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 216, 255, 0.03) 1px, transparent 1px);
-            background-size: 80px 80px;
+            background: linear-gradient(135deg,
+                rgba(240,246,255,1) 0%,
+                rgba(220,235,255,0.95) 25%,
+                rgba(200,220,245,0.9) 50%,
+                rgba(215,228,248,0.95) 75%,
+                rgba(235,243,255,1) 100%);
+            background-attachment: fixed;
         }
 
         .tech-grid::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(2, 6, 23, 0.98) 100%);
+            background:
+                radial-gradient(ellipse 60% 50% at 15% 10%, rgba(0,172,205,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 85% 20%, rgba(79,70,229,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 30% at 50% 90%, rgba(0,122,154,0.05) 0%, transparent 60%);
             pointer-events: none;
         }
 
         .neon-text-subtle {
-            text-shadow: 0 0 10px rgba(0, 216, 255, 0.2);
+            text-shadow: 0 0 10px rgba(0, 122, 154, 0.2);
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .glass-dark {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.08);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(15, 23, 42, 0.1);
         }
 
         .reveal {
@@ -153,7 +160,7 @@
             position: absolute;
             width: 150%;
             height: 400px;
-            background: linear-gradient(90deg, transparent, rgba(0, 216, 255, 0.05), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 172, 205, 0.07), transparent);
             transform: rotate(-15deg);
             filter: blur(80px);
             pointer-events: none;
@@ -175,10 +182,10 @@
             height: 100%;
             background: linear-gradient(90deg,
                     transparent 0%,
-                    rgba(0, 216, 255, 0.2) 40%,
-                    #00d8ff 48%,
-                    #00d8ff 52%,
-                    rgba(0, 216, 255, 0.2) 60%,
+                    rgba(0, 172, 205, 0.2) 40%,
+                    #00accd 48%,
+                    #00accd 52%,
+                    rgba(0, 172, 205, 0.2) 60%,
                     transparent 100%);
             mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
             -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
@@ -202,7 +209,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-B1NlYvH5.js"></script>
+  <script type="module" crossorigin src="/assets/index-BrJ3H8Co.js"></script>
 </head>
 
 <body class="tech-grid">
