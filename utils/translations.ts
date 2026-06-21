@@ -88,21 +88,21 @@ export const translations = {
         badge: "NOYAU DE SIMULATION CLINIQUE",
         subtitle: "Soins Critiques, Réanimation & Traumatologie",
         title: "Médecine\nIntensive IA",
-        desc: "Prenez le contrôle d'un patient synthétique en défaillance multiviscérale. Diagnostics dynamiques, télémétrie en temps réel et décisions sous haute pression.",
+        desc: "• Diagnostics dynamiques assistés par IA.\n• Télémétrie physiologique en temps réel.\n• Prise de décision clinique sous stress extrême.",
         tags: ["Réanimation", "Traumatologie", "Télémétrie", "IA Clinique"]
       },
       paramedical: {
         badge: "NOYAU DE SOINS PARAMÉDICAUX",
         subtitle: "Protocoles Infirmiers & Tri Algorithmique",
         title: "Triage & Soins\nde Première Ligne",
-        desc: "Maîtrisez les protocoles d'évaluation clinique rapide, le triage d'urgence et les interventions prioritaires avec des retours de performance instantanés.",
+        desc: "• Algorithme intelligent de triage d'urgence.\n• Évaluation clinique rapide & protocoles infirmiers.\n• Retours de performance et score instantanés.",
         tags: ["Triage IA", "Soins Primaires", "Évaluation Rapide", "Protocoles"]
       },
       ecos: {
         badge: "NOYAU D'ÉVALUATION DE CERTIFICATION",
         subtitle: "Examens ECOS Standardisés",
         title: "Certification\nECOS / CFEU IA",
-        desc: "Entraînez-vous face à des scénarios cliniques calibrés sur les standards ECOS nationaux avec notation automatique par IA selon la grille officielle CFEU.",
+        desc: "• Scénarios calibrés sur les standards ECOS nationaux.\n• Notation IA automatisée selon la grille officielle CFEU.\n• Analyse prédictive des chances de réussite.",
         tags: ["ECOS IA", "Standard CFEU", "Simulation Officielle", "Score Prédictif"]
       }
     },
@@ -365,21 +365,21 @@ export const translations = {
         badge: "CLINICAL SIMULATION CORE",
         subtitle: "Critical Care, Resuscitation & Trauma",
         title: "AI Intensive\nMedicine",
-        desc: "Take control of a synthetic patient in multi-organ failure. Dynamic diagnostics, real-time telemetry, and high-pressure decision-making.",
+        desc: "• Dynamic AI-assisted diagnostics.\n• Real-time physiological telemetry.\n• Clinical decision-making under extreme stress.",
         tags: ["Resuscitation", "Trauma", "Telemetry", "Clinical AI"]
       },
       paramedical: {
         badge: "PARAMEDICAL CARE CORE",
         subtitle: "Nursing Protocols & Algorithmic Triage",
         title: "Frontline Triage\n& Primary Care",
-        desc: "Master clinical assessment protocols, emergency triage, and priority interventions with instant performance feedback.",
+        desc: "• Intelligent emergency triage algorithm.\n• Rapid clinical assessment & nursing protocols.\n• Instant performance feedback and metrics.",
         tags: ["AI Triage", "Primary Care", "Rapid Assessment", "Protocols"]
       },
       ecos: {
         badge: "CERTIFICATION EVALUATION CORE",
         subtitle: "Standardized ECOS Exams",
         title: "AI ECOS / CFEU\nCertification",
-        desc: "Train with clinical scenarios calibrated on national ECOS standards, with automated AI grading according to the official CFEU grid.",
+        desc: "• Scenarios calibrated to national ECOS standards.\n• Automated AI scoring based on the official CFEU grid.\n• Predictive success analysis.",
         tags: ["AI ECOS", "CFEU Standard", "Official Simulation", "Predictive Score"]
       }
     },
@@ -642,21 +642,21 @@ export const translations = {
         badge: "نواة المحاكاة السريرية",
         subtitle: "العناية الحرجة والإنعاش وطب الصدمات",
         title: "الطب المكثف\nبالذكاء الاصطناعي",
-        desc: "تول القيادة لمريض اصطناعي يعاني من فشل متعدد الأعضاء. تشخيصات ديناميكية، قياس عن بعد فوري، وقرارات تحت ضغط عال.",
+        desc: "• تشخيصات ديناميكية مدعومة بالذكاء الاصطناعي.\n• قياس فسيولوجي عن بعد في الوقت الفعلي.\n• اتخاذ القرارات السريرية تحت ضغط شديد.",
         tags: ["الإنعاش", "طب الصدمات", "القياس عن بعد", "الذكاء الاصطناعي السريري"]
       },
       paramedical: {
         badge: "نواة الرعاية الطبية المساعدة",
         subtitle: "بروتوكولات التمريض والفرز الخوارزمي",
         title: "فرز الخط الأول\nوالرعاية الأولية",
-        desc: "أتقن بروتوكولات التقييم السريري السريع، وفرز الحالات الطارئة، والتدخلات ذات الأولوية مع تغذية راجعة فورية للأداء.",
+        desc: "• خوارزمية ذكية لفرز الحالات الطارئة.\n• تقييم سريري سريع وبروتوكولات التمريض.\n• تغذية راجعة وقياسات أداء فورية.",
         tags: ["الفرز بالذكاء الاصطناعي", "الرعاية الأولية", "التقييم السريع", "البروتوكولات"]
       },
       ecos: {
         badge: "نواة تقييم الشهادات",
         subtitle: "امتحانات ECOS الموحدة",
         title: "شهادة ECOS / CFEU\nبالذكاء الاصطناعي",
-        desc: "تدرب على سيناريوهات سريرية معايرة وفقاً للمعايير الوطنية لامتحانات ECOS، مع تقييم تلقائي بالذكاء الاصطناعي بناءً على شبكة CFEU الرسمية.",
+        desc: "• سيناريوهات معايرة وفق معايير ECOS الوطنية.\n• تقييم تلقائي بالذكاء الاصطناعي بناءً على شبكة CFEU الرسمية.\n• تحليل تنبؤي لفرص النجاح.",
         tags: ["ECOS بالذكاء الاصطناعي", "معيار CFEU", "المحاكاة الرسمية", "النتيجة التنبؤية"]
       }
     },
