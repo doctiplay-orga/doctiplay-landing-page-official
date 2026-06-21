@@ -4,7 +4,6 @@ import { useLanguage } from '../contexts/LanguageContext';
 import fmpLogo from '../src/assets/logo-fmp.png';
 import chuLogo from '../src/assets/logo-chu.jpg';
 import doctifyLogo from '../src/assets/logo-doctify.png';
-import moroccoSimLogo from '../src/assets/logo-moroccosim.jpg';
 import masccLogo from '../src/assets/logo-mascc.png';
 import moasccLogo from '../src/assets/logo-moascc.png';
 import ciseLogo from '../src/assets/logo-cise.jpg';
@@ -38,12 +37,7 @@ const Partnership: React.FC<PartnershipProps> = ({ onOpenDrawer }) => {
       isPrimary: true,
       url: "https://www.doctifyhealth.com/"
     },
-    {
-      name: "Société Marocaine de Simulation en Santé",
-      logo: moroccoSimLogo,
-      isPrimary: true,
-      url: "https://www.moroccosim.org/"
-    },
+
     {
       name: "MASCC – Multinational Association of Supportive Care in Cancer",
       logo: masccLogo,
