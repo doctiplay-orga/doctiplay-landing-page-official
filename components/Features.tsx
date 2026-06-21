@@ -63,14 +63,16 @@ const FeatureCard: React.FC<{
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { t } = useLanguage();
   const description = desc[language as keyof typeof desc] ?? desc.fr;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
     setTilt({ x, y });
   };
 
@@ -85,19 +87,20 @@ const FeatureCard: React.FC<{
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="group relative rounded-[2rem] flex flex-col overflow-hidden cursor-default"
+      onClick={() => setIsExpanded(!isExpanded)}
+      className="group relative rounded-[2rem] flex flex-col overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1.5"
       style={{
         transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translateZ(0)`,
         transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.6s cubic-bezier(0.16,1,0.3,1)',
         background: isHovered
-          ? `linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(${colorRgb},0.06) 100%)`
-          : 'rgba(255,255,255,0.58)',
+          ? `linear-gradient(135deg, #ffffff 0%, rgba(${colorRgb},0.08) 100%)`
+          : 'rgba(255,255,255,0.92)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        border: `1px solid rgba(${colorRgb}, ${isHovered ? 0.3 : 0.12})`,
-        boxShadow: isHovered
-          ? `0 20px 60px rgba(${colorRgb},0.14), 0 0 0 1px rgba(${colorRgb},0.1), inset 0 1px 0 rgba(255,255,255,0.9)`
-          : '0 4px 24px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.85)',
+        border: `2px solid rgba(${colorRgb}, ${isHovered || isExpanded ? 0.75 : 0.25})`,
+        boxShadow: isHovered || isExpanded
+          ? `0 20px 40px -10px rgba(${colorRgb},0.15), 0 0 0 1px rgba(${colorRgb},0.05), inset 0 1px 0 rgba(255,255,255,0.9)`
+          : '0 8px 30px -10px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
       }}
     >
       {/* Top shimmer */}
@@ -109,8 +112,8 @@ const FeatureCard: React.FC<{
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(ellipse at 20% 10%, rgba(${colorRgb},0.07), transparent 65%)`,
+          opacity: isHovered || isExpanded ? 1 : 0,
+          background: `radial-gradient(ellipse at 20% 10%, rgba(${colorRgb},0.08), transparent 65%)`,
         }}
       />
 
@@ -120,12 +123,12 @@ const FeatureCard: React.FC<{
           <div
             className="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110"
             style={{
-              background: `rgba(${colorRgb},0.1)`,
-              border: `1px solid rgba(${colorRgb},0.2)`,
-              boxShadow: isHovered ? `0 0 20px rgba(${colorRgb},0.25)` : 'none',
+              background: `rgba(${colorRgb},0.14)`,
+              border: `2px solid rgba(${colorRgb},0.35)`,
+              boxShadow: isHovered || isExpanded ? `0 0 25px rgba(${colorRgb},0.3)` : 'none',
             }}
           >
-            <Icon className="w-6 h-6" style={{ color }} strokeWidth={1.5} />
+            <Icon className="w-6 h-6" style={{ color }} strokeWidth={2} />
           </div>
           <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-wide leading-tight" style={{ color: '#0f172a' }}>
             {title}
@@ -133,43 +136,62 @@ const FeatureCard: React.FC<{
         </div>
 
         {/* Description paragraph */}
-        <p className="text-slate-500 text-sm leading-relaxed">
+        <p className="text-slate-700 text-sm leading-relaxed">
           {description}
         </p>
 
-        {/* Colored accent divider */}
-        <div className="h-px w-full" style={{ background: `linear-gradient(90deg, rgba(${colorRgb},0.35), transparent)` }} />
+        {/* Expand Hint */}
+        <div 
+          className="flex items-center justify-between text-[10.5px] font-display font-bold uppercase tracking-widest transition-colors duration-300 mt-1" 
+          style={{ color: isHovered || isExpanded ? color : '#475569' }}
+        >
+          <span>{isExpanded || isHovered ? t.features_extended.toggle.hide : t.features_extended.toggle.show}</span>
+          <span className="text-[12px]">{isExpanded || isHovered ? '▴' : '▾'}</span>
+        </div>
 
-        {/* Checklist */}
-        <ul className="space-y-3.5 flex-grow">
-          {items && items.map((item, i) => (
-            <li key={i} className="flex items-center gap-3">
-              <div
-                className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
-                style={{
-                  background: `rgba(${colorRgb},0.1)`,
-                  border: `1px solid rgba(${colorRgb},0.25)`,
-                }}
-              >
-                <CheckCircle2 className="w-3 h-3" style={{ color }} />
-              </div>
-              <span className="text-slate-700 text-sm leading-snug">{item}</span>
-            </li>
-          ))}
-        </ul>
+        {/* Collapsible Area */}
+        <div
+          className="overflow-hidden transition-all duration-500 flex flex-col gap-4"
+          style={{
+            maxHeight: (isExpanded || isHovered) ? '320px' : '0px',
+            opacity: (isExpanded || isHovered) ? 1 : 0,
+            pointerEvents: (isExpanded || isHovered) ? 'auto' : 'none',
+          }}
+        >
+          {/* Colored accent divider */}
+          <div className="h-px w-full" style={{ background: `linear-gradient(90deg, rgba(${colorRgb},0.35), transparent)` }} />
+
+          {/* Checklist */}
+          <ul className="space-y-3.5 flex-grow">
+            {items && items.map((item, i) => (
+              <li key={i} className="flex items-center gap-3">
+                <div
+                  className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                  style={{
+                    background: `rgba(${colorRgb},0.1)`,
+                    border: `1.5px solid rgba(${colorRgb},0.35)`,
+                  }}
+                >
+                  <CheckCircle2 className="w-3 h-3 animate-pulse" style={{ color }} />
+                </div>
+                <span className="text-slate-700 text-sm font-medium leading-snug">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {/* Footer */}
         <div
-          className="pt-4 mt-2 border-t flex items-center justify-between"
-          style={{ borderColor: `rgba(${colorRgb},0.12)` }}
+          className="pt-4 mt-auto border-t flex items-center justify-between"
+          style={{ borderColor: `rgba(${colorRgb},0.15)` }}
         >
           <span
             className="font-display text-[9px] uppercase tracking-[0.2em] transition-colors duration-300"
-            style={{ color: isHovered ? color : '#94a3b8' }}
+            style={{ color: isHovered || isExpanded ? color : '#64748b' }}
           >
             {code}
           </span>
-          <Activity className="w-4 h-4 transition-colors duration-300" style={{ color: isHovered ? color : '#cbd5e1' }} />
+          <Activity className="w-4 h-4 transition-colors duration-300" style={{ color: isHovered || isExpanded ? color : '#94a3b8' }} />
         </div>
       </div>
     </div>
