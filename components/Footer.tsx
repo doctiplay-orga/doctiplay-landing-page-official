@@ -21,16 +21,13 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-16 mb-16 sm:mb-24">
 
           {/* Brand & Tagline */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 max-w-md">
-            <a href="#" className="flex items-center space-x-2 rtl:space-x-reverse group">
-              <div className="relative w-32 h-12 flex items-center justify-center">
-                <Logo className="w-full h-full" />
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 max-w-md">
+            <a href="#" className="flex items-center group" aria-label="Doctiplay">
+              <div className="h-10 sm:h-12 w-auto flex items-center">
+                <Logo className="h-10 sm:h-12 w-auto" />
               </div>
-              <span className="text-3xl font-display font-black tracking-tighter" style={{color:'#0f172a'}}>
-                DOCTI<span className="text-primary">PLAY</span>
-              </span>
             </a>
-            <p className="text-slate-600 text-lg font-medium leading-relaxed">
+            <p className="text-slate-600 text-base sm:text-lg font-medium leading-relaxed">
               {t.footer.tagline}
             </p>
           </div>

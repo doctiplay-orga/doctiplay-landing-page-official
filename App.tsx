@@ -5,11 +5,9 @@ import Modes from './components/Modes';
 import Features from './components/Features';
 
 import Testimonials from './components/Testimonials';
-import Partnership from './components/Partnership';
 import PartnershipDrawer from './components/PartnershipDrawer';
 import ContactDrawer from './components/ContactDrawer';
 import ComingSoonModal from './components/ComingSoonModal';
-import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 
@@ -78,7 +76,6 @@ const AppContent: React.FC = () => {
         <Features />
 
         <Testimonials />
-        <FAQ />
       </main>
       <Footer
         onOpenPartnership={() => setIsPartnershipOpen(true)}
