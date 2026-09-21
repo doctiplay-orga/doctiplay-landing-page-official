@@ -78,7 +78,6 @@ const AppContent: React.FC = () => {
         <Features />
 
         <Testimonials />
-        <Partnership onOpenDrawer={() => setIsPartnershipOpen(true)} />
         <FAQ />
       </main>
       <Footer
