@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Doctiplay | Simulateur Médical IA</title>
+    <title>DoctiPlay Labs | Research &amp; Technology for Medical Simulation</title>
+    <meta name="description" content="DoctiPlay Labs researches, builds and clinically validates AI-powered medical simulation tools for the next generation of clinicians. Based in Rabat, Morocco." />
+    <meta name="theme-color" content="#05081A" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Cairo:wght@400;500;700&display=swap"
         rel="stylesheet" />
     <script>
         tailwind.config = {
@@ -15,22 +20,51 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            DEFAULT: "#007a9a",
-                            glow: "#00accd",
-                            dark: "#005f78"
+                        // --- DoctiPlay Labs brand tokens ---
+                        ink: "#05081A",
+                        midnight: "#020E4F",
+                        cerulean: {
+                            DEFAULT: "#00ACCD",
+                            dark: "#00839C",
                         },
-                        secondary: "#020e4f",
-                        darkest: "#0f172a",
-                        accent: "#4f46e5",
-                        danger: "#dc2626",
-                        pale: "#00accd",
-                        surface: "rgba(0, 0, 0, 0.06)",
+                        glow: "#B5FFFE",
+                        indigo: "#6366F0",
+                        clinical: "#F7F9FC",
+                        pulse: "#FF3B5C",
+                        slate: {
+                            50: "#F7F9FC",
+                            100: "#EEF1F7",
+                            200: "#DEE3EE",
+                            300: "#C3CBDC",
+                            400: "#98A2B8",
+                            500: "#6B7690",
+                            600: "#4E5872",
+                            700: "#374056",
+                            800: "#232A3D",
+                            900: "#12162A",
+                        },
+                        // --- legacy aliases kept so existing components keep working ---
+                        primary: {
+                            DEFAULT: "#00ACCD",
+                            glow: "#B5FFFE",
+                            dark: "#00839C"
+                        },
+                        secondary: "#020E4F",
+                        darkest: "#05081A",
+                        accent: "#6366F0",
+                        danger: "#FF3B5C",
+                        pale: "#B5FFFE",
+                        surface: "rgba(255, 255, 255, 0.04)",
                     },
                     fontFamily: {
-                        display: ["Space Grotesk", "sans-serif"],
-                        body: ["Outfit", "Cairo", "sans-serif"],
-                        mono: ["JetBrains Mono", "monospace"],
+                        display: ["Geist", "sans-serif"],
+                        body: ["Geist", "Cairo", "sans-serif"],
+                        mono: ["Geist Mono", "monospace"],
+                        serif: ["Instrument Serif", "serif"],
+                    },
+                    letterSpacing: {
+                        tightest: "-0.03em",
+                        widemono: "0.08em",
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
@@ -41,6 +75,8 @@
                         'scanline': 'scanline 8s linear infinite',
                         'glow-pulse': 'glowPulse 2s ease-in-out infinite',
                         'spin-slow': 'spin 12s linear infinite',
+                        'draw-ecg': 'drawEcg 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'blink-dot': 'blinkDot 1.6s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -66,6 +102,14 @@
                         glowPulse: {
                             '0%, 100%': { opacity: '0.4', filter: 'brightness(1)' },
                             '50%': { opacity: '0.8', filter: 'brightness(1.5)' },
+                        },
+                        drawEcg: {
+                            '0%': { strokeDashoffset: '1000' },
+                            '100%': { strokeDashoffset: '0' },
+                        },
+                        blinkDot: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.25' },
                         }
                     }
                 },
@@ -73,78 +117,72 @@
         };
     </script>
     <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        html.dark body {
+            background: #05081A;
+            color: #EEF1F7;
+        }
+
+        html:not(.dark) body {
+            background: #F7F9FC;
+            color: #12162A;
+        }
+
         body {
-            font-family: 'Outfit', 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #e8eef8 0%, #dde8f5 20%, #d4e0ef 40%, #c8d8ea 60%, #d0ddf0 80%, #e4ecf8 100%);
-            background-attachment: fixed;
-            color: #0f172a;
+            font-family: 'Geist', 'Cairo', sans-serif;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .tech-grid {
+        /* Lab paper / graph grid texture, subtle */
+        .lab-grid {
             position: relative;
-            background: linear-gradient(135deg,
-                rgba(240,246,255,1) 0%,
-                rgba(220,235,255,0.95) 25%,
-                rgba(200,220,245,0.9) 50%,
-                rgba(215,228,248,0.95) 75%,
-                rgba(235,243,255,1) 100%);
-            background-attachment: fixed;
         }
 
-        .tech-grid::after {
+        .lab-grid::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse 60% 50% at 15% 10%, rgba(0,172,205,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 40% at 85% 20%, rgba(79,70,229,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 40% 30% at 50% 90%, rgba(0,122,154,0.05) 0%, transparent 60%);
             pointer-events: none;
+            background-image:
+                linear-gradient(rgba(181, 255, 254, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(181, 255, 254, 0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 75%);
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 75%);
         }
 
-        .neon-text-subtle {
-            text-shadow: 0 0 10px rgba(0, 122, 154, 0.2);
+        html:not(.dark) .lab-grid::before {
+            background-image:
+                linear-gradient(rgba(2, 14, 79, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(2, 14, 79, 0.04) 1px, transparent 1px);
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .glass-dark {
-            background: rgba(15, 23, 42, 0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(15, 23, 42, 0.1);
+        html:not(.dark) .glass {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(2, 14, 79, 0.08);
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(16px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
 
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .perspective-monitor {
-            perspective: 2000px;
-        }
-
-        .rotate-3d-soft {
-            transform: rotateX(5deg) rotateY(-5deg);
-            transform-style: preserve-3d;
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .rotate-3d-soft:hover {
-            transform: rotateX(0deg) rotateY(0deg) scale(1.05);
         }
 
         .scrollbar-hide::-webkit-scrollbar {
@@ -156,44 +194,13 @@
             scrollbar-width: none;
         }
 
-        .abstract-wave {
-            position: absolute;
-            width: 150%;
-            height: 400px;
-            background: linear-gradient(90deg, transparent, rgba(0, 172, 205, 0.07), transparent);
-            transform: rotate(-15deg);
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes ecg-move {
-            0% {
-                transform: translateX(0);
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .ecg-line {
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    rgba(0, 172, 205, 0.2) 40%,
-                    #00accd 48%,
-                    #00accd 52%,
-                    rgba(0, 172, 205, 0.2) 60%,
-                    transparent 100%);
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
-            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
-            mask-size: 50% 100%;
-            -webkit-mask-size: 50% 100%;
-            mask-repeat: repeat-x;
-            -webkit-mask-repeat: repeat-x;
-            animation: ecg-move 2.5s linear infinite;
         }
     </style>
 
@@ -209,10 +216,10 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-BrJ3H8Co.js"></script>
+  <script type="module" crossorigin src="/assets/index-ME4kpo1H.js"></script>
 </head>
 
-<body class="tech-grid">
+<body class="lab-grid">
     <div id="root"></div>
 </body>
 
