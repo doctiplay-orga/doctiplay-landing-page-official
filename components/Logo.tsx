@@ -8,14 +8,12 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className = "h-8 w-auto" }) => {
   return (
-    <div className={`relative inline-flex items-center justify-center ${className}`}>
-      <img
-        src={doctiplayLogo}
-        alt="Doctiplay"
-        className="w-full h-full object-contain"
-        draggable={false}
-      />
-    </div>
+    <img
+      src={doctiplayLogo}
+      alt="Doctiplay"
+      className={`block object-contain ${className}`}
+      draggable={false}
+    />
   );
 };
 

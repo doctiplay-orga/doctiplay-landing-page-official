@@ -3,18 +3,15 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Modes from './components/Modes';
 import Features from './components/Features';
-
-import Testimonials from './components/Testimonials';
+import Research from './components/Research';
 import PartnershipDrawer from './components/PartnershipDrawer';
 import ContactDrawer from './components/ContactDrawer';
-import ComingSoonModal from './components/ComingSoonModal';
 import Footer from './components/Footer';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 const AppContent: React.FC = () => {
   const [isPartnershipOpen, setIsPartnershipOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
   const [isBetaOrderOpen, setIsBetaOrderOpen] = useState(false);
 
   useEffect(() => {
@@ -24,27 +21,26 @@ const AppContent: React.FC = () => {
       setIsContactOpen(true);
     }
 
+    // Scroll reveal: animate each element once, then stop observing it
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -20px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
     });
 
-    const elements = document.querySelectorAll('.reveal');
-    elements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-    return () => {
-      elements.forEach(el => observer.unobserve(el));
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white bg-slate-50 tech-grid">
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-slate-50">
       <PartnershipDrawer
         isOpen={isPartnershipOpen}
         onClose={() => setIsPartnershipOpen(false)}
@@ -58,24 +54,15 @@ const AppContent: React.FC = () => {
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
       />
-      <ComingSoonModal
-        isOpen={isComingSoonOpen}
-        onClose={() => setIsComingSoonOpen(false)}
-        onOpenContact={() => {
-          setIsComingSoonOpen(false);
-          setIsContactOpen(true);
-        }}
-      />
-      <Navbar />
-      <main className="flex-grow relative z-10">
+      <Navbar onOpenContact={() => setIsContactOpen(true)} />
+      <main className="flex-grow">
         <Hero
           onOpenPartnership={() => setIsPartnershipOpen(true)}
           onOpenContact={() => setIsContactOpen(true)}
         />
         <Modes onOpenBetaOrder={() => setIsBetaOrderOpen(true)} />
         <Features />
-
-        <Testimonials />
+        <Research onOpenPartnership={() => setIsPartnershipOpen(true)} />
       </main>
       <Footer
         onOpenPartnership={() => setIsPartnershipOpen(true)}

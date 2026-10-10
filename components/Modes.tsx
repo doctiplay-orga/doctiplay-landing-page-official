@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Stethoscope, HeartPulse, GraduationCap, ArrowRight, Zap } from 'lucide-react';
+import { Stethoscope, HeartPulse, GraduationCap, ArrowRight, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface ModesProps {
@@ -7,198 +7,113 @@ interface ModesProps {
 }
 
 const modesMeta = [
-  {
-    id: 'medical',
-    icon: Stethoscope,
-    color: '#007a9a',
-    colorRgb: '0,122,154',
-    textColorDark: '#005f78',
-    glow: 'hover:shadow-[0_0_60px_rgba(0,122,154,0.25)]',
-  },
-  {
-    id: 'paramedical',
-    icon: HeartPulse,
-    color: '#10b981',
-    colorRgb: '16,185,129',
-    textColorDark: '#065f46',
-    glow: 'hover:shadow-[0_0_60px_rgba(16,185,129,0.25)]',
-  },
-  {
-    id: 'ecos',
-    icon: GraduationCap,
-    color: '#f59e0b',
-    colorRgb: '245,158,11',
-    textColorDark: '#b45309',
-    glow: 'hover:shadow-[0_0_60px_rgba(245,158,11,0.25)]',
-  },
+  { id: 'medical', icon: Stethoscope, color: '#007a9a', tint: 'rgba(0,122,154,0.08)' },
+  { id: 'paramedical', icon: HeartPulse, color: '#059669', tint: 'rgba(5,150,105,0.08)' },
+  { id: 'ecos', icon: GraduationCap, color: '#d97706', tint: 'rgba(217,119,6,0.09)' },
 ];
 
 const Modes: React.FC<ModesProps> = ({ onOpenBetaOrder }) => {
-  const [hoveredMode, setHoveredMode] = useState<string | null>(null);
-  const [selectedMode, setSelectedMode] = useState<string | null>(null);
-  const { language, t } = useLanguage();
-  const isRtl = language === 'ar';
+  const [openId, setOpenId] = useState<string | null>(null);
+  const { t } = useLanguage();
   const ms = t.modes_section;
-
-  const modeData = [
-    ms.medical,
-    ms.paramedical,
-    ms.ecos,
-  ];
-
-  const toggleMode = (id: string) => {
-    setSelectedMode(prev => prev === id ? null : id);
-  };
+  const modeData = [ms.medical, ms.paramedical, ms.ecos];
 
   return (
-    <section id="modes" className="py-20 sm:py-32 relative overflow-hidden">
-      {/* Background mesh blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)' }} />
-      </div>
-
-      <div className="px-4 sm:px-6 mx-auto max-w-7xl relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-20 reveal" dir={isRtl ? 'rtl' : 'ltr'}>
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/25 mb-6 sm:mb-8" style={{backgroundColor: 'rgba(0,122,154,0.08)'}}>
-            <Zap className="w-4 h-4 text-primary" />
-            <span className="text-[10px] sm:text-xs font-display uppercase tracking-[0.3em] text-primary">
-              {ms.badge}
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black mb-4 sm:mb-6 leading-tight" style={{color:'#0f172a'}}>
-            {ms.section_title_line1}<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-emerald-500 to-amber-500">
-              {ms.section_title_line2}
-            </span>
+    <section id="modes" className="defer-render bg-white py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="reveal mx-auto mb-14 max-w-3xl text-center sm:mb-16">
+          <span className="eyebrow">{ms.badge}</span>
+          <h2 className="mt-5 text-balance text-3xl font-bold leading-tight text-slate-900 sm:text-5xl">
+            {ms.section_title_line1}{' '}
+            <span className="text-primary">{ms.section_title_line2}</span>
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            {ms.section_desc}
-          </p>
+          <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">{ms.section_desc}</p>
         </div>
 
-        {/* Modes Grid — 1 col mobile, 3 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
           {modesMeta.map((meta, idx) => {
             const mode = modeData[idx];
-            const isHovered = hoveredMode === meta.id;
-            const isSelected = selectedMode === meta.id;
+            const isOpen = openId === meta.id;
             const Icon = meta.icon;
+            const panelId = `mode-panel-${meta.id}`;
 
             return (
-              <div
-                key={meta.id}
-                onMouseEnter={() => setHoveredMode(meta.id)}
-                onMouseLeave={() => setHoveredMode(null)}
-                onClick={() => toggleMode(meta.id)}
-                className={`group relative rounded-[2rem] p-6 sm:p-8 flex flex-col cursor-pointer transition-all duration-500 ${meta.glow} hover:-translate-y-2`}
-                dir={isRtl ? 'rtl' : 'ltr'}
-                style={{
-                  background: isHovered
-                    ? `linear-gradient(135deg, #ffffff 0%, rgba(${meta.colorRgb},0.08) 100%)`
-                    : 'rgba(255, 255, 255, 0.92)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: `2px solid rgba(${meta.colorRgb}, ${isHovered ? 0.75 : 0.25})`,
-                  boxShadow: isHovered
-                    ? `0 20px 40px -10px rgba(${meta.colorRgb}, 0.16), 0 0 0 1px rgba(${meta.colorRgb}, 0.05), inset 0 1px 0 rgba(255,255,255,0.9)`
-                    : '0 8px 30px -10px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.8)',
-                  transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-                }}
-              >
-                {/* Top left glow */}
-                <div
-                  className="absolute top-0 left-0 w-[200px] h-[200px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  style={{ background: `radial-gradient(circle at top left, rgba(${meta.colorRgb},0.15), transparent 70%)` }}
-                />
+              <div key={meta.id} className="reveal" style={{ '--d': `${idx * 0.08}s` } as React.CSSProperties}>
+              <article className="card card-hover relative flex flex-col overflow-hidden">
+                <div className="h-1 w-full" style={{ background: meta.color }} />
 
-                {/* Badge */}
-                <div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 w-fit"
-                  style={{ 
-                    background: `rgba(${meta.colorRgb},0.12)`, 
-                    border: `1.5px solid rgba(${meta.colorRgb},0.35)` 
-                  }}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: meta.color }} />
-                  <span className="font-display text-[9.5px] font-black uppercase tracking-[0.2em]" style={{ color: meta.textColorDark }}>
-                    {mode.badge}
-                  </span>
-                </div>
-
-                {/* Icon */}
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500"
-                  style={{
-                    background: `rgba(${meta.colorRgb},0.14)`,
-                    border: `2px solid rgba(${meta.colorRgb},0.3)`,
-                    boxShadow: isHovered ? `0 0 30px rgba(${meta.colorRgb},0.3)` : 'none',
-                  }}
-                >
-                  <Icon className="w-7 h-7" style={{ color: meta.color }} strokeWidth={2} />
-                </div>
-
-                {/* Subtitle */}
-                <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.22em] mb-2" style={{ color: meta.textColorDark }}>
-                  {mode.subtitle}
-                </p>
-
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-display font-black whitespace-pre-line leading-tight mb-3" style={{color:'#0f172a'}}>
-                  {mode.title}
-                </h3>
-
-                {/* Click-to-expand Description */}
-                <div
-                  className="overflow-hidden transition-all duration-500"
-                  style={{
-                    maxHeight: isSelected ? '240px' : '0px',
-                    opacity: isSelected ? 1 : 0,
-                    marginBottom: isSelected ? '1rem' : '0',
-                  }}
-                >
-                  <p className="text-slate-700 text-sm leading-relaxed whitespace-pre-line text-left rtl:text-right">
-                    {mode.desc}
-                  </p>
-                </div>
-
-                {/* Expand hint */}
-                <p className="text-[10.5px] font-display font-bold uppercase tracking-widest mb-5 transition-colors duration-300" style={{ color: isHovered ? meta.color : '#475569' }}>
-                  {isSelected ? ms.collapse : ms.expand}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {mode.tags.map((tag: string) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] font-display font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
-                      style={{
-                        background: `rgba(${meta.colorRgb},0.08)`,
-                        color: meta.textColorDark,
-                        border: `1.5px solid rgba(${meta.colorRgb},0.25)`,
-                      }}
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <div className="mb-5 flex items-center gap-3">
+                    <div
+                      className="flex h-11 w-11 items-center justify-center rounded-xl"
+                      style={{ background: meta.tint }}
                     >
-                      {tag}
+                      <Icon className="h-5 w-5" style={{ color: meta.color }} strokeWidth={2} />
+                    </div>
+                    <span
+                      className="text-xs font-semibold uppercase tracking-[0.14em]"
+                      style={{ color: meta.color }}
+                    >
+                      {mode.badge}
                     </span>
-                  ))}
-                </div>
+                  </div>
 
-                {/* CTA */}
-                <button
-                  className="mt-auto flex items-center justify-between px-5 py-4 rounded-2xl font-display font-black text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-300 group/btn w-full shadow-md"
-                  style={{
-                    background: isHovered ? meta.color : `rgba(${meta.colorRgb},0.08)`,
-                    border: `2px solid ${meta.color}`,
-                    color: isHovered ? '#ffffff' : meta.textColorDark,
-                    boxShadow: isHovered ? `0 12px 24px -10px rgba(${meta.colorRgb}, 0.5)` : 'none',
-                  }}
-                  onClick={(e) => { e.stopPropagation(); onOpenBetaOrder(); }}
-                >
-                  <span>{ms.cta}</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" style={{ color: isHovered ? '#ffffff' : meta.textColorDark }} />
-                </button>
+                  <h3 className="text-xl font-bold leading-snug text-slate-900 md:min-h-[3.25rem]">{mode.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{mode.subtitle}</p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {mode.tags.map((tag: string) => (
+                      <span
+                        key={tag}
+                        className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Expandable detail (height animates without layout thrash) */}
+                  <div
+                    id={panelId}
+                    className="grid transition-[grid-template-rows,opacity] duration-300 ease-out"
+                    style={{ gridTemplateRows: isOpen ? '1fr' : '0fr', opacity: isOpen ? 1 : 0 }}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="mt-5 whitespace-pre-line border-t border-slate-100 pt-5 text-sm leading-relaxed text-slate-600">
+                        {mode.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setOpenId(isOpen ? null : meta.id)}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    className="mt-5 inline-flex w-fit items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
+                    style={{ color: meta.color }}
+                  >
+                    {isOpen ? ms.collapse : ms.expand}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  <button
+                    onClick={onOpenBetaOrder}
+                    className="group mt-6 inline-flex w-full items-center justify-between rounded-xl border px-5 py-3 text-sm font-semibold transition-colors duration-200 hover:text-white"
+                    style={{ borderColor: meta.color, color: meta.color }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = meta.color;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'transparent';
+                    }}
+                  >
+                    {ms.cta}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
+                  </button>
+                </div>
+              </article>
               </div>
             );
           })}

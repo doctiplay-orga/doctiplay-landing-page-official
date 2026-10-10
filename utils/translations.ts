@@ -2,18 +2,32 @@ export type Language = 'fr' | 'en' | 'ar';
 
 export const translations = {
   fr: {
+    research: {
+      badge: "Recherche & validation",
+      title: "Une plateforme en phase de recherche clinique",
+      desc: "Doctiplay est développé avec des équipes pédagogiques et cliniques afin d'évaluer son apport à la formation par simulation. Nous ouvrons des collaborations avec des centres de simulation et des institutions académiques.",
+      points_label: "Axes de recherche",
+      points: [
+        "Évaluation de l'apport pédagogique de la simulation assistée par IA",
+        "Collaboration avec des centres de simulation et des universités",
+        "Valorisation scientifique des résultats"
+      ],
+      cta: "Proposer une collaboration"
+    },
     navbar: {
+      research: "Recherche",
+      modes: "Modes",
       init: "INITIALISER SYSTÈME",
-      sim: "Simulateur IA",
-      expertise: "Noyau Cognitif",
+      sim: "Plateforme",
+      expertise: "Technologie",
       ranks: "Niveaux de Synchro",
       faq: "FAQ Système",
       beta: "BÊTA CORE"
     },
     hero: {
-      badge: "MOTEUR NEURAL IA // OPÉRATIONNEL",
-      headline: "Chaque seconde de simulation est",
-      headline_highlight: "une optimisation clinique.",
+      badge: "Simulation médicale assistée par IA",
+      headline: "La simulation médicale,",
+      headline_highlight: "réinventée par l'IA.",
       subtext: "Le premier simulateur d'urgence médicale haute fidélité propulsé par une IA générative multimodale en temps réel. Diagnostiquez, traitez et stabilisez des modèles de patients synthétiques à réactivité physiologique dynamique.",
       btn_start: "LANCER SIMULATION IA",
       btn_initializing: "SYNCHRONISATION...",
@@ -42,68 +56,68 @@ export const translations = {
       problem_text: "Les manuels statiques ne simulent pas le stress. Les QCM passifs ne font pas d'arrêt cardiaque.",
       solution_title: "L'ALTERNATIVE NUMÉRIQUE",
       solution_text: "Doctiplay intègre l'imprévisibilité biologique, le stress temporel et les fluctuations systémiques dans un environnement d'apprentissage sécurisé.",
-      f1_title: "Moteur Physiologique Dynamique",
+      f1_title: "Moteur physiologique",
       f1_desc: "Les constantes vitales réagissent instantanément à chaque agent pharmacologique ou intervention. Aucun scénario pré-écrit, tout est modélisé par des algorithmes biologiques.",
-      f2_title: "Génération de Cas Infinie",
+      f2_title: "Génération de cas",
       f2_desc: "Pas d'étiquettes de diagnostic. Utilisez la télémétrie en direct, l'imagerie générative et les dossiers biologiques pour décoder la pathologie.",
-      f3_title: "Interface Vocale Cognitive",
+      f3_title: "Interface vocale",
       f3_desc: "Interagissez naturellement avec le patient virtuel grâce à notre module de reconnaissance vocale neuronale. Faites l'anamnèse en langage naturel.",
-      f4_title: "Débriefing Analytique IA",
+      f4_title: "Débriefing analytique",
       f4_desc: "Chaque décision est tracée à la milliseconde près. Obtenez une évaluation quantitative de votre raisonnement clinique, de la gestion du temps et de la sécurité.",
       f1_items: [
         "Modélisation physiologique en temps réel",
-        "Constantes dynamiques réactives",
-        "Pharmacologie algorithmique",
-        "Chocs et régulations systémiques"
+        "Constantes réactives aux interventions",
+        "Pharmacologie simulée",
+        "États de choc et régulation systémique"
       ],
       f2_items: [
-        "Télémétrie & Analyse de données",
-        "Examens cliniques générés",
-        "Imagerie & Examens de laboratoire",
-        "Raisonnement déductif assisté"
+        "Large bibliothèque de scénarios",
+        "Examens cliniques et biologiques",
+        "Imagerie et résultats de laboratoire",
+        "Raisonnement diagnostique guidé"
       ],
       f3_items: [
         "Dialogue en langage naturel",
-        "Consultation de spécialistes IA",
-        "Commandes vocales immersives",
-        "Immersion sensorielle totale"
+        "Anamnèse en français, arabe et darija",
+        "Commandes vocales",
+        "Mise en situation de consultation"
       ],
       f4_items: [
-        "Priorisation algorithmique",
-        "Vecteurs de diagnostic différentiel",
-        "Chronologie d'intervention",
+        "Priorisation des actions",
+        "Diagnostic différentiel",
+        "Chronologie des interventions",
         "Score de sécurité clinique"
       ]
     },
     modes_section: {
-      badge: "3 ENVIRONNEMENTS NEURONAUX",
-      section_title_line1: "Configurez votre",
-      section_title_line2: "matrice d'entraînement.",
-      section_desc: "Trois environnements de simulation calibrés pour pousser les limites de votre raisonnement clinique. Précision algorithmique absolue.",
-      cta: "Initialiser le mode",
-      expand: "▾ Métriques du système",
-      collapse: "▴ Fermer les métriques",
+      badge: "Modes de simulation",
+      section_title_line1: "Trois modes,",
+      section_title_line2: "un seul moteur clinique.",
+      section_desc: "Des scénarios adaptés à chaque niveau de formation, de la prise en charge critique à la préparation aux examens.",
+      cta: "Demander l'accès bêta",
+      expand: "Voir le détail",
+      collapse: "Réduire",
       cmd_beta: "ACCÉDER AU PROTOCOLE BÊTA",
       medical: {
-        badge: "NOYAU DE SIMULATION CLINIQUE",
-        subtitle: "Soins Critiques, Réanimation & Traumatologie",
-        title: "Médecine\nIntensive IA",
-        desc: "• Diagnostics dynamiques assistés par IA.\n• Télémétrie physiologique en temps réel.\n• Prise de décision clinique sous stress extrême.",
-        tags: ["Réanimation", "Traumatologie", "Télémétrie", "IA Clinique"]
+        badge: "Médecine",
+        subtitle: "Soins critiques, réanimation & traumatologie",
+        title: "Médecine intensive",
+        desc: "• Diagnostic dynamique assisté par IA.\n• Constantes physiologiques en temps réel.\n• Décision clinique sous contrainte de temps.",
+        tags: ["Réanimation", "Traumatologie", "Télémétrie"]
       },
       paramedical: {
-        badge: "NOYAU DE SOINS PARAMÉDICAUX",
-        subtitle: "Protocoles Infirmiers & Tri Algorithmique",
-        title: "Triage & Soins\nde Première Ligne",
-        desc: "• Algorithme intelligent de triage d'urgence.\n• Évaluation clinique rapide & protocoles infirmiers.\n• Retours de performance et score instantanés.",
-        tags: ["Triage IA", "Soins Primaires", "Évaluation Rapide", "Protocoles"]
+        badge: "Paramédical",
+        subtitle: "Protocoles infirmiers & tri des patients",
+        title: "Triage & soins de première ligne",
+        desc: "• Tri d'urgence guidé par algorithme.\n• Évaluation clinique rapide et protocoles infirmiers.\n• Retour de performance immédiat.",
+        tags: ["Triage", "Soins primaires", "Protocoles"]
       },
       ecos: {
-        badge: "NOYAU D'ÉVALUATION DE CERTIFICATION",
-        subtitle: "Examens ECOS Standardisés",
-        title: "Certification\nECOS / CFEU IA",
-        desc: "• Scénarios calibrés sur les standards ECOS nationaux.\n• Notation IA automatisée selon la grille officielle CFEU.\n• Analyse prédictive des chances de réussite.",
-        tags: ["ECOS IA", "Standard CFEU", "Simulation Officielle", "Score Prédictif"]
+        badge: "Examens",
+        subtitle: "Examens cliniques objectifs structurés",
+        title: "Préparation ECOS / CFEU",
+        desc: "• Scénarios structurés selon les standards ECOS.\n• Grille d'évaluation standardisée et notation automatisée.\n• Analyse de performance et axes de progression.",
+        tags: ["ECOS", "CFEU", "Évaluation"]
       }
     },
     gamification: {
@@ -153,16 +167,16 @@ export const translations = {
       error: "Erreur de connexion API. Vérifiez votre clé d'authentification."
     },
     footer: {
-      tagline: "Noyau de simulation médicale haute fidélité propulsé par l'intelligence artificielle générative. Optimisez les compétences cliniques sous stress extrême.",
-      contact_label: "Support Technique",
-      contact_action: "OUVRIR UN TICKET",
-      partnership_label: "Recherche & R&D",
-      partnership_action: "PROPOSER UN PARTENARIAT",
-      disclaimer: "AVIS TECHNIQUE : Doctiplay est un système d'apprentissage basé sur l'IA destiné uniquement à l'entraînement clinique. Les données générées ne constituent pas des directives thérapeutiques pour des patients réels.",
+      tagline: "Plateforme de simulation médicale assistée par l'intelligence artificielle, au service de la formation, de l'évaluation et de la recherche.",
+      contact_label: "Support",
+      contact_action: "Nous contacter",
+      partnership_label: "Recherche",
+      partnership_action: "Proposer un partenariat",
+      disclaimer: "Doctiplay est un outil de formation par simulation. Les données générées ne constituent pas des recommandations thérapeutiques pour de vrais patients.",
       links: "Ressources Systèmes",
       privacy: "Protection des Données",
       contact: "Support",
-      copyright: "© 2026 Doctiplay. Tous droits système réservés.",
+      copyright: "© 2026 Doctiplay. Tous droits réservés.",
       oath_title: "Cadre Éthique & Bio-Algorithmique",
       oath_principles: [
         "Intégrité des données d'entraînement (Primum non nocere)",
@@ -176,10 +190,11 @@ export const translations = {
       system: "Vous êtes l'intelligence artificielle d'un moniteur médical d'urgence de nouvelle génération. Générez une séquence de journaux de télémétrie réalistes et à haute tension pour un patient synthétique dans un état de défaillance systémique aiguë (ex: arrêt cardiaque, choc anaphylactique, polytraumatisme). Sortez UNIQUEMENT les journaux. Pas de formatage markdown, pas de commentaires. Un journal par ligne. Format : '>> [HH:MM:SS] [SYS_TELEMETRY] Message'. Utilisez des termes cliniques hautement techniques en FRANÇAIS. Simulez une dégradation rapide des constantes vitales."
     },
     hero_extended: {
-      subtext_full: "Doctiplay convertit la formation médicale en expériences de simulation immersives dirigées par IA. Testez vos capacités cognitives sur des cas complexes sans risque.",
+      points: ["Patients virtuels interactifs", "Retour pédagogique immédiat", "Français, arabe et darija"],
+      subtext_full: "Doctiplay est une plateforme de simulation clinique à patients virtuels interactifs, conçue pour la formation, l'évaluation et la recherche en sciences de la santé.",
       btn_command: "DÉPLOYER DOCTIPLAY",
-      btn_play_demo: "SIMULER IMMÉDIATEMENT",
-      btn_contact_us: "CONTACTER R&D",
+      btn_play_demo: "Essayer la démo",
+      btn_contact_us: "Nous contacter",
       btn_start_now: "INITIALISER CORE",
       debrief: {
         title: "Débriefing Assisté par IA",
@@ -197,12 +212,12 @@ export const translations = {
       }
     },
     features_extended: {
-      badge: "Innovation Algorithmique",
-      main_title: "L'Infrastructure Doctiplay",
-      main_desc: "Une suite technologique de pointe conçue pour simuler les moindres nuances de la physiologie humaine.",
+      badge: "Technologie",
+      main_title: "Une infrastructure conçue pour le réalisme clinique",
+      main_desc: "Quatre briques technologiques qui reproduisent la physiologie, le raisonnement et la prise de décision en situation réelle.",
       toggle: {
-        show: "Déployer les détails",
-        hide: "Réduire les détails"
+        show: "En savoir plus",
+        hide: "Réduire"
       }
     },
     gamification_extended: {
@@ -279,18 +294,32 @@ export const translations = {
     }
   },
   en: {
+    research: {
+      badge: "Research & validation",
+      title: "A platform in its clinical research phase",
+      desc: "Doctiplay is developed with educational and clinical teams to evaluate its contribution to simulation-based training. We are opening collaborations with simulation centers and academic institutions.",
+      points_label: "Research focus",
+      points: [
+        "Assessing the educational value of AI-assisted simulation",
+        "Collaboration with simulation centers and universities",
+        "Scientific dissemination of results"
+      ],
+      cta: "Propose a collaboration"
+    },
     navbar: {
+      research: "Research",
+      modes: "Modes",
       init: "INITIALIZE SYSTEM",
-      sim: "AI Simulator",
-      expertise: "Cognitive Core",
+      sim: "Platform",
+      expertise: "Technology",
       ranks: "Sync Levels",
       faq: "System FAQ",
       beta: "BETA CORE"
     },
     hero: {
-      badge: "NEURAL AI ENGINE // OPERATIONAL",
-      headline: "Every simulation second is",
-      headline_highlight: "a clinical optimization.",
+      badge: "AI-assisted medical simulation",
+      headline: "Medical simulation,",
+      headline_highlight: "reinvented by AI.",
       subtext: "The first high-fidelity emergency medical simulator powered by real-time multimodal Generative AI. Diagnose, treat, and stabilize synthetic patient models with dynamic physiological responsiveness.",
       btn_start: "RUN AI SIMULATION",
       btn_initializing: "SYNCHRONIZING...",
@@ -319,68 +348,63 @@ export const translations = {
       problem_text: "Static textbooks do not simulate stress. Passive MCQs do not suffer cardiac arrest.",
       solution_title: "THE DIGITAL SOLUTION",
       solution_text: "Doctiplay integrates biological unpredictability, time pressure, and systemic fluctuations into a secure training environment.",
-      f1_title: "Dynamic Physiological Engine",
+      f1_title: "Physiological engine",
       f1_desc: "Vitals react instantly to every pharmacological agent or intervention. No pre-scripted paths, everything is modeled by biological algorithms.",
-      f2_title: "Infinite Case Generation",
+      f2_title: "Case generation",
       f2_desc: "No diagnostic tags. Use live telemetry, generative imaging, and lab reports to decode the pathology.",
-      f3_title: "Cognitive Voice Interface",
+      f3_title: "Voice interface",
       f3_desc: "Interact naturally with the synthetic patient using our neural voice recognition module. Take histories in natural language.",
-      f4_title: "AI Analytical Debriefing",
+      f4_title: "Analytical debriefing",
       f4_desc: "Every decision is tracked down to the millisecond. Get a quantitative evaluation of clinical reasoning, time management, and safety.",
       f1_items: [
         "Real-time physiological modeling",
-        "Reactive dynamic vitals",
-        "Algorithmic pharmacology",
-        "Systemic shock & regulation"
+        "Vitals that react to interventions",
+        "Simulated pharmacology",
+        "Shock states and systemic regulation"
       ],
       f2_items: [
-        "Telemetry & Data analysis",
-        "Generated clinical exams",
-        "Imaging & Lab tests",
-        "Assisted deductive reasoning"
+        "Broad library of scenarios",
+        "Clinical and laboratory exams",
+        "Imaging and lab results",
+        "Guided diagnostic reasoning"
       ],
       f3_items: [
         "Natural language dialogue",
-        "AI specialist consultation",
-        "Immersive voice commands",
-        "Total sensory immersion"
+        "History-taking in French, Arabic and Darija",
+        "Voice commands",
+        "Realistic consultation setting"
       ],
-      f4_items: [
-        "Algorithmic prioritization",
-        "Differential diagnosis vectors",
-        "Intervention timeline",
-        "Clinical safety score"
-      ]
+      f4_items: ["Action prioritization", "Differential diagnosis", "Intervention timeline", "Clinical safety score"]
     },
     modes_section: {
-      badge: "3 NEURAL ENVIRONMENTS",
-      section_title_line1: "Configure your",
-      section_title_line2: "training matrix.",
-      section_desc: "Three simulation environments calibrated to push the boundaries of your clinical reasoning. Absolute algorithmic precision.",
-      cta: "Initialize Mode",
-      expand: "▾ System Metrics",
-      collapse: "▴ Close Metrics",
+      badge: "Simulation modes",
+      section_title_line1: "Three modes,",
+      section_title_line2: "one clinical engine.",
+      section_desc: "Scenarios tailored to every level of training, from critical care management to exam preparation.",
+      cta: "Request beta access",
+      expand: "View details",
+      collapse: "Collapse",
       cmd_beta: "ACCESS BETA PROTOCOL",
       medical: {
-        badge: "CLINICAL SIMULATION CORE",
-        subtitle: "Critical Care, Resuscitation & Trauma",
-        title: "AI Intensive\nMedicine",
-        desc: "• Dynamic AI-assisted diagnostics.\n• Real-time physiological telemetry.\n• Clinical decision-making under extreme stress.",
-        tags: ["Resuscitation", "Trauma", "Telemetry", "Clinical AI"]
+        badge: "Medicine",
+        subtitle: "Critical care, resuscitation & trauma",
+        title: "Intensive medicine",
+        desc: "• AI-assisted dynamic diagnosis.\n• Real-time physiological vitals.\n• Clinical decision-making under time pressure.",
+        tags: ["Resuscitation", "Trauma", "Telemetry"]
       },
       paramedical: {
-        badge: "PARAMEDICAL CARE CORE",
-        subtitle: "Nursing Protocols & Algorithmic Triage",
-        title: "Frontline Triage\n& Primary Care",
-        desc: "• Intelligent emergency triage algorithm.\n• Rapid clinical assessment & nursing protocols.\n• Instant performance feedback and metrics.",
-        tags: ["AI Triage", "Primary Care", "Rapid Assessment", "Protocols"]
+        badge: "Paramedical",
+        subtitle: "Nursing protocols & patient triage",
+        title: "Frontline triage & care",
+        desc: "• Algorithm-guided emergency triage.\n• Rapid clinical assessment and nursing protocols.\n• Immediate performance feedback.",
+        tags: ["Triage", "Primary care", "Protocols"]
       },
       ecos: {
-        badge: "CERTIFICATION EVALUATION CORE",
-        subtitle: "Standardized ECOS Exams",
-        title: "AI ECOS / CFEU\nCertification",
-        desc: "• Scenarios calibrated to national ECOS standards.\n• Automated AI scoring based on the official CFEU grid.\n• Predictive success analysis.",
-        tags: ["AI ECOS", "CFEU Standard", "Official Simulation", "Predictive Score"]
+        badge: "Exams",
+        subtitle: "Objective structured clinical examinations",
+        title: "ECOS / CFEU preparation",
+        desc: "• Scenarios structured to ECOS standards.\n• Standardized assessment grid with automated scoring.\n• Performance analysis and areas for improvement.",
+        tags: ["ECOS", "CFEU", "Assessment"]
       }
     },
     gamification: {
@@ -430,16 +454,16 @@ export const translations = {
       error: "API connection error. Verify your authentication token."
     },
     footer: {
-      tagline: "High-fidelity medical simulation core powered by generative artificial intelligence. Optimize clinical decision-making under extreme stress.",
-      contact_label: "Technical Support",
-      contact_action: "OPEN SUPPORT TICKET",
-      partnership_label: "Research & R&D",
-      partnership_action: "PROPOSE PARTNERSHIP",
-      disclaimer: "TECHNICAL NOTICE: Doctiplay is an AI-powered learning system intended for clinical training only. Generated data does not constitute therapeutic guidelines for real patients.",
+      tagline: "AI-assisted medical simulation platform for training, assessment and research.",
+      contact_label: "Support",
+      contact_action: "Contact us",
+      partnership_label: "Research",
+      partnership_action: "Propose a partnership",
+      disclaimer: "Doctiplay is a simulation-based training tool. Generated data does not constitute therapeutic recommendations for real patients.",
       links: "System Resources",
       privacy: "Data Protection",
       contact: "Support",
-      copyright: "© 2026 Doctiplay. All system rights reserved.",
+      copyright: "© 2026 Doctiplay. All rights reserved.",
       oath_title: "Ethical & Bio-Algorithmic Framework",
       oath_principles: [
         "Training data integrity (Primum non nocere)",
@@ -453,10 +477,11 @@ export const translations = {
       system: "You are the artificial intelligence of a next-generation emergency medical monitor. Generate a sequence of realistic, high-tension telemetry logs for a synthetic patient in an acute systemic failure state (e.g., cardiac arrest, anaphylactic shock, polytrauma). Output ONLY the logs. No markdown formatting, no comments. One log per line. Format: '>> [HH:MM:SS] [SYS_TELEMETRY] Message'. Use highly technical clinical terms in ENGLISH. Simulate rapid vitals degradation."
     },
     hero_extended: {
-      subtext_full: "Doctiplay converts medical training into AI-driven immersive simulation experiences. Test your cognitive capabilities on complex cases without risk.",
+      points: ["Interactive virtual patients", "Immediate educational feedback", "French, Arabic and Darija"],
+      subtext_full: "Doctiplay is a clinical simulation platform with interactive virtual patients, built for training, assessment and research in health sciences.",
       btn_command: "DEPLOY DOCTIPLAY",
-      btn_play_demo: "SIMULATE IMMEDIATELY",
-      btn_contact_us: "CONTACT R&D",
+      btn_play_demo: "Try the demo",
+      btn_contact_us: "Contact us",
       btn_start_now: "INITIALIZE CORE",
       debrief: {
         title: "AI-Assisted Debriefing",
@@ -474,12 +499,12 @@ export const translations = {
       }
     },
     features_extended: {
-      badge: "Algorithmic Innovation",
-      main_title: "The Doctiplay Infrastructure",
-      main_desc: "A cutting-edge technological suite designed to simulate every nuance of human physiology.",
+      badge: "Technology",
+      main_title: "An infrastructure built for clinical realism",
+      main_desc: "Four technology building blocks that reproduce physiology, reasoning and decision-making in real-world conditions.",
       toggle: {
-        show: "Expand Details",
-        hide: "Collapse Details"
+        show: "Learn more",
+        hide: "Collapse"
       }
     },
     gamification_extended: {
@@ -556,18 +581,32 @@ export const translations = {
     }
   },
   ar: {
+    research: {
+      badge: "البحث والتحقق",
+      title: "منصة في مرحلة البحث السريري",
+      desc: "يتم تطوير Doctiplay بالتعاون مع فرق بيداغوجية وسريرية لتقييم مساهمته في التكوين بالمحاكاة. نفتح باب التعاون مع مراكز المحاكاة والمؤسسات الأكاديمية.",
+      points_label: "محاور البحث",
+      points: [
+        "تقييم القيمة التعليمية للمحاكاة بدعم الذكاء الاصطناعي",
+        "التعاون مع مراكز المحاكاة والجامعات",
+        "نشر النتائج علمياً"
+      ],
+      cta: "اقتراح تعاون"
+    },
     navbar: {
+      research: "البحث",
+      modes: "الأنماط",
       init: "تهيئة النظام",
-      sim: "محاكي الذكاء الاصطناعي",
-      expertise: "النواة المعرفية",
+      sim: "المنصة",
+      expertise: "التقنية",
       ranks: "مستويات المزامنة",
       faq: "الأسئلة الشائعة للنظام",
       beta: "النواة التجريبية"
     },
     hero: {
-      badge: "محرك الذكاء الاصطناعي العصبي // نشط",
-      headline: "كل ثانية محاكاة هي",
-      headline_highlight: "تحسين سريري خوارزمي.",
+      badge: "محاكاة طبية بدعم الذكاء الاصطناعي",
+      headline: "المحاكاة الطبية،",
+      headline_highlight: "بتصور جديد بالذكاء الاصطناعي.",
       subtext: "أول محاكي طبي لطب الطوارئ عالي الدقة يعتمد على الذكاء الاصطناعي التوليدي متعدد الوسائط في الوقت الفعلي. قم بتحليل وعلاج وتحقيق استقرار المرضى الاصطناعيين مع استجابة فسيولوجية فورية وديناميكية.",
       btn_start: "تشغيل محاكاة الذكاء الاصطناعي",
       btn_initializing: "جاري المزامنة...",
@@ -596,68 +635,58 @@ export const translations = {
       problem_text: "الكتب المدرسية الثابتة لا تحاكي التوتر. وأسئلة الاختيار من متعدد لا تتوقف قلوبها.",
       solution_title: "البديل الرقمي",
       solution_text: "تدمج Doctiplay عدم القدرة على التنبؤ البيولوجي، وضغط الوقت، والتقلبات النظامية في بيئة تدريب آمنة.",
-      f1_title: "محرك فسيولوجي ديناميكي",
+      f1_title: "المحرك الفيزيولوجي",
       f1_desc: "تتفاعل العلامات الحيوية فوراً مع كل تدخل أو وكيل صيدلاني. لا توجد مسارات محددة مسبقاً، بل محاكاة كاملة بخوارزميات بيولوجية.",
-      f2_title: "توليد حالات غير محدود",
+      f2_title: "توليد الحالات",
       f2_desc: "بدون ملصقات تشخيصية. استخدم القياس المباشر عن بعد، والتصوير التوليدي، وتقارير المختبر لكشف تفاصيل المرض.",
-      f3_title: "واجهة صوتية معرفية",
+      f3_title: "الواجهة الصوتية",
       f3_desc: "تفاعل بشكل طبيعي مع المريض الاصطناعي بفضل وحدة التعرف على الصوت العصبية لدينا. قم بأخذ التاريخ المرضي بلغة طبيعية.",
-      f4_title: "تحليل استخلاص معلومات بالذكاء الاصطناعي",
+      f4_title: "التحليل والتغذية الراجعة",
       f4_desc: "يتم تتبع كل قرار بدقة الملي ثانية. احصل على تقييم كمي للاستدلال السريري وإدارة الوقت والسلامة.",
       f1_items: [
-        "نمذجة فسيولوجية في الوقت الفعلي",
-        "علامات حيوية ديناميكية وتفاعلية",
-        "علم الصيدلة الخوارزمي",
-        "الصدمات والتنظيمات النظامية"
+        "نمذجة فيزيولوجية في الوقت الفعلي",
+        "علامات حيوية تتفاعل مع التدخلات",
+        "علم أدوية محاكى",
+        "حالات الصدمة والتنظيم الجهازي"
       ],
       f2_items: [
-        "القياس عن بعد وتحليل البيانات",
-        "فحوصات سريرية مولدة",
-        "الأشعة والتحاليل المخبرية",
-        "الاستدلال الاستنتاجي المدعوم"
+        "مكتبة واسعة من السيناريوهات",
+        "فحوصات سريرية ومخبرية",
+        "الأشعة ونتائج التحاليل",
+        "استدلال تشخيصي موجَّه"
       ],
-      f3_items: [
-        "حوار باللغة الطبيعية",
-        "استشارة متخصصين بالذكاء الاصطناعي",
-        "أوامر صوتية غامرة",
-        "انغماس حسي كامل"
-      ],
-      f4_items: [
-        "تحديد الأولويات الخوارزمية",
-        "متجهات التشخيص التفريقي",
-        "التسلسل الزمني للتدخلات",
-        "مؤشر السلامة السريرية"
-      ]
+      f3_items: ["حوار بلغة طبيعية", "أخذ السوابق بالفرنسية والعربية والدارجة", "أوامر صوتية", "أجواء استشارة واقعية"],
+      f4_items: ["ترتيب أولويات الإجراءات", "التشخيص التفريقي", "التسلسل الزمني للتدخلات", "مؤشر السلامة السريرية"]
     },
     modes_section: {
-      badge: "3 بيئات عصبية",
-      section_title_line1: "قم بتهيئة",
-      section_title_line2: "مصفوفة تدريبك.",
-      section_desc: "ثلاث بيئات محاكاة معايرة لدفع حدود تفكيرك السريري. دقة خوارزمية مطلقة.",
-      cta: "تهيئة الوضع",
-      expand: "▾ قياسات النظام",
-      collapse: "▴ إغلاق القياسات",
+      badge: "أنماط المحاكاة",
+      section_title_line1: "ثلاثة أنماط،",
+      section_title_line2: "محرك سريري واحد.",
+      section_desc: "سيناريوهات ملائمة لكل مستوى تكويني، من التكفل بالحالات الحرجة إلى التحضير للامتحانات.",
+      cta: "اطلب الوصول التجريبي",
+      expand: "عرض التفاصيل",
+      collapse: "إخفاء",
       cmd_beta: "الوصول إلى البروتوكول التجريبي",
       medical: {
-        badge: "نواة المحاكاة السريرية",
-        subtitle: "العناية الحرجة والإنعاش وطب الصدمات",
-        title: "الطب المكثف\nبالذكاء الاصطناعي",
-        desc: "• تشخيصات ديناميكية مدعومة بالذكاء الاصطناعي.\n• قياس فسيولوجي عن بعد في الوقت الفعلي.\n• اتخاذ القرارات السريرية تحت ضغط شديد.",
-        tags: ["الإنعاش", "طب الصدمات", "القياس عن بعد", "الذكاء الاصطناعي السريري"]
+        badge: "الطب",
+        subtitle: "العناية الحرجة والإنعاش والصدمات",
+        title: "الطب المكثف",
+        desc: "• تشخيص ديناميكي بمساعدة الذكاء الاصطناعي.\n• علامات فيزيولوجية حيوية في الوقت الفعلي.\n• اتخاذ القرار السريري تحت ضغط الوقت.",
+        tags: ["الإنعاش", "الصدمات", "القياس عن بعد"]
       },
       paramedical: {
-        badge: "نواة الرعاية الطبية المساعدة",
-        subtitle: "بروتوكولات التمريض والفرز الخوارزمي",
-        title: "فرز الخط الأول\nوالرعاية الأولية",
-        desc: "• خوارزمية ذكية لفرز الحالات الطارئة.\n• تقييم سريري سريع وبروتوكولات التمريض.\n• تغذية راجعة وقياسات أداء فورية.",
-        tags: ["الفرز بالذكاء الاصطناعي", "الرعاية الأولية", "التقييم السريع", "البروتوكولات"]
+        badge: "شبه الطبي",
+        subtitle: "بروتوكولات التمريض وفرز المرضى",
+        title: "الفرز والرعاية في الخط الأول",
+        desc: "• فرز الحالات الطارئة بتوجيه خوارزمي.\n• تقييم سريري سريع وبروتوكولات التمريض.\n• تغذية راجعة فورية حول الأداء.",
+        tags: ["الفرز", "الرعاية الأولية", "البروتوكولات"]
       },
       ecos: {
-        badge: "نواة تقييم الشهادات",
-        subtitle: "امتحانات ECOS الموحدة",
-        title: "شهادة ECOS / CFEU\nبالذكاء الاصطناعي",
-        desc: "• سيناريوهات معايرة وفق معايير ECOS الوطنية.\n• تقييم تلقائي بالذكاء الاصطناعي بناءً على شبكة CFEU الرسمية.\n• تحليل تنبؤي لفرص النجاح.",
-        tags: ["ECOS بالذكاء الاصطناعي", "معيار CFEU", "المحاكاة الرسمية", "النتيجة التنبؤية"]
+        badge: "الامتحانات",
+        subtitle: "الامتحانات السريرية الموضوعية المهيكلة",
+        title: "التحضير لـ ECOS / CFEU",
+        desc: "• سيناريوهات مهيكلة وفق معايير ECOS.\n• شبكة تقييم موحدة وتنقيط آلي.\n• تحليل الأداء ومحاور التحسن.",
+        tags: ["ECOS", "CFEU", "التقييم"]
       }
     },
     gamification: {
@@ -707,16 +736,16 @@ export const translations = {
       error: "خطأ في الاتصال بالواجهة. تحقق من رمز المصادقة."
     },
     footer: {
-      tagline: "نواة محاكاة طبية عالية الدقة مدعومة بالذكاء الاصطناعي التوليدي. تحسين اتخاذ القرارات السريرية تحت ظروف التوتر الشديد.",
-      contact_label: "الدعم الفني",
-      contact_action: "فتح تذكرة دعم",
-      partnership_label: "الأبحاث والتطوير",
+      tagline: "منصة محاكاة طبية بدعم الذكاء الاصطناعي للتكوين والتقييم والبحث.",
+      contact_label: "الدعم",
+      contact_action: "اتصل بنا",
+      partnership_label: "البحث",
       partnership_action: "اقتراح شراكة",
-      disclaimer: "إشعار فني: Doctiplay هو نظام تعليمي مدعوم بالذكاء الاصطناعي مخصص للتدريب السريري فقط. البيانات المولدة لا تشكل إرشادات علاجية للمرضى الحقيقيين.",
+      disclaimer: "Doctiplay أداة تكوين بالمحاكاة. البيانات المولدة لا تشكل توصيات علاجية لمرضى حقيقيين.",
       links: "موارد النظام",
       privacy: "حماية البيانات",
       contact: "الدعم",
-      copyright: "© 2026 Doctiplay. جميع حقوق النظام محفوظة.",
+      copyright: "© 2026 Doctiplay. جميع الحقوق محفوظة.",
       oath_title: "الإطار الأخلاقي والبيولوجي الخوارزمي",
       oath_principles: [
         "سلامة بيانات التدريب (Primum non nocere)",
@@ -730,10 +759,11 @@ export const translations = {
       system: "أنت الذكاء الاصطناعي لشاشة مراقبة طبية للحالات الطارئة من الجيل الجديد. قم بإنشاء سلسلة من سجلات القياس عن بعد الواقعية وعالية التوتر لمريض اصطناعي يعاني من حالة فشل نظامي حاد (مثل السكتة القلبية أو الصدمة الحساسية أو الصدمات المتعددة). أخرج السجلات فقط. لا تنسيق ماركداون، ولا تعليقات. سجل واحد في كل سطر. التنسيق: '>> [HH:MM:SS] [SYS_TELEMETRY] الرسالة'. استخدم مصطلحات سريرية تقنية للغاية باللغة العربية. قم بمحاكاة تدهور سريع للعلامات الحيوية."
     },
     hero_extended: {
-      subtext_full: "تحول Doctiplay التدريب الطبي إلى تجارب محاكاة غامرة مدفوعة بالذكاء الاصطناعي. اختبر قدراتك المعرفية في الحالات المعقدة دون أي مخاطر.",
+      points: ["مرضى افتراضيون تفاعليون", "تغذية راجعة تعليمية فورية", "الفرنسية والعربية والدارجة"],
+      subtext_full: "Doctiplay منصة محاكاة سريرية بمرضى افتراضيين تفاعليين، مصممة للتكوين والتقييم والبحث في العلوم الصحية.",
       btn_command: "نشر DOCTIPLAY",
-      btn_play_demo: "بدء المحاكاة فوراً",
-      btn_contact_us: "اتصال بالبحث والتطوير",
+      btn_play_demo: "جرّب العرض التوضيحي",
+      btn_contact_us: "اتصل بنا",
       btn_start_now: "تهيئة النواة",
       debrief: {
         title: "استخلاص المعلومات المدعوم بالذكاء الاصطناعي",
@@ -751,12 +781,12 @@ export const translations = {
       }
     },
     features_extended: {
-      badge: "الابتكار الخوارزمي",
-      main_title: "البنية التحتية لـ Doctiplay",
-      main_desc: "مجموعة تكنولوجية متطورة مصممة لمحاكاة كل فارق بسيط في الفسيولوجيا البشرية.",
+      badge: "التقنية",
+      main_title: "بنية تقنية مصممة للواقعية السريرية",
+      main_desc: "أربع ركائز تقنية تحاكي الفيزيولوجيا والاستدلال واتخاذ القرار في ظروف واقعية.",
       toggle: {
-        show: "توسيع التفاصيل",
-        hide: "طي التفاصيل"
+        show: "اعرف المزيد",
+        hide: "إخفاء"
       }
     },
     gamification_extended: {

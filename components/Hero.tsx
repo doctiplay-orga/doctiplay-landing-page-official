@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeroProps {
@@ -7,77 +7,85 @@ interface HeroProps {
   onOpenContact: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onOpenPartnership, onOpenContact }) => {
+const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   const { t } = useLanguage();
 
   return (
-    <section id="simulation" className="relative pt-20 sm:pt-44 pb-12 sm:pb-32 overflow-hidden min-h-[90vh] flex flex-col items-center justify-center">
-      {/* Background Ambience */}
-      <div className="abstract-wave top-[10%] -left-[20%] opacity-50 sm:opacity-100"></div>
-      <div className="abstract-wave bottom-[10%] -right-[20%] rotate-[165deg] opacity-50 sm:opacity-100"></div>
+    <section
+      id="simulation"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slate-50 pt-32 pb-20 sm:pt-44 sm:pb-28"
+    >
+      {/* Static, GPU-cheap backdrop */}
+      <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px]"
+        style={{
+          background:
+            'radial-gradient(60% 60% at 50% 0%, rgba(0,172,205,0.12) 0%, rgba(79,70,229,0.05) 45%, transparent 75%)',
+        }}
+        aria-hidden="true"
+      />
 
-      {/* Centered Content Wrapper */}
-      <div className="relative z-10 px-4 max-w-[95vw] mx-auto w-full flex flex-col items-center text-center mb-8 sm:mb-24">
-
-        {/* Subtle Badge */}
-        <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full border border-primary/30 bg-primary/8 mb-6 sm:mb-10 animate-fade-in-up" style={{backgroundColor: 'rgba(0,122,154,0.08)'}}>
-          <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
-          <span className="text-[10px] sm:text-[12px] font-display font-black tracking-[0.2em] sm:tracking-[0.25em] text-primary uppercase">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-5 text-center sm:px-8">
+        <div
+          className="reveal mb-8 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 shadow-sm"
+          style={{ '--d': '0s' } as React.CSSProperties}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-primary-glow" />
+          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
             {t.hero.badge}
           </span>
         </div>
 
-        {/* Main Headline */}
-        <h1 className="mb-6 sm:mb-10 animate-fade-in-up [animation-delay:100ms] w-full flex flex-col items-center">
-          <span className="block font-display font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-2 sm:mb-4 leading-tight antialiased tracking-tight" style={{color:'#0f172a'}}>
-            {t.hero.headline}
-          </span>
-          <span className="block font-display font-black text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.8rem] text-transparent bg-clip-text bg-gradient-to-r from-primary via-pale to-accent leading-[1.1] sm:leading-[1] pb-2 sm:pb-4 antialiased tracking-tighter max-w-full px-2 break-words">
+        <h1
+          className="reveal text-balance text-[2.5rem] font-bold leading-[1.08] text-slate-900 sm:text-6xl lg:text-7xl"
+          style={{ '--d': '0.08s' } as React.CSSProperties}
+        >
+          <span className="block">{t.hero.headline}</span>
+          <span className="block bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text pb-2 text-transparent">
             {t.hero.headline_highlight}
           </span>
         </h1>
 
-        {/* Subtext */}
-        <p className="text-slate-600 text-base sm:text-xl md:text-2xl font-medium max-w-3xl mb-8 sm:mb-14 animate-fade-in-up [animation-delay:200ms] leading-relaxed px-4">
+        <p
+          className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl"
+          style={{ '--d': '0.16s' } as React.CSSProperties}
+        >
           {t.hero_extended.subtext_full}
         </p>
 
-        {/* Primary CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-24 animate-fade-in-up [animation-delay:300ms] w-full max-w-sm sm:max-w-none">
+        <div
+          className="reveal mt-10 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row sm:gap-4"
+          style={{ '--d': '0.24s' } as React.CSSProperties}
+        >
           <a
             href="https://app.doctiplay.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 rounded-full font-display font-black text-[12px] sm:text-sm tracking-widest uppercase flex items-center justify-center gap-4 hover:-translate-y-1 transition-all cursor-pointer"
-            style={{
-              background: 'rgba(0,122,154,0.9)',
-              color: '#fff',
-              boxShadow: '0 8px 30px rgba(0,122,154,0.25)'
-            }}
+            className="btn-primary group w-full sm:w-auto"
           >
             {t.hero_extended.btn_play_demo}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
           </a>
-          
-          <button
-            onClick={onOpenContact}
-            className="group w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 rounded-full font-display font-black text-[12px] sm:text-sm tracking-widest uppercase flex items-center justify-center gap-4 hover:-translate-y-1 transition-all cursor-pointer"
-            style={{
-              background: 'rgba(255,255,255,0.9)',
-              color: '#0f172a',
-              border: '2px solid rgba(0,122,154,0.2)',
-              boxShadow: '0 8px 30px rgba(0,0,0,0.05)'
-            }}
-          >
+          <button onClick={onOpenContact} className="btn-secondary w-full sm:w-auto">
             {t.hero_extended.btn_contact_us}
-            <Mail className="w-5 h-5 group-hover:scale-110 transition-transform text-primary" />
           </button>
         </div>
-      </div>
 
-      {/* Aesthetic Spreading Elements */}
-      <div className="absolute top-[20%] right-[10%] w-40 h-40 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-[80px] sm:blur-[100px] animate-pulse-slow"></div>
-      <div className="absolute bottom-[20%] left-[10%] w-60 h-60 sm:w-96 sm:h-96 bg-blue-600/5 rounded-full blur-[100px] sm:blur-[120px] animate-pulse-slow" style={{ animationDelay: '3s' }}></div>
+        <ul
+          className="reveal mt-14 flex flex-col items-center gap-3 border-t border-slate-200/80 pt-8 text-sm font-medium text-slate-600 sm:flex-row sm:gap-10"
+          style={{ '--d': '0.32s' } as React.CSSProperties}
+        >
+          {t.hero_extended.points.map((point: string) => (
+            <li key={point} className="flex items-center gap-2">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Check className="h-3 w-3" strokeWidth={3} />
+              </span>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 };

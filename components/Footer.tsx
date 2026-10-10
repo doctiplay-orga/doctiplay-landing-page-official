@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Mail, Handshake } from 'lucide-react';
@@ -13,70 +12,50 @@ const Footer: React.FC<FooterProps> = ({ onOpenPartnership, onOpenContact }) => 
   const { t } = useLanguage();
 
   return (
-    <footer className="relative pt-20 sm:pt-32 pb-16 sm:pb-20 overflow-hidden" style={{background: 'rgba(220,232,248,0.6)', borderTop: '1px solid rgba(0,122,154,0.1)'}}>
-      {/* Decorative background element */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-16 mb-16 sm:mb-24">
-
-          {/* Brand & Tagline */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 max-w-md">
-            <a href="#" className="flex items-center group" aria-label="Doctiplay">
-              <div className="h-10 sm:h-12 w-auto flex items-center">
-                <Logo className="h-10 sm:h-12 w-auto" />
-              </div>
+    <footer className="border-t border-slate-200 bg-slate-50">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16">
+        <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
+          <div className="max-w-md">
+            <a href="#simulation" aria-label="Doctiplay" className="inline-block">
+              <Logo className="h-8 sm:h-9 w-auto" />
             </a>
-            <p className="text-slate-600 text-base sm:text-lg font-medium leading-relaxed">
-              {t.footer.tagline}
-            </p>
+            <p className="mt-5 text-base leading-relaxed text-slate-600">{t.footer.tagline}</p>
           </div>
 
-          {/* Action Buttons Area */}
-          <div className="flex flex-col sm:flex-row gap-6 w-full lg:w-auto">
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <button
               onClick={onOpenContact}
-              className="flex items-center justify-center gap-4 px-8 py-4 rounded-2xl transition-all group min-w-[220px] w-full sm:w-auto"
-              style={{background:'rgba(255,255,255,0.7)', border:'1px solid rgba(0,122,154,0.18)', backdropFilter:'blur(12px)'}}
+              className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-start transition duration-200 hover:border-primary hover:shadow-sm"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                <div className="relative">
-                  <Mail className="w-5 h-5" />
-                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full animate-ping"></div>
-                </div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-[10px] font-display font-black uppercase tracking-widest text-slate-400">{t.footer.contact_label}</div>
-                <div className="font-display font-bold text-sm tracking-tight text-slate-800">{t.footer.contact_action}</div>
-              </div>
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Mail className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block text-xs font-medium text-slate-500">{t.footer.contact_label}</span>
+                <span className="block text-sm font-semibold text-slate-900">{t.footer.contact_action}</span>
+              </span>
             </button>
 
             <button
               onClick={onOpenPartnership}
-              className="flex items-center justify-center gap-4 px-8 py-4 rounded-2xl transition-all group min-w-[220px] w-full sm:w-auto"
-              style={{background:'rgba(0,122,154,0.08)', border:'1px solid rgba(0,122,154,0.22)', backdropFilter:'blur(12px)'}}
+              className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-start transition duration-200 hover:border-primary hover:shadow-sm"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                <Handshake className="w-5 h-5" />
-              </div>
-              <div className="text-center">
-                <div className="text-[10px] font-display font-black uppercase tracking-widest text-slate-400">{t.footer.partnership_label}</div>
-                <div className="font-display font-bold text-sm tracking-tight text-slate-800">{t.footer.partnership_action}</div>
-              </div>
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Handshake className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block text-xs font-medium text-slate-500">{t.footer.partnership_label}</span>
+                <span className="block text-sm font-semibold text-slate-900">{t.footer.partnership_action}</span>
+              </span>
             </button>
           </div>
         </div>
 
-        {/* Minimal Bottom Bar */}
-        <div className="pt-12 border-t border-slate-200 flex flex-col md:flex-row items-center justify-center">
-          <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em] text-center">
-            {t.footer.copyright}
-          </div>
+        <div className="mt-12 flex flex-col gap-3 border-t border-slate-200 pt-6 text-xs text-slate-500 sm:flex-row sm:items-start sm:justify-between">
+          <p className="max-w-2xl leading-relaxed">{t.footer.disclaimer}</p>
+          <p className="shrink-0 font-medium">{t.footer.copyright}</p>
         </div>
       </div>
-
-      {/* Decorative Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[200px] bg-primary/5 blur-[120px] pointer-events-none rounded-full"></div>
     </footer>
   );
 };

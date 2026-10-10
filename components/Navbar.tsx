@@ -1,86 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import { Globe } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Language } from '../utils/translations';
 import Logo from './Logo';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenContact: () => void;
+}
+
+const LANGS: Language[] = ['fr', 'en', 'ar'];
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [scrolled, setScrolled] = useState(false);
   const { t, language, setLanguage } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    const langs: Language[] = ['fr', 'en', 'ar'];
-    const currentIndex = langs.indexOf(language);
-    const nextIndex = (currentIndex + 1) % langs.length;
-    setLanguage(langs[nextIndex]);
-  };
-
   const navLinks = [
-    { label: t.navbar.sim, href: "#simulation" },
-    { label: t.navbar.expertise, href: "#expertise" },
+    { label: t.navbar.sim, href: '#simulation' },
+    { label: t.navbar.modes, href: '#modes' },
+    { label: t.navbar.expertise, href: '#expertise' },
+    { label: t.navbar.research, href: '#recherche' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
-    const elem = document.getElementById(targetId);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
+    const elem = document.getElementById(href.replace('#', ''));
+    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <nav className="fixed w-full z-[100] top-0 left-0 pt-4 px-4 transition-all duration-300 pointer-events-none">
-      {/* Container: Floating capsule style */}
-      <div className={`mx-auto pointer-events-auto transition-all duration-500 ease-out ${scrolled ? 'max-w-4xl' : 'max-w-6xl'}`}>
-        <div className={`relative flex items-center justify-between rounded-full border transition-all duration-500 shadow-lg overflow-hidden ${scrolled
-          ? 'backdrop-blur-3xl border-slate-200/80 py-2 px-4 sm:px-6'
-          : 'backdrop-blur-2xl border-white/50 py-3 px-5 sm:px-8'
-          }`}
-          style={{backgroundColor: scrolled ? 'rgba(240,246,255,0.92)' : 'rgba(255,255,255,0.55)'}}
+    <header
+      className={`fixed inset-x-0 top-0 z-[100] transition-[background-color,box-shadow,border-color] duration-300 border-b ${
+        scrolled
+          ? 'bg-white/85 backdrop-blur-md border-slate-200 shadow-[0_1px_0_rgba(15,23,42,0.03)]'
+          : 'bg-transparent border-transparent'
+      }`}
+    >
+      <nav className="mx-auto flex h-16 sm:h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8" aria-label="Main">
+        <a
+          href="#simulation"
+          onClick={(e) => handleNavClick(e, '#simulation')}
+          className="flex shrink-0 items-center"
+          aria-label="Doctiplay"
         >
-          {/* Logo Area */}
-          <a href="#simulation" onClick={(e) => handleNavClick(e, '#simulation')} className="flex items-center shrink-0 mr-2 sm:mr-4 group" aria-label="Doctiplay">
-            <div className="h-6 sm:h-8 w-auto transform group-hover:scale-105 transition-transform flex items-center">
-              <Logo className="h-6 sm:h-8 w-auto" />
-            </div>
-          </a>
+          <Logo className="h-6 sm:h-7 w-auto" />
+        </a>
 
-          {/* Center Links - Responsive */}
-          <div className="flex flex-1 items-center justify-center gap-3 sm:gap-6 md:gap-8 px-2 sm:px-4 overflow-x-auto">
-            {navLinks.map((link, i) => (
-              <a
-                key={i}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-[9px] sm:text-[10px] md:text-xs font-display font-bold text-slate-500 hover:text-primary uppercase tracking-[0.1em] sm:tracking-[0.15em] relative group py-2 transition-colors whitespace-nowrap"
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-sm font-medium text-slate-600 transition-colors hover:text-primary"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div
+            className="flex items-center rounded-lg border border-slate-200 bg-white p-0.5"
+            role="group"
+            aria-label="Language"
+          >
+            {LANGS.map((lng) => (
+              <button
+                key={lng}
+                onClick={() => setLanguage(lng)}
+                aria-pressed={language === lng}
+                className={`rounded-md px-2.5 py-1 text-xs font-semibold uppercase transition-colors ${
+                  language === lng ? 'bg-primary text-white' : 'text-slate-500 hover:text-slate-900'
+                }`}
               >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+                {lng}
+              </button>
             ))}
           </div>
-
-          {/* Language Switcher */}
           <button
-            onClick={toggleLanguage}
-            className="shrink-0 ml-2 sm:ml-4 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 hover:bg-white hover:border-primary/50 transition-all group"
+            onClick={onOpenContact}
+            className="hidden sm:inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary"
           >
-            <Globe className="w-3.5 h-3.5 text-primary group-hover:rotate-12 transition-transform" />
-            <span className="font-display font-black text-[10px] text-slate-700 tracking-widest">{language.toUpperCase()}</span>
+            <Mail className="h-4 w-4" />
+            {t.hero_extended.btn_contact_us}
           </button>
-
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 

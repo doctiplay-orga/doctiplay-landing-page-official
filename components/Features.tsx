@@ -1,199 +1,109 @@
-import React, { useState, useRef } from 'react';
-import { Activity, FileSearch, Mic, BarChart3, CheckCircle2, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Activity, FileSearch, Mic, BarChart3, Check, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const featureMeta = [
   {
     icon: Activity,
     color: '#007a9a',
-    colorRgb: '0,122,154',
-    code: 'PHYSIO_ENGINE_V1',
+    tint: 'rgba(0,122,154,0.08)',
     desc: {
-      fr: "Notre moteur simule en temps réel les cascades physiologiques : choc hémorragique, détresse respiratoire, défaillance multi-organes. Le patient évolue selon vos décisions.",
-      en: "Our engine simulates physiological cascades in real time: hemorrhagic shock, respiratory distress, multi-organ failure. The patient evolves based on your decisions.",
-      ar: "يحاكي محركنا التسلسلات الفيزيولوجية في الوقت الفعلي: الصدمة النزفية والضائقة التنفسية وفشل الأعضاء المتعددة."
+      fr: "Le moteur simule en temps réel les cascades physiologiques : choc hémorragique, détresse respiratoire, défaillance multi-organes. L'état du patient évolue selon vos décisions.",
+      en: "The engine simulates physiological cascades in real time: hemorrhagic shock, respiratory distress, multi-organ failure. The patient's condition evolves with your decisions.",
+      ar: "يحاكي المحرك التسلسلات الفيزيولوجية في الوقت الفعلي: الصدمة النزفية، الضائقة التنفسية، فشل الأعضاء المتعددة. وتتطور حالة المريض وفق قراراتك.",
     },
-    keyIndex: 0,
   },
   {
     icon: FileSearch,
     color: '#b45309',
-    colorRgb: '180,83,9',
-    code: 'DIAGNOSTIC_CORE',
+    tint: 'rgba(180,83,9,0.08)',
     desc: {
-      fr: "Des centaines de scénarios couvrant l'urgence, la médecine interne, la pédiatrie et la chirurgie. Chaque session est différente, chaque patient est unique.",
-      en: "Hundreds of scenarios covering emergency, internal medicine, pediatrics and surgery. Each session is different, every patient is unique.",
-      ar: "مئات السيناريوهات تغطي الطوارئ والطب الداخلي وطب الأطفال والجراحة. كل جلسة مختلفة وكل مريض فريد."
+      fr: "Une large bibliothèque de scénarios couvrant l'urgence, la médecine interne, la pédiatrie et la chirurgie. Chaque session est différente, chaque patient est unique.",
+      en: "A broad library of scenarios covering emergency, internal medicine, pediatrics and surgery. Each session is different, every patient is unique.",
+      ar: "مكتبة واسعة من السيناريوهات تغطي الطوارئ والطب الداخلي وطب الأطفال والجراحة. كل جلسة مختلفة وكل مريض فريد.",
     },
-    keyIndex: 1,
   },
   {
     icon: Mic,
     color: '#047857',
-    colorRgb: '4,120,87',
-    code: 'VOICE_RECOGNITION',
+    tint: 'rgba(4,120,87,0.08)',
     desc: {
-      fr: "Interrogez le patient à voix haute comme en consultation réelle. Le NLP Doctiplay comprend l'anamnèse en français, arabe et darija avec une fidélité clinique haute.",
-      en: "Question the patient out loud as in a real consultation. Doctiplay NLP understands anamnesis in French, Arabic and Darija with high clinical fidelity.",
-      ar: "استجوب المريض بصوت عالٍ كما في الاستشارة الحقيقية. يفهم محرك NLP في Doctiplay التاريخ الطبي بالفرنسية والعربية والدارجة."
+      fr: "Interrogez le patient à voix haute, comme en consultation. La reconnaissance vocale comprend l'anamnèse en français, en arabe et en darija.",
+      en: "Question the patient out loud, as in a real consultation. Voice recognition understands history-taking in French, Arabic and Darija.",
+      ar: "استجوب المريض بصوت عالٍ كما في الاستشارة الحقيقية. يفهم التعرف الصوتي أخذ السوابق بالفرنسية والعربية والدارجة.",
     },
-    keyIndex: 2,
   },
   {
     icon: BarChart3,
     color: '#4338ca',
-    colorRgb: '67,56,202',
-    code: 'ANALYSIS_CORE_V2',
+    tint: 'rgba(67,56,202,0.08)',
     desc: {
-      fr: "À la fin de chaque simulation, un rapport détaillé analyse vos décisions : ce qui était juste, ce qui était critique, et comment progresser pour la prochaine session.",
-      en: "At the end of each simulation, a detailed report analyses your decisions: what was right, what was critical, and how to progress for the next session.",
-      ar: "في نهاية كل محاكاة، يحلل تقرير مفصل قراراتك: ما كان صحيحاً، وما كان حرجاً، وكيف تتقدم."
+      fr: "À l'issue de chaque simulation, un rapport détaillé analyse vos décisions : points justes, points critiques et pistes de progression.",
+      en: "After each simulation, a detailed report analyses your decisions: what went right, what was critical, and how to improve.",
+      ar: "في نهاية كل محاكاة، يحلل تقرير مفصل قراراتك: ما كان صحيحاً، وما كان حرجاً، وكيف تتحسن.",
     },
-    keyIndex: 3,
   },
 ];
 
 const FeatureCard: React.FC<{
-  feature: typeof featureMeta[0];
+  feature: (typeof featureMeta)[number];
+  index: number;
   title: string;
   items: string[];
   language: string;
-}> = ({ feature, title, items, language }) => {
-  const { color, colorRgb, code, icon: Icon, desc } = feature;
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+}> = ({ feature, index, title, items, language }) => {
+  const { color, tint, icon: Icon, desc } = feature;
+  const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
   const description = desc[language as keyof typeof desc] ?? desc.fr;
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
-    setTilt({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-    setIsHovered(false);
-  };
+  const panelId = `feature-panel-${index}`;
 
   return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => setIsExpanded(!isExpanded)}
-      className="group relative rounded-[2rem] flex flex-col overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1.5"
-      style={{
-        transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translateZ(0)`,
-        transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.6s cubic-bezier(0.16,1,0.3,1)',
-        background: isHovered
-          ? `linear-gradient(135deg, #ffffff 0%, rgba(${colorRgb},0.08) 100%)`
-          : 'rgba(255,255,255,0.92)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: `2px solid rgba(${colorRgb}, ${isHovered || isExpanded ? 0.75 : 0.25})`,
-        boxShadow: isHovered || isExpanded
-          ? `0 20px 40px -10px rgba(${colorRgb},0.15), 0 0 0 1px rgba(${colorRgb},0.05), inset 0 1px 0 rgba(255,255,255,0.9)`
-          : '0 8px 30px -10px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
-      }}
-    >
-      {/* Top shimmer */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: `linear-gradient(90deg, transparent, rgba(${colorRgb},0.5), transparent)` }}
-      />
-      {/* Hover glow */}
-      <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
-        style={{
-          opacity: isHovered || isExpanded ? 1 : 0,
-          background: `radial-gradient(ellipse at 20% 10%, rgba(${colorRgb},0.08), transparent 65%)`,
-        }}
-      />
-
-      <div className="relative z-10 p-8 flex flex-col gap-5 h-full">
-        {/* Icon + Title row */}
-        <div className="flex items-center gap-4">
-          <div
-            className="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110"
-            style={{
-              background: `rgba(${colorRgb},0.14)`,
-              border: `2px solid rgba(${colorRgb},0.35)`,
-              boxShadow: isHovered || isExpanded ? `0 0 25px rgba(${colorRgb},0.3)` : 'none',
-            }}
-          >
-            <Icon className="w-6 h-6" style={{ color }} strokeWidth={2} />
+    <div className="reveal" style={{ '--d': `${(index % 2) * 0.08}s` } as React.CSSProperties}>
+      <article className="card card-hover p-6 sm:p-8">
+        <div className="flex items-start justify-between">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: tint }}>
+            <Icon className="h-6 w-6" style={{ color }} strokeWidth={2} />
           </div>
-          <h3 className="text-lg sm:text-xl font-display font-black uppercase tracking-wide leading-tight" style={{ color: '#0f172a' }}>
-            {title}
-          </h3>
+          <span className="font-mono text-sm font-bold text-slate-300">{String(index + 1).padStart(2, '0')}</span>
         </div>
 
-        {/* Description paragraph */}
-        <p className="text-slate-700 text-sm leading-relaxed">
-          {description}
-        </p>
+        <h3 className="mt-6 text-xl font-bold text-slate-900 sm:text-2xl">{title}</h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{description}</p>
 
-        {/* Expand Hint */}
-        <div 
-          className="flex items-center justify-between text-[10.5px] font-display font-bold uppercase tracking-widest transition-colors duration-300 mt-1" 
-          style={{ color: isHovered || isExpanded ? color : '#475569' }}
-        >
-          <span>{isExpanded || isHovered ? t.features_extended.toggle.hide : t.features_extended.toggle.show}</span>
-          <span className="text-[12px]">{isExpanded || isHovered ? '▴' : '▾'}</span>
-        </div>
-
-        {/* Collapsible Area */}
         <div
-          className="overflow-hidden transition-all duration-500 flex flex-col gap-4"
-          style={{
-            maxHeight: (isExpanded || isHovered) ? '320px' : '0px',
-            opacity: (isExpanded || isHovered) ? 1 : 0,
-            pointerEvents: (isExpanded || isHovered) ? 'auto' : 'none',
-          }}
+          id={panelId}
+          className="grid transition-[grid-template-rows,opacity] duration-300 ease-out"
+          style={{ gridTemplateRows: isOpen ? '1fr' : '0fr', opacity: isOpen ? 1 : 0 }}
         >
-          {/* Colored accent divider */}
-          <div className="h-px w-full" style={{ background: `linear-gradient(90deg, rgba(${colorRgb},0.35), transparent)` }} />
-
-          {/* Checklist */}
-          <ul className="space-y-3.5 flex-grow">
-            {items && items.map((item, i) => (
-              <li key={i} className="flex items-center gap-3">
-                <div
-                  className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
-                  style={{
-                    background: `rgba(${colorRgb},0.1)`,
-                    border: `1.5px solid rgba(${colorRgb},0.35)`,
-                  }}
-                >
-                  <CheckCircle2 className="w-3 h-3 animate-pulse" style={{ color }} />
-                </div>
-                <span className="text-slate-700 text-sm font-medium leading-snug">{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="overflow-hidden">
+            <ul className="mt-5 space-y-3 border-t border-slate-100 pt-5">
+              {items.map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm font-medium text-slate-700">
+                  <span
+                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                    style={{ background: tint, color }}
+                  >
+                    <Check className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Footer */}
-        <div
-          className="pt-4 mt-auto border-t flex items-center justify-between"
-          style={{ borderColor: `rgba(${colorRgb},0.15)` }}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity hover:opacity-80"
+          style={{ color }}
         >
-          <span
-            className="font-display text-[9px] uppercase tracking-[0.2em] transition-colors duration-300"
-            style={{ color: isHovered || isExpanded ? color : '#64748b' }}
-          >
-            {code}
-          </span>
-          <Activity className="w-4 h-4 transition-colors duration-300" style={{ color: isHovered || isExpanded ? color : '#94a3b8' }} />
-        </div>
-      </div>
+          {isOpen ? t.features_extended.toggle.hide : t.features_extended.toggle.show}
+          <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+      </article>
     </div>
   );
 };
@@ -209,32 +119,23 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section id="expertise" className="py-20 sm:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,122,154,0.04) 0%, transparent 70%)' }} />
-
-      <div className="px-6 mx-auto max-w-7xl relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16 sm:mb-20 reveal">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6 sm:mb-8">
-            <Zap className="w-4 h-4 text-primary" />
-            <span className="text-[10px] sm:text-xs font-display uppercase tracking-[0.3em] text-primary">
-              {t.features_extended.badge}
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black mb-6 sm:mb-8 leading-tight" style={{ color: '#0f172a' }}>
+    <section id="expertise" className="defer-render bg-slate-50 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="reveal mx-auto mb-14 max-w-3xl text-center sm:mb-16">
+          <span className="eyebrow">{t.features_extended.badge}</span>
+          <h2 className="mt-5 text-balance text-3xl font-bold leading-tight text-slate-900 sm:text-5xl">
             {t.features_extended.main_title}
           </h2>
-          <p className="text-slate-600 max-w-3xl mx-auto font-medium text-lg sm:text-xl leading-relaxed">
+          <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
             {t.features_extended.main_desc}
           </p>
         </div>
 
-        {/* 2×2 Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
           {featureMeta.map((feature, idx) => (
             <FeatureCard
-              key={feature.keyIndex}
+              key={idx}
+              index={idx}
               feature={feature}
               title={featureData[idx].title}
               items={featureData[idx].items}
