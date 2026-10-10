@@ -4,22 +4,216 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Doctiplay</title>
-    <meta http-equiv="refresh" content="0; url=https://app.doctiplay.com" />
-    <link rel="icon" type="image/png" href="/logo-doctiplay.png" />
+    <title>Doctiplay | Simulateur Médical IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
     <script>
-        window.location.replace("https://app.doctiplay.com" + window.location.search + window.location.hash);
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: "#007a9a",
+                            glow: "#00accd",
+                            dark: "#005f78"
+                        },
+                        secondary: "#020e4f",
+                        darkest: "#0f172a",
+                        accent: "#4f46e5",
+                        danger: "#dc2626",
+                        pale: "#00accd",
+                        surface: "rgba(0, 0, 0, 0.06)",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        body: ["Outfit", "Cairo", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-in-right': 'slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(1deg)' },
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' },
+                        },
+                        glowPulse: {
+                            '0%, 100%': { opacity: '0.4', filter: 'brightness(1)' },
+                            '50%': { opacity: '0.8', filter: 'brightness(1.5)' },
+                        }
+                    }
+                },
+            },
+        };
     </script>
+    <style>
+        body {
+            font-family: 'Outfit', 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #e8eef8 0%, #dde8f5 20%, #d4e0ef 40%, #c8d8ea 60%, #d0ddf0 80%, #e4ecf8 100%);
+            background-attachment: fixed;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        .tech-grid {
+            position: relative;
+            background: linear-gradient(135deg,
+                rgba(240,246,255,1) 0%,
+                rgba(220,235,255,0.95) 25%,
+                rgba(200,220,245,0.9) 50%,
+                rgba(215,228,248,0.95) 75%,
+                rgba(235,243,255,1) 100%);
+            background-attachment: fixed;
+        }
+
+        .tech-grid::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 15% 10%, rgba(0,172,205,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 85% 20%, rgba(79,70,229,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 30% at 50% 90%, rgba(0,122,154,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .neon-text-subtle {
+            text-shadow: 0 0 10px rgba(0, 122, 154, 0.2);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(15, 23, 42, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .perspective-monitor {
+            perspective: 2000px;
+        }
+
+        .rotate-3d-soft {
+            transform: rotateX(5deg) rotateY(-5deg);
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .rotate-3d-soft:hover {
+            transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .abstract-wave {
+            position: absolute;
+            width: 150%;
+            height: 400px;
+            background: linear-gradient(90deg, transparent, rgba(0, 172, 205, 0.07), transparent);
+            transform: rotate(-15deg);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes ecg-move {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ecg-line {
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(0, 172, 205, 0.2) 40%,
+                    #00accd 48%,
+                    #00accd 52%,
+                    rgba(0, 172, 205, 0.2) 60%,
+                    transparent 100%);
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50' preserveAspectRatio='none'%3E%3Cpath d='M0,25 L40,25 L45,10 L50,40 L55,15 L60,25 L200,25' fill='none' stroke='white' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+            mask-size: 50% 100%;
+            -webkit-mask-size: 50% 100%;
+            mask-repeat: repeat-x;
+            -webkit-mask-repeat: repeat-x;
+            animation: ecg-move 2.5s linear infinite;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-IEZANSXq.js"></script>
 </head>
 
-<body style="background: #0f172a; color: #94a3b8; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0;">
-    <div style="text-align: center; padding: 20px;">
-        <img src="/logo-doctiplay.png" alt="Doctiplay" style="height: 48px; width: auto; margin-bottom: 24px;" />
-        <p style="font-size: 16px; margin: 0 0 12px 0; color: #e2e8f0;">Redirection vers l'application Doctiplay...</p>
-        <p style="font-size: 14px; margin: 0;">
-            Si la redirection automatique ne se déclenche pas, <a href="https://app.doctiplay.com" style="color: #00accd; text-decoration: none; font-weight: 600;">cliquez ici</a>.
-        </p>
-    </div>
+<body class="tech-grid">
+    <div id="root"></div>
 </body>
 
 </html>
