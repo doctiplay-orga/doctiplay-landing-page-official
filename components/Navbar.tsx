@@ -8,7 +8,7 @@ interface NavbarProps {
   onOpenContact: () => void;
 }
 
-const LANGS: Language[] = ['fr', 'en', 'ar'];
+const LANGS: Language[] = ['fr', 'en', 'es', 'ar'];
 
 const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [scrolled, setScrolled] = useState(false);

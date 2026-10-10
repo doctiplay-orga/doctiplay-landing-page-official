@@ -13,7 +13,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
     const requested = new URLSearchParams(window.location.search).get('lang');
-    return requested === 'en' || requested === 'ar' || requested === 'fr' ? requested : 'fr';
+    return requested === 'en' || requested === 'ar' || requested === 'fr' || requested === 'es' ? requested : 'fr';
   });
 
   useEffect(() => {

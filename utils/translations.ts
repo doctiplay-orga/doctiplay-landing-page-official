@@ -1,4 +1,4 @@
-export type Language = 'fr' | 'en' | 'ar';
+export type Language = 'fr' | 'en' | 'es' | 'ar';
 
 export const translations = {
   fr: {
@@ -78,7 +78,7 @@ export const translations = {
       ],
       f3_items: [
         "Dialogue en langage naturel",
-        "Anamnèse en français, arabe et darija",
+        "Anamnèse en français, anglais, arabe et espagnol",
         "Commandes vocales",
         "Mise en situation de consultation"
       ],
@@ -190,7 +190,7 @@ export const translations = {
       system: "Vous êtes l'intelligence artificielle d'un moniteur médical d'urgence de nouvelle génération. Générez une séquence de journaux de télémétrie réalistes et à haute tension pour un patient synthétique dans un état de défaillance systémique aiguë (ex: arrêt cardiaque, choc anaphylactique, polytraumatisme). Sortez UNIQUEMENT les journaux. Pas de formatage markdown, pas de commentaires. Un journal par ligne. Format : '>> [HH:MM:SS] [SYS_TELEMETRY] Message'. Utilisez des termes cliniques hautement techniques en FRANÇAIS. Simulez une dégradation rapide des constantes vitales."
     },
     hero_extended: {
-      points: ["Patients virtuels interactifs", "Retour pédagogique immédiat", "Français, arabe et darija"],
+      points: ["Patients virtuels interactifs", "Retour pédagogique immédiat", "Français, anglais, arabe et espagnol"],
       subtext_full: "Doctiplay est une plateforme de simulation clinique à patients virtuels interactifs, conçue pour la formation, l'évaluation et la recherche en sciences de la santé.",
       btn_command: "DÉPLOYER DOCTIPLAY",
       btn_play_demo: "Essayer la démo",
@@ -370,7 +370,7 @@ export const translations = {
       ],
       f3_items: [
         "Natural language dialogue",
-        "History-taking in French, Arabic and Darija",
+        "History-taking in French, English, Arabic and Spanish",
         "Voice commands",
         "Realistic consultation setting"
       ],
@@ -477,7 +477,7 @@ export const translations = {
       system: "You are the artificial intelligence of a next-generation emergency medical monitor. Generate a sequence of realistic, high-tension telemetry logs for a synthetic patient in an acute systemic failure state (e.g., cardiac arrest, anaphylactic shock, polytrauma). Output ONLY the logs. No markdown formatting, no comments. One log per line. Format: '>> [HH:MM:SS] [SYS_TELEMETRY] Message'. Use highly technical clinical terms in ENGLISH. Simulate rapid vitals degradation."
     },
     hero_extended: {
-      points: ["Interactive virtual patients", "Immediate educational feedback", "French, Arabic and Darija"],
+      points: ["Interactive virtual patients", "Immediate educational feedback", "French, English, Arabic and Spanish"],
       subtext_full: "Doctiplay is a clinical simulation platform with interactive virtual patients, built for training, assessment and research in health sciences.",
       btn_command: "DEPLOY DOCTIPLAY",
       btn_play_demo: "Try the demo",
@@ -580,6 +580,304 @@ export const translations = {
       footer: "Doctiplay System Support // Diagnostic Protocol"
     }
   },
+  es: {
+    research: {
+      badge: "Investigación y validación",
+      title: "Una plataforma en fase de investigación clínica",
+      desc: "Doctiplay se desarrolla junto a equipos pedagógicos y clínicos para evaluar su aportación a la formación mediante simulación. Abrimos colaboraciones con centros de simulación e instituciones académicas.",
+      points_label: "Ejes de investigación",
+      points: [
+        "Evaluación del impacto pedagógico de la simulación asistida por IA",
+        "Colaboración con centros de simulación y universidades",
+        "Difusión científica de los resultados"
+      ],
+      cta: "Proponer una colaboración"
+    },
+    navbar: {
+      research: "Investigación",
+      modes: "Modos",
+      init: "INICIALIZAR SISTEMA",
+      sim: "Plataforma",
+      expertise: "Tecnología",
+      ranks: "Niveles de Sincronización",
+      faq: "Preguntas Frecuentes",
+      beta: "BETA CORE"
+    },
+    hero: {
+      badge: "Simulación médica asistida por IA",
+      headline: "La simulación médica,",
+      headline_highlight: "reinventada por la IA.",
+      subtext: "El primer simulador de urgencias médicas de alta fidelidad impulsado por IA generativa multimodal en tiempo real. Diagnostique, trate y estabilice modelos de pacientes sintéticos con reactividad fisiológica dinámica.",
+      btn_start: "INICIAR SIMULACIÓN IA",
+      btn_initializing: "SINCRONIZANDO...",
+      btn_tutorial: "DEMO DEL SISTEMA",
+      social_proof: "Simulaciones cognitivas realizadas por médicos y residentes",
+      mode_title: "Vector de Simulación",
+      cat_title: "Modelo de Patología IA"
+    },
+    modes: {
+      geste: "Protocolos de Urgencia",
+      ambulance: "Telemetría Móvil (SEM)",
+      dechocage: "Cuidados Intensivos y Reanimación"
+    },
+    categories: {
+      medical: "Urgencias Médicas IA",
+      surgical: "Escenarios Quirúrgicos",
+      pediatric: "Urgencias Pediátricas"
+    },
+    monitor: {
+      live: "MONITOR DE TELEMETRÍA EN DIRECTO",
+      standby: "SINCRONIZACIÓN EN ESPERA",
+      waiting: "Sintetizando modelo de paciente virtual..."
+    },
+    features: {
+      problem_title: "LA PARADOJA CLÍNICA",
+      problem_text: "Los manuales estáticos no simulan el estrés. Las preguntas de opción múltiple no sufren paradas cardíacas.",
+      solution_title: "LA SOLUCIÓN DIGITAL",
+      solution_text: "Doctiplay integra la imprevisibilidad biológica, la presión temporal y las fluctuaciones sistémicas en un entorno seguro de aprendizaje.",
+      f1_title: "Motor fisiológico",
+      f1_desc: "Las constantes vitales reaccionan instantáneamente a cada fármaco o intervención. Sin escenarios predeterminados, todo está modelado mediante algoritmos biológicos.",
+      f2_title: "Generación de casos",
+      f2_desc: "Sin etiquetas de diagnóstico. Utilice telemetría en directo, imagen generativa e informes analíticos para descifrar la patología.",
+      f3_title: "Interfaz de voz",
+      f3_desc: "Interactúe con naturalidad con el paciente virtual mediante nuestro módulo de reconocimiento de voz. Realice la anamnesis en lenguaje natural.",
+      f4_title: "Debriefing analítico",
+      f4_desc: "Cada decisión se registra al milisegundo. Obtenga una evaluación cuantitativa del razonamiento clínico, la gestión del tiempo y la seguridad.",
+      f1_items: [
+        "Modelado fisiológico en tiempo real",
+        "Constantes dinámicas reactivas",
+        "Farmacología simulada",
+        "Estados de shock y regulación sistémica"
+      ],
+      f2_items: [
+        "Amplia biblioteca de escenarios",
+        "Exámenes clínicos y biológicos",
+        "Imágenes y resultados de laboratorio",
+        "Razonamiento diagnóstico asistido"
+      ],
+      f3_items: [
+        "Diálogo en lenguaje natural",
+        "Anamnesis en francés, inglés, árabe y español",
+        "Comandos de voz inmersivos",
+        "Entorno de consulta realista"
+      ],
+      f4_items: [
+        "Priorización de acciones",
+        "Diagnóstico diferencial",
+        "Cronología de intervenciones",
+        "Puntuación de seguridad clínica"
+      ]
+    },
+    modes_section: {
+      badge: "Modos de simulación",
+      section_title_line1: "Tres modos,",
+      section_title_line2: "un único motor clínico.",
+      section_desc: "Escenarios adaptados a cada nivel formativo, desde el manejo de cuidados críticos hasta la preparación de exámenes oficiales.",
+      cta: "Solicitar acceso beta",
+      expand: "Ver detalles",
+      collapse: "Reducir",
+      cmd_beta: "ACCEDER AL PROTOCOLO BETA",
+      medical: {
+        badge: "Medicina",
+        subtitle: "Cuidados críticos, reanimación y traumatología",
+        title: "Medicina intensiva",
+        desc: "• Diagnóstico dinámico asistido por IA.\n• Constantes fisiológicas en tiempo real.\n• Toma de decisiones clínicas bajo presión de tiempo.",
+        tags: ["Reanimación", "Traumatología", "Telemetría"]
+      },
+      paramedical: {
+        badge: "Paramédico",
+        subtitle: "Protocolos de enfermería y triaje de pacientes",
+        title: "Triaje y atención de primera línea",
+        desc: "• Triaje de urgencias guiado por algoritmo.\n• Evaluación clínica rápida y protocolos de enfermería.\n• Retroalimentación inmediata del desempeño.",
+        tags: ["Triaje", "Atención primaria", "Protocolos"]
+      },
+      ecos: {
+        badge: "Exámenes",
+        subtitle: "Exámenes clínicos objetivos estructurados",
+        title: "Preparación ECOE / CFEU",
+        desc: "• Escenarios estructurados según los estándares ECOE/OSCE.\n• Rúbrica oficial con evaluación y puntuación automatizada.\n• Análisis predictivo de rendimiento y áreas de mejora.",
+        tags: ["ECOE", "CFEU", "Evaluación"]
+      }
+    },
+    gamification: {
+      title: "Rangos y Margen de Rendimiento",
+      subtitle: "Del perfil de estudiante a experto clínico",
+      rank_student: "Novato (Residente)",
+      rank_intern: "Especialista (Adjunto)",
+      rank_pro: "Experto (Médico Titular)",
+      badges_title: "Distinciones Clínicas Desbloqueables",
+      b1: "Estabilizador del Sistema",
+      b2: "Analizador Diagnóstico",
+      b3: "Controlador de Estrés"
+    },
+    testimonials: {
+      badge: "Validación Clínica y Tecnológica",
+      title: "Avalado por Centros de Simulación",
+      t1: "La capacidad de respuesta de las constantes fisiológicas generadas por IA es extraordinaria.",
+      t1_author: "Dra. Sarah L.",
+      t1_role: "Directora de Simulación Clínica",
+      t2: "Por fin un simulador que evalúa el razonamiento clínico profundo.",
+      t2_author: "James M.",
+      t2_role: "Residente de Medicina",
+      t3: "La integración de Doctiplay ha incrementado los índices de seguridad clínica en un 40%.",
+      t3_author: "Elena R.",
+      t3_role: "Directora de Programa de Simulación"
+    },
+    faq: {
+      badge: "ARQUITECTURAS CLÍNICAS",
+      title: "Protocolos y Visión",
+      description: "Explore la infraestructura tecnológica que permite a Doctiplay generar modelos fisiológicos realistas mediante IA.",
+      action: "LEER EL LIBRO BLANCO"
+    },
+    partnership: {
+      badge: "RED DE INVESTIGACIÓN Y DESARROLLO",
+      title: "Ecosistema Clínico",
+      subtitle: "Colaboración con hospitales universitarios líderes para validar nuestros modelos de IA generativa.",
+      cta: "Unirse a la Red"
+    },
+    imageGen: {
+      title: "Generador de Casos IA",
+      subtitle: "Genere imágenes clínicas sintéticas de alta fidelidad para enriquecer sus escenarios de simulación.",
+      promptPlaceholder: "Parámetros de generación (ej. paciente politraumatizado en box de urgencias...)",
+      sizeLabel: "Resolución",
+      billingNote: "Requiere una clave API activa.",
+      loading: "Sintetizando imagen...",
+      generateBtn: "Sintetizar imagen",
+      error: "Error de conexión. Verifique su clave de autenticación."
+    },
+    footer: {
+      tagline: "Plataforma de simulación médica asistida por inteligencia artificial, al servicio de la formación, evaluación e investigación.",
+      contact_label: "Soporte",
+      contact_action: "Contactar",
+      partnership_label: "Investigación",
+      partnership_action: "Proponer colaboración",
+      disclaimer: "Doctiplay es una herramienta de formación mediante simulación. Los datos generados no constituyen recomendaciones terapéuticas para pacientes reales.",
+      links: "Recursos",
+      privacy: "Protección de Datos",
+      contact: "Soporte",
+      copyright: "© 2026 Doctiplay. Todos los derechos reservados.",
+      oath_title: "Marco Ético y Bioalgorítmico",
+      oath_principles: [
+        "Integridad de datos de entrenamiento (Primum non nocere)",
+        "Maximización de la utilidad clínica (Beneficencia)",
+        "Respeto a la confidencialidad clínica sintética",
+        "Equidad de los modelos de evaluación de IA",
+        "Protección absoluta de flujos de datos"
+      ]
+    },
+    prompt: {
+      system: "Usted es la inteligencia artificial de un monitor médico de emergencias de nueva generación."
+    },
+    hero_extended: {
+      points: [
+        "Pacientes virtuales interactivos",
+        "Retroalimentación pedagógica inmediata",
+        "Francés, inglés, árabe y español"
+      ],
+      subtext_full: "Doctiplay es una plataforma de simulación clínica con pacientes virtuales interactivos, diseñada para la formación, evaluación e investigación en ciencias de la salud.",
+      btn_command: "DESPLEGAR DOCTIPLAY",
+      btn_play_demo: "Probar la demo",
+      btn_contact_us: "Contactar",
+      btn_start_now: "INICIAR CORE",
+      debrief: {
+        title: "Debriefing Asistido por IA",
+        subtitle: "Análisis cuantitativo y cronológico de las decisiones clínicas.",
+        items: [
+          "Seguridad y priorización de acciones",
+          "Razonamiento diagnóstico diferencial",
+          "Cinética de la atención",
+          "Coordinación y tiempos de intervención"
+        ]
+      },
+      sensor: {
+        label: "Sensor Bioactivo IA",
+        status: "TELEMETRÍA ESTABLE // SpO2"
+      }
+    },
+    features_extended: {
+      badge: "Tecnología",
+      main_title: "Una infraestructura diseñada para el realismo clínico",
+      main_desc: "Cuatro pilares tecnológicos que reproducen la fisiología, el razonamiento y la toma de decisiones en condiciones reales.",
+      toggle: {
+        show: "Más información",
+        hide: "Reducir"
+      }
+    },
+    gamification_extended: {
+      system_badge: "Matriz de Carrera",
+      description: "Acumule créditos de experiencia clínica y desbloquee distinciones cognitivas.",
+      rank_current: "Rango Actual",
+      gallery_btn: "Galería de Certificados",
+      gallery_modal: {
+        title: "Registro de Logros",
+        subtitle: "Su excelencia clínica adquirida en la plataforma Doctiplay.",
+        footer: "Nuevos protocolos de excelencia se integrarán en la próxima versión."
+      },
+      badges: {
+        subtitle: "Complete desafíos clínicos para validar su nivel",
+        desc_zip: "RCP exitosa (100% de cumplimiento)",
+        desc_filesearch: "5 diagnósticos de enfermedades raras",
+        desc_shield: "Estabilización bajo estrés extremo",
+        expert_reanim: "Experto en Reanimación",
+        desc_expert_reanim: "10 paradas cardíacas estabilizadas",
+        oeil_lynx: "Detector de Señales Débiles",
+        desc_oeil_lynx: "Identificación de patología compleja oculta",
+        vitesse_eclair: "Respuesta Crítica",
+        desc_vitesse_eclair: "Procedimiento exitoso en menos de 60 segundos",
+        maitre_orateur: "Coordinador de Crisis",
+        desc_maitre_orateur: "Excelente comunicación en equipo",
+        major_promo: "Algoritmo Perfecto",
+        desc_major_promo: "Puntuación máxima 100/100 en el debriefing",
+        precision_chir: "Precisión Quirúrgica",
+        desc_precision_chir: "Cero fallos en procedimientos invasivos"
+      }
+    },
+    monitor_extended: {
+      system_log_label: "Flujo de Datos de Telemetría"
+    },
+    partnership_drawer: {
+      title: "Colaboraciones Académicas y Tecnológicas",
+      success_title: "Solicitud enviada con éxito",
+      success_message: "Su solicitud ha sido transmitida a nuestro equipo de I+D. Nos pondremos en contacto a la brevedad.",
+      header_badge: "Protocolo de Alianza v1.0",
+      labels: {
+        name: "Nombre completo",
+        email: "Correo electrónico profesional",
+        organization: "Institución / Hospital / Universidad",
+        type: "Tipo de estructura",
+        message: "Objetivo de la colaboración o proyecto de investigación",
+        send: "Enviar solicitud",
+        sending: "Enviando..."
+      },
+      placeholders: {
+        name: "Dra. María González",
+        email: "m.gonzalez@hospital-universitario.es",
+        organization: "Hospital Universitario / Centro de Simulación",
+        type: "Seleccione un tipo",
+        message: "Describa brevemente su proyecto o sus necesidades de simulación..."
+      }
+    },
+    contact_drawer: {
+      title: "Contacto y Asistencia",
+      success_title: "Mensaje transmitido",
+      success_message: "Nuestro equipo responderá en un plazo máximo de 24 horas laborables.",
+      header_badge: "Canal Directo Doctiplay",
+      labels: {
+        name: "Nombre completo",
+        email: "Correo electrónico",
+        subject: "Motivo de la consulta",
+        message: "Su mensaje",
+        send: "Enviar mensaje",
+        sending: "Enviando..."
+      },
+      placeholders: {
+        name: "Dr. Carlos Fernández",
+        email: "carlos.f@ejemplo.com",
+        subject: "Solicitud de información sobre la plataforma",
+        message: "Escriba aquí su mensaje..."
+      }
+    }
+  },
   ar: {
     research: {
       badge: "البحث والتحقق",
@@ -655,7 +953,7 @@ export const translations = {
         "الأشعة ونتائج التحاليل",
         "استدلال تشخيصي موجَّه"
       ],
-      f3_items: ["حوار بلغة طبيعية", "أخذ السوابق بالفرنسية والعربية والدارجة", "أوامر صوتية", "أجواء استشارة واقعية"],
+      f3_items: ["حوار بلغة طبيعية", "أخذ السوابق بالفرنسية والإنجليزية والعربية والإسبانية", "أوامر صوتية", "أجواء استشارة واقعية"],
       f4_items: ["ترتيب أولويات الإجراءات", "التشخيص التفريقي", "التسلسل الزمني للتدخلات", "مؤشر السلامة السريرية"]
     },
     modes_section: {
@@ -759,7 +1057,7 @@ export const translations = {
       system: "أنت الذكاء الاصطناعي لشاشة مراقبة طبية للحالات الطارئة من الجيل الجديد. قم بإنشاء سلسلة من سجلات القياس عن بعد الواقعية وعالية التوتر لمريض اصطناعي يعاني من حالة فشل نظامي حاد (مثل السكتة القلبية أو الصدمة الحساسية أو الصدمات المتعددة). أخرج السجلات فقط. لا تنسيق ماركداون، ولا تعليقات. سجل واحد في كل سطر. التنسيق: '>> [HH:MM:SS] [SYS_TELEMETRY] الرسالة'. استخدم مصطلحات سريرية تقنية للغاية باللغة العربية. قم بمحاكاة تدهور سريع للعلامات الحيوية."
     },
     hero_extended: {
-      points: ["مرضى افتراضيون تفاعليون", "تغذية راجعة تعليمية فورية", "الفرنسية والعربية والدارجة"],
+      points: ["مرضى افتراضيون تفاعليون", "تغذية راجعة تعليمية فورية", "الفرنسية والإنجليزية والعربية والإسبانية"],
       subtext_full: "Doctiplay منصة محاكاة سريرية بمرضى افتراضيين تفاعليين، مصممة للتكوين والتقييم والبحث في العلوم الصحية.",
       btn_command: "نشر DOCTIPLAY",
       btn_play_demo: "جرّب العرض التوضيحي",

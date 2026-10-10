@@ -10,6 +10,7 @@ const featureMeta = [
     desc: {
       fr: "Le moteur simule en temps réel les cascades physiologiques : choc hémorragique, détresse respiratoire, défaillance multi-organes. L'état du patient évolue selon vos décisions.",
       en: "The engine simulates physiological cascades in real time: hemorrhagic shock, respiratory distress, multi-organ failure. The patient's condition evolves with your decisions.",
+      es: "El motor simula en tiempo real las cascadas fisiológicas: shock hemorrágico, distrés respiratorio, fallo multiorgánico. El estado del paciente evoluciona según sus decisiones.",
       ar: "يحاكي المحرك التسلسلات الفيزيولوجية في الوقت الفعلي: الصدمة النزفية، الضائقة التنفسية، فشل الأعضاء المتعددة. وتتطور حالة المريض وفق قراراتك.",
     },
   },
@@ -20,6 +21,7 @@ const featureMeta = [
     desc: {
       fr: "Une large bibliothèque de scénarios couvrant l'urgence, la médecine interne, la pédiatrie et la chirurgie. Chaque session est différente, chaque patient est unique.",
       en: "A broad library of scenarios covering emergency, internal medicine, pediatrics and surgery. Each session is different, every patient is unique.",
+      es: "Una amplia biblioteca de escenarios clínicos que abarca urgencias, medicina interna, pediatría y cirugía. Cada sesión es distinta, cada paciente es único.",
       ar: "مكتبة واسعة من السيناريوهات تغطي الطوارئ والطب الداخلي وطب الأطفال والجراحة. كل جلسة مختلفة وكل مريض فريد.",
     },
   },
@@ -28,9 +30,10 @@ const featureMeta = [
     color: '#047857',
     tint: 'rgba(4,120,87,0.08)',
     desc: {
-      fr: "Interrogez le patient à voix haute, comme en consultation. La reconnaissance vocale comprend l'anamnèse en français, en arabe et en darija.",
-      en: "Question the patient out loud, as in a real consultation. Voice recognition understands history-taking in French, Arabic and Darija.",
-      ar: "استجوب المريض بصوت عالٍ كما في الاستشارة الحقيقية. يفهم التعرف الصوتي أخذ السوابق بالفرنسية والعربية والدارجة.",
+      fr: "Interrogez le patient à voix haute, comme en consultation. La reconnaissance vocale comprend l'anamnèse en français, anglais, arabe et espagnol.",
+      en: "Question the patient out loud, as in a real consultation. Voice recognition understands history-taking in French, English, Arabic and Spanish.",
+      es: "Interrogue al paciente en voz alta, como en una consulta real. El reconocimiento de voz comprende la anamnesis en francés, inglés, árabe y español.",
+      ar: "استجوب المريض بصوت عالٍ كما في الاستشارة الحقيقية. يفهم التعرف الصوتي أخذ السوابق بالفرنسية والإنجليزية والعربية والإسبانية.",
     },
   },
   {
@@ -40,6 +43,7 @@ const featureMeta = [
     desc: {
       fr: "À l'issue de chaque simulation, un rapport détaillé analyse vos décisions : points justes, points critiques et pistes de progression.",
       en: "After each simulation, a detailed report analyses your decisions: what went right, what was critical, and how to improve.",
+      es: "Al finalizar cada simulación, un informe detallado analiza sus decisiones: aciertos, puntos críticos y áreas de mejora.",
       ar: "في نهاية كل محاكاة، يحلل تقرير مفصل قراراتك: ما كان صحيحاً، وما كان حرجاً، وكيف تتحسن.",
     },
   },
