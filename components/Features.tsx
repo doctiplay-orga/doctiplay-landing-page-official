@@ -59,7 +59,7 @@ const FeatureCard: React.FC<{
   const { color, tint, icon: Icon, desc } = feature;
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
-  const description = desc[language as keyof typeof desc] ?? desc.fr;
+  const description = desc[language as keyof typeof desc] ?? desc.en ?? desc.fr;
   const panelId = `feature-panel-${index}`;
 
   return (
